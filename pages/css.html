@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Standards & Best Practices</title>
+    <meta name="description" content="CSS standards, BEM methodology, responsive design, and CSS best practices." />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+  <body class="docs-page">
+    <div id="page" class="site-page">
+      <nav class="docs-nav">
+        <div class="docs-nav__container">
+          <div class="docs-nav__links">
+            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__link docs-nav__link--active">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__link">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__link">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="docs-section">
+        <div class="docs-section__container">
+          <div class="docs-section__header">
+            <span class="docs-section__badge">CSS</span>
+            <h2 class="docs-section__title">CSS Standards & BEM Methodology</h2>
+            <p class="docs-section__description">BEM naming convention, responsive design, and CSS best practices.</p>
+          </div>
+          <div class="docs-section__content">
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="true" aria-controls="card-bem-naming">
+                <h3 class="docs-card__title">BEM Naming Convention</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-bem-naming">
+                <p class="docs-card__text">
+                  Block Element Modifier (BEM) ensures consistent, maintainable CSS.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">BEM Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Block */
+.button { }
+
+/* Element (block__element) */
+.button__icon { }
+.button__text { }
+.button__loader { }
+
+/* Modifier (block--modifier or block__element--modifier) */
+.button--primary { }
+.button--large { }
+.button--disabled { }
+.button__icon--spinning { }
+
+/* HTML Example */
+&lt;button class="button button--primary button--large"&gt;
+  &lt;span class="button__icon button__icon--spinning"&gt;&lt;/span&gt;
+  &lt;span class="button__text"&gt;Submit&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-units-responsive">
+                <h3 class="docs-card__title">Units & Responsive Design</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-units-responsive" hidden>
+                <p class="docs-card__text">
+                  Use rem/em for typography and spacing. Use unified breakpoint system.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Responsive Typography</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>.card {
+  padding: 1.5rem; /* 24px */
+  margin-bottom: 2rem; /* 32px */
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+}
+
+.card__title {
+  font-size: 1.5rem; /* 24px */
+  margin-bottom: 1rem; /* 16px */
+  
+  @include medium {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  @include small {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+/* Use rem for spacing, em for relative sizing */
+.button {
+  padding: 0.75em 1.5em; /* Relative to font-size */
+  font-size: 1rem; /* Base size */
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-architecture">
+                <h3 class="docs-card__title">CSS Architecture</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-css-architecture" hidden>
+                <p class="docs-card__text">
+                  Organize CSS following ITCSS methodology: Settings → Tools → Generic → Elements → Objects → Components.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">File Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>styles/
+├── settings/          # Variables, config
+│   ├── _colors.scss
+│   └── _typography.scss
+├── tools/             # Mixins, functions
+│   ├── _mixins.scss
+│   └── _functions.scss
+├── generic/           # Reset, normalize
+│   └── _reset.scss
+├── elements/          # Base HTML elements
+│   └── _headings.scss
+├── objects/           # Layout patterns
+│   └── _container.scss
+├── components/        # UI components
+│   ├── _button.scss
+│   ├── _card.scss
+│   └── _modal.scss
+└── utilities/         # Utility classes
+    └── _spacing.scss</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-best-practices">
+                <h3 class="docs-card__title">CSS Best Practices</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-css-best-practices" hidden>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Never use inline styles (except dynamic values)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Avoid !important (use specificity instead)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Group related properties together</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use CSS custom properties for theming</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Minimize nesting (max 3 levels)</span>
+                  </li>
+                </ul>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Well-Organized CSS</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Good: Organized, readable */
+.card {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  
+  /* Spacing */
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  
+  /* Visual */
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  
+  /* Typography */
+  font-size: 1rem;
+  line-height: 1.6;
+  
+  /* Transitions */
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: var(--border-light);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Bad: Disorganized, hard to read */
+.card { display: flex; padding: 1.5rem; background: #fff; border: 1px solid #ccc; }
+.card:hover { border-color: #999; }</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script type="module" src="/src/scripts/main.ts" defer></script>
+    <script src="/pages/shared-scripts.js"></script>
+  </body>
+</html>
+

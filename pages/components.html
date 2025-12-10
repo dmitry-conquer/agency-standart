@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reusable Component System</title>
+    <meta name="description" content="Standardized components for popups, tabs, accordions, and forms." />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+  <body class="docs-page">
+    <div id="page" class="site-page">
+      <nav class="docs-nav">
+        <div class="docs-nav__container">
+          <div class="docs-nav__links">
+            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__link">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__link docs-nav__link--active">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="docs-section">
+        <div class="docs-section__container">
+          <div class="docs-section__header">
+            <span class="docs-section__badge">Components</span>
+            <h2 class="docs-section__title">Reusable Component System</h2>
+            <p class="docs-section__description">Standardized components for popups, tabs, accordions, and forms.</p>
+          </div>
+          <div class="docs-section__content">
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="true" aria-controls="card-component-initialization">
+                <h3 class="docs-card__title">Component Initialization</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-component-initialization">
+                <p class="docs-card__text">
+                  All components use data-attributes for initialization. No class-based selectors.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Component Pattern</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// All components follow this pattern:
+// 1. HTML with data-attributes
+// 2. JavaScript class initialization
+// 3. CSS with BEM naming
+
+// HTML
+&lt;div class="accordion" data-accordion="faq"&gt;
+  &lt;button class="accordion__header" data-accordion-trigger&gt;
+    Question 1
+  &lt;/button&gt;
+  &lt;div class="accordion__panel" data-accordion-panel&gt;
+    Answer 1
+  &lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+document.querySelectorAll('[data-accordion]').forEach(container => {
+  new Accordion(container);
+});
+
+// CSS
+.accordion { }
+.accordion__header { }
+.accordion__panel { }
+.accordion__panel--active { }</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-available-components">
+                <h3 class="docs-card__title">Available Components</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-available-components" hidden>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-modal</code> - Modal dialogs</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-tabs</code> - Tab navigation</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-accordion</code> - Accordion panels</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-dropdown</code> - Dropdown menus</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-slider</code> - Image/content sliders</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>data-form</code> - Form validation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script type="module" src="/src/scripts/main.ts" defer></script>
+    <script src="/pages/shared-scripts.js"></script>
+  </body>
+</html>
+

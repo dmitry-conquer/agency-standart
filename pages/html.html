@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Standards & Best Practices</title>
+    <meta
+      name="description"
+      content="HTML standards, semantic markup, accessibility best practices, and form validation guidelines."
+    />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+  <body class="docs-page">
+    <div id="page" class="site-page">
+      <!-- Navigation -->
+      <nav class="docs-nav">
+        <div class="docs-nav__container">
+          <div class="docs-nav__links">
+            <a href="/pages/html.html" class="docs-nav__link docs-nav__link--active">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__link">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__link">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- HTML Section -->
+      <section class="docs-section">
+        <div class="docs-section__container">
+          <div class="docs-section__header">
+            <span class="docs-section__badge">HTML</span>
+            <h2 class="docs-section__title">HTML Standards & Accessibility</h2>
+            <p class="docs-section__description">
+              Semantic markup, accessibility best practices, and form validation standards.
+            </p>
+          </div>
+
+          <div class="docs-section__content">
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="true" aria-controls="card-semantic-html">
+                <h3 class="docs-card__title">Semantic HTML</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-semantic-html">
+                <p class="docs-card__text">
+                  Always use semantic HTML5 elements. They improve accessibility, SEO, and code maintainability.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Good: Semantic Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;header&gt;
+  &lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Article Title&lt;/h1&gt;
+      &lt;time datetime="2024-01-15"&gt;January 15, 2024&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Section Heading&lt;/h2&gt;
+      &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2024 Company Name&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-accessible-forms">
+                <h3 class="docs-card__title">Accessible Forms</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-accessible-forms" hidden>
+                <p class="docs-card__text">
+                  Forms must have proper labels, error messages, and validation feedback.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Accessible Form</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;form method="post" action="/submit" novalidate&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;
+      Email Address
+      &lt;span aria-label="required"&gt;*&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required
+      aria-required="true"
+      aria-describedby="email-error"
+      autocomplete="email"
+    &gt;
+    &lt;div id="email-error" class="error-message" role="alert" aria-live="polite"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input 
+      type="password" 
+      id="password" 
+      name="password" 
+      required
+      aria-describedby="password-hint password-error"
+      autocomplete="current-password"
+    &gt;
+    &lt;div id="password-hint" class="hint"&gt;
+      Must be at least 8 characters
+    &lt;/div&gt;
+    &lt;div id="password-error" class="error-message" role="alert"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-aria-attributes">
+                <h3 class="docs-card__title">ARIA Attributes</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-aria-attributes" hidden>
+                <p class="docs-card__text">
+                  Use ARIA attributes for dynamic content, modals, tabs, and accordions.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Modal with ARIA</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;button 
+  type="button" 
+  aria-label="Open contact form"
+  aria-haspopup="dialog"
+  data-modal-trigger="contact-modal"
+&gt;
+  Contact Us
+&lt;/button&gt;
+
+&lt;div 
+  id="contact-modal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+  hidden
+&gt;
+  &lt;div class="modal__overlay"&gt;&lt;/div&gt;
+  &lt;div class="modal__content"&gt;
+    &lt;h2 id="modal-title"&gt;Contact Form&lt;/h2&gt;
+    &lt;p id="modal-description"&gt;Fill out the form below&lt;/p&gt;
+    &lt;button 
+      class="modal__close" 
+      aria-label="Close modal"
+      data-modal-close
+    &gt;
+      &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;!-- Form content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-image-optimization">
+                <h3 class="docs-card__title">Image Optimization</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-image-optimization" hidden>
+                <p class="docs-card__text">
+                  Always include alt text, use modern formats, and implement lazy loading.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Optimized Images</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Responsive image with modern formats --&gt;
+&lt;picture&gt;
+  &lt;source 
+    srcset="hero-image.avif" 
+    type="image/avif"
+    media="(min-width: 768px)"
+  &gt;
+  &lt;source 
+    srcset="hero-image.webp" 
+    type="image/webp"
+    media="(min-width: 768px)"
+  &gt;
+  &lt;source 
+    srcset="hero-image-mobile.avif" 
+    type="image/avif"
+  &gt;
+  &lt;source 
+    srcset="hero-image-mobile.webp" 
+    type="image/webp"
+  &gt;
+  &lt;img 
+    src="hero-image.jpg" 
+    alt="Descriptive alt text explaining the image content"
+    loading="lazy"
+    width="1200"
+    height="600"
+    decoding="async"
+  &gt;
+&lt;/picture&gt;
+
+&lt;!-- Decorative image --&gt;
+&lt;img 
+  src="decoration.svg" 
+  alt=""
+  role="presentation"
+  aria-hidden="true"
+&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script type="module" src="/src/scripts/main.ts" defer></script>
+    <script src="/pages/shared-scripts.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordPress Development Standards</title>
+    <meta name="description" content="WordPress theme structure, CPT, ACF, hooks, and template hierarchy." />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+  <body class="docs-page">
+    <div id="page" class="site-page">
+      <nav class="docs-nav">
+        <div class="docs-nav__container">
+          <div class="docs-nav__links">
+            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__link docs-nav__link--active">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__link">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="docs-section">
+        <div class="docs-section__container">
+          <div class="docs-section__header">
+            <span class="docs-section__badge">WordPress</span>
+            <h2 class="docs-section__title">WordPress Development Standards</h2>
+            <p class="docs-section__description">Theme structure, CPT, ACF, hooks, and template hierarchy.</p>
+          </div>
+          <div class="docs-section__content">
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="true" aria-controls="card-theme-structure">
+                <h3 class="docs-card__title">Theme Structure</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-theme-structure">
+                <p class="docs-card__text">
+                  Standard theme structure for maintainability and scalability.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Theme Directory Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>theme-name/
+├── style.css
+├── functions.php
+├── index.php
+├── header.php
+├── footer.php
+├── sidebar.php
+├── inc/
+│   ├── post-types.php
+│   ├── taxonomies.php
+│   ├── acf-fields.php
+│   ├── enqueue-scripts.php
+│   └── theme-setup.php
+├── template-parts/
+│   ├── components/
+│   │   ├── card.php
+│   │   ├── button.php
+│   │   └── modal.php
+│   └── sections/
+│       ├── hero.php
+│       └── features.php
+├── assets/
+│   ├── css/
+│   │   └── main.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+└── acf-json/</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-custom-post-types">
+                <h3 class="docs-card__title">Custom Post Types</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-custom-post-types" hidden>
+                <p class="docs-card__text">
+                  Register CPTs in a separate file. Use consistent naming and structure.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: CPT Registration</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php
+// inc/post-types.php
+
+function register_project_post_type() {
+  $labels = [
+    'name' => 'Projects',
+    'singular_name' => 'Project',
+    'menu_name' => 'Projects',
+    'add_new' => 'Add New',
+    'add_new_item' => 'Add New Project',
+    'edit_item' => 'Edit Project',
+    'new_item' => 'New Project',
+    'view_item' => 'View Project',
+    'search_items' => 'Search Projects',
+    'not_found' => 'No projects found',
+    'not_found_in_trash' => 'No projects found in Trash',
+  ];
+  
+  $args = [
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'query_var' => true,
+    'rewrite' => ['slug' => 'projects'],
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'hierarchical' => false,
+    'menu_position' => 20,
+    'menu_icon' => 'dashicons-portfolio',
+    'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
+    'show_in_rest' => true, // Enable Gutenberg
+  ];
+  
+  register_post_type('project', $args);
+}
+add_action('init', 'register_project_post_type');</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-acf-fields">
+                <h3 class="docs-card__title">ACF Fields</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-acf-fields" hidden>
+                <p class="docs-card__text">
+                  Use ACF JSON for version control. Always sanitize and escape ACF field values.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: ACF Field Usage</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php
+// Get ACF field values
+$title = get_field('title');
+$content = get_field('content');
+$image = get_field('image');
+$link = get_field('link');
+$repeater = get_field('items');
+
+// Always escape output
+&lt;h2&gt;&lt;?php echo esc_html($title); ?&gt;&lt;/h2&gt;
+&lt;div&gt;&lt;?php echo wp_kses_post($content); ?&gt;&lt;/div&gt;
+
+// Image field
+if ($image) {
+  $image_url = esc_url($image['url']);
+  $image_alt = esc_attr($image['alt']);
+  ?&gt;
+  &lt;img src="&lt;?php echo $image_url; ?&gt;" alt="&lt;?php echo $image_alt; ?&gt;"&gt;
+  &lt;?php
+}
+
+// Link field
+if ($link) {
+  $link_url = esc_url($link['url']);
+  $link_title = esc_html($link['title']);
+  $link_target = $link['target'] ? ' target="_blank" rel="noopener noreferrer"' : '';
+  ?&gt;
+  &lt;a href="&lt;?php echo $link_url; ?&gt;"&lt;?php echo $link_target; ?&gt;&gt;
+    &lt;?php echo $link_title; ?&gt;
+  &lt;/a&gt;
+  &lt;?php
+}
+
+// Repeater field
+if ($repeater) {
+  foreach ($repeater as $item) {
+    $item_title = esc_html($item['title']);
+    $item_content = wp_kses_post($item['content']);
+    ?&gt;
+    &lt;div class="item"&gt;
+      &lt;h3&gt;&lt;?php echo $item_title; ?&gt;&lt;/h3&gt;
+      &lt;div&gt;&lt;?php echo $item_content; ?&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;?php
+  }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-template-parts">
+                <h3 class="docs-card__title">Template Parts</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-template-parts" hidden>
+                <p class="docs-card__text">
+                  Use template parts for reusable components. Pass data via arguments.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Template Part Usage</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php
+// template-parts/components/card.php
+$args = wp_parse_args($args, [
+  'title' => '',
+  'content' => '',
+  'image' => null,
+  'link' => null,
+  'class' => '',
+]);
+
+$title = esc_html($args['title']);
+$content = wp_kses_post($args['content']);
+$image = $args['image'];
+$link = $args['link'];
+$class = esc_attr($args['class']);
+?&gt;
+
+&lt;article class="card &lt;?php echo $class; ?&gt;"&gt;
+  &lt;?php if ($image) : ?&gt;
+    &lt;div class="card__image"&gt;
+      &lt;img src="&lt;?php echo esc_url($image['url']); ?&gt;" 
+           alt="&lt;?php echo esc_attr($image['alt']); ?&gt;"&gt;
+    &lt;/div&gt;
+  &lt;?php endif; ?&gt;
+  
+  &lt;div class="card__content"&gt;
+    &lt;h3 class="card__title"&gt;&lt;?php echo $title; ?&gt;&lt;/h3&gt;
+    &lt;div class="card__text"&gt;&lt;?php echo $content; ?&gt;&lt;/div&gt;
+    
+    &lt;?php if ($link) : ?&gt;
+      &lt;a href="&lt;?php echo esc_url($link['url']); ?&gt;" 
+         class="card__link"&gt;
+        &lt;?php echo esc_html($link['title']); ?&gt;
+      &lt;/a&gt;
+    &lt;?php endif; ?&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;?php
+// Usage in template
+$card_args = [
+  'title' => get_field('title'),
+  'content' => get_field('content'),
+  'image' => get_field('image'),
+  'link' => get_field('link'),
+  'class' => 'card--featured',
+];
+get_template_part('template-parts/components', 'card', $card_args);</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-wordpress-hooks">
+                <h3 class="docs-card__title">WordPress Hooks</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-wordpress-hooks" hidden>
+                <p class="docs-card__text">
+                  Use actions and filters properly. Remove hooks when needed.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Hooks Usage</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php
+// Actions
+add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
+add_action('after_setup_theme', 'theme_setup');
+add_action('wp_footer', 'add_custom_script');
+
+function enqueue_theme_scripts() {
+  wp_enqueue_style('theme-style', get_stylesheet_uri());
+  wp_enqueue_script('theme-script', get_template_directory_uri() . '/assets/js/main.js', [], '1.0.0', true);
+}
+
+// Filters
+add_filter('excerpt_length', 'custom_excerpt_length', 999);
+add_filter('the_content', 'add_custom_content');
+
+function custom_excerpt_length($length) {
+  return 20;
+}
+
+function add_custom_content($content) {
+  if (is_single()) {
+    $content .= '&lt;p&gt;Custom content&lt;/p&gt;';
+  }
+  return $content;
+}
+
+// Remove hooks
+remove_action('wp_head', 'wp_generator');
+remove_filter('the_content', 'wpautop');</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script type="module" src="/src/scripts/main.ts" defer></script>
+    <script src="/pages/shared-scripts.js"></script>
+  </body>
+</html>
+

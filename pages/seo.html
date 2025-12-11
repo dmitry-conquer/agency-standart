@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO Best Practices</title>
+    <meta name="description" content="SEO optimization, meta tags, structured data, and technical SEO standards." />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+  <body class="docs-page">
+    <div id="page" class="site-page">
+      <nav class="docs-nav">
+        <div class="docs-nav__container">
+          <div class="docs-nav__links">
+            <a href="/pages/index.html" class="docs-nav__link">Home</a>
+            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__link">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__link">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
+            <a href="/pages/seo.html" class="docs-nav__link docs-nav__link--active">SEO</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="docs-section">
+        <div class="docs-section__container">
+          <div class="docs-section__header">
+            <span class="docs-section__badge">SEO</span>
+            <h2 class="docs-section__title">SEO Best Practices & Optimization</h2>
+            <p class="docs-section__description">
+              Meta tags, structured data, URL structure, content optimization, and technical SEO standards.
+            </p>
+          </div>
+          <div class="docs-section__content">
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-meta-tags">
+                <h3 class="docs-card__title">Meta Tags & Structured Data</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-meta-tags" hidden>
+                <p class="docs-card__text">
+                  Proper meta tags and structured data improve search engine visibility and click-through rates.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">HTML Meta Tags</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Essential Meta Tags --&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Clear, concise description (150-160 characters)"&gt;
+&lt;meta name="keywords" content="relevant, keywords, here"&gt;
+
+&lt;!-- Open Graph (Social Media) --&gt;
+&lt;meta property="og:title" content="Page Title"&gt;
+&lt;meta property="og:description" content="Page description"&gt;
+&lt;meta property="og:image" content="https://example.com/image.jpg"&gt;
+&lt;meta property="og:url" content="https://example.com/page"&gt;
+&lt;meta property="og:type" content="website"&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="Page Title"&gt;
+&lt;meta name="twitter:description" content="Page description"&gt;
+&lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;</code></pre>
+                </div>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">JSON-LD Structured Data</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Page Title",
+  "description": "Page description",
+  "url": "https://example.com/page",
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Site Name",
+    "url": "https://example.com"
+  }
+}
+&lt;/script&gt;</code></pre>
+                </div>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Always include unique meta descriptions (150-160 characters)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use Open Graph tags for social media sharing</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Implement JSON-LD structured data for rich snippets</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Validate structured data with Google Rich Results Test</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-url-structure">
+                <h3 class="docs-card__title">URL Structure & Sitemap</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-url-structure" hidden>
+                <p class="docs-card__text">
+                  Clean URLs and proper sitemap configuration help search engines crawl and index your site effectively.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">URL Best Practices</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Good URLs
+https://example.com/blog/seo-best-practices
+https://example.com/products/laptop-2024
+https://example.com/about/team
+
+// Bad URLs
+https://example.com/page?id=123&cat=abc
+https://example.com/index.php?p=456
+https://example.com/2024/01/15/post-title-12345</code></pre>
+                </div>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">robots.txt</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /private/
+
+Sitemap: https://example.com/sitemap.xml</code></pre>
+                </div>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use descriptive, keyword-rich URLs (avoid IDs and parameters)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Keep URLs short and readable (3-5 words maximum)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use hyphens to separate words, not underscores</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Create and submit XML sitemap to Google Search Console</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Configure robots.txt to guide crawlers</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-content-optimization">
+                <h3 class="docs-card__title">Content Optimization</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-content-optimization" hidden>
+                <p class="docs-card__text">
+                  Optimize content structure, headings, and keywords for better search rankings.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Heading Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;h1&gt;Main Page Title (One per page)&lt;/h1&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;h3&gt;Subsection Heading&lt;/h3&gt;
+&lt;h4&gt;Minor Heading&lt;/h4&gt;
+
+&lt;!-- Never skip heading levels --&gt;
+&lt;!-- Bad: h1 → h3 (skipping h2) --&gt;
+&lt;!-- Good: h1 → h2 → h3 --&gt;</code></pre>
+                </div>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use one H1 per page with primary keyword</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Maintain proper heading hierarchy (H1 → H2 → H3)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Include keywords naturally in content (avoid keyword stuffing)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use alt text for all images with descriptive keywords</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Create internal links to related content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Optimize content length (aim for 1000+ words for blog posts)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-technical-seo">
+                <h3 class="docs-card__title">Technical SEO</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-technical-seo" hidden>
+                <p class="docs-card__text">
+                  Technical SEO ensures your site is fast, mobile-friendly, and properly indexed by search engines.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Canonical Tags</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Prevent duplicate content issues --&gt;
+&lt;link rel="canonical" href="https://example.com/page"&gt;
+
+&lt;!-- For paginated content --&gt;
+&lt;link rel="prev" href="https://example.com/page/2"&gt;
+&lt;link rel="next" href="https://example.com/page/4"&gt;</code></pre>
+                </div>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Performance Optimization</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Image optimization
+&lt;img src="image.webp" 
+     alt="Description" 
+     loading="lazy" 
+     width="800" 
+     height="600"&gt;
+
+// Preload critical resources
+&lt;link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="preload" href="/styles/critical.css" as="style"&gt;</code></pre>
+                </div>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Ensure site is mobile-responsive (mobile-first design)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Optimize page speed (target &lt;3s load time)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use HTTPS (SSL certificate required)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Implement canonical tags to prevent duplicate content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Enable GZIP compression and browser caching</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Fix broken links and 404 errors</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Monitor Core Web Vitals (LCP, FID, CLS)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="/pages/shared-scripts.js"></script>
+  </body>
+</html>
+

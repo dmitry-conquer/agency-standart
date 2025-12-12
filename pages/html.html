@@ -426,92 +426,6 @@
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-html-testing">
-                <h3 class="docs-card__title">HTML Testing</h3>
-                <span class="docs-card__icon" aria-hidden="true">▼</span>
-              </button>
-              <div class="docs-card__body" id="card-html-testing" hidden>
-                <p class="docs-card__text">
-                  HTML validation ensures your markup follows web standards, improves accessibility, SEO, and cross-browser compatibility. Always validate your HTML before deploying to production.
-                </p>
-
-                <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>W3C Nu HTML Checker:</strong>
-                </p>
-                <p class="docs-card__text">
-                  The official W3C validator checks HTML5 markup for errors and warnings. Enter a URL below to validate your page.
-                </p>
-                <form class="docs-testing-form" id="html-validator-form" novalidate>
-                  <div class="docs-testing-form__group">
-                    <label for="validator-url" class="docs-testing-form__label">
-                      Page URL
-                    </label>
-                    <div class="docs-testing-form__input-wrapper">
-                      <input
-                        type="url"
-                        id="validator-url"
-                        name="url"
-                        class="docs-testing-form__input"
-                        placeholder="https://example.com/page"
-                        required
-                        aria-required="true"
-                        aria-describedby="validator-url-error"
-                      />
-                      <button type="submit" class="docs-testing-form__submit">
-                        Validate
-                      </button>
-                    </div>
-                    <div id="validator-url-error" class="docs-testing-form__error" role="alert" aria-live="polite"></div>
-                  </div>
-                </form>
-
-                <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Other Validation Tools:</strong>
-                </p>
-                <ul class="docs-list">
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>W3C Nu HTML Checker</strong> - Official W3C validator for HTML5 (<a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">validator.w3.org/nu</a>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>W3C Markup Validator</strong> - Classic HTML/XHTML validator (<a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org</a>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>HTMLHint</strong> - Static code analysis tool for HTML (<a href="https://htmlhint.com/" target="_blank" rel="noopener">htmlhint.com</a>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Browser DevTools</strong> - Built-in validation in Chrome/Firefox DevTools</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Lighthouse</strong> - Automated auditing tool for web pages (includes HTML validation)</span>
-                  </li>
-                </ul>
-
-                <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Understanding Validation Results:</strong>
-                </p>
-                <ul class="docs-list">
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Errors</strong> - Must be fixed, they break HTML standards and can cause rendering issues</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Warnings</strong> - Should be addressed, they indicate potential problems or deprecated practices</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Info</strong> - Helpful suggestions for improvement, not critical</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-404-page">
                 <h3 class="docs-card__title">404 Error Page</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
@@ -798,33 +712,6 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-optimization">
-                <h3 class="docs-card__title">Optimization</h3>
-                <span class="docs-card__icon" aria-hidden="true">▼</span>
-              </button>
-              <div class="docs-card__body" id="card-optimization" hidden>
-                <p class="docs-card__text">
-                  Optimize your HTML for better performance, faster loading, and improved user experience.
-                </p>
-
-                <ul class="docs-list">
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Clean up redundant code:</strong> Remove unnecessary HTML, comments, and extra whitespace. Every byte counts – a leaner HTML document means faster downloads and parsing. Small reductions in HTML size can especially help on mobile networks.</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Load external files in the correct order:</strong> External CSS and JS files should be ordered for optimal loading. CSS is render-blocking, so it should appear in the <code>&lt;head&gt;</code>. Scripts should be loaded non-blocking – put <code>&lt;script&gt;</code> tags just before the closing <code>&lt;/body&gt;</code> or use <code>async</code>/<code>defer</code> attributes.</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><strong>Avoid unnecessary iframes:</strong> <code>&lt;iframe&gt;</code> elements can significantly slow down a page. Use them sparingly and only when needed. Consider adding <code>loading="lazy"</code> to iframes below the fold, or load them on demand (click or scroll) to save resources.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-images">
                 <h3 class="docs-card__title">Images</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
@@ -875,6 +762,119 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                 </div>
               </div>
             </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-optimization">
+                <h3 class="docs-card__title">Optimization</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-optimization" hidden>
+                <p class="docs-card__text">
+                  Optimize your HTML for better performance, faster loading, and improved user experience.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Clean up redundant code:</strong> Remove unnecessary HTML, comments, and extra whitespace. Every byte counts – a leaner HTML document means faster downloads and parsing. Small reductions in HTML size can especially help on mobile networks.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Load external files in the correct order:</strong> External CSS and JS files should be ordered for optimal loading. CSS is render-blocking, so it should appear in the <code>&lt;head&gt;</code>. Scripts should be loaded non-blocking – put <code>&lt;script&gt;</code> tags just before the closing <code>&lt;/body&gt;</code> or use <code>async</code>/<code>defer</code> attributes.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Avoid unnecessary iframes:</strong> <code>&lt;iframe&gt;</code> elements can significantly slow down a page. Use them sparingly and only when needed. Consider adding <code>loading="lazy"</code> to iframes below the fold, or load them on demand (click or scroll) to save resources.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-html-testing">
+                <h3 class="docs-card__title">HTML Testing</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-html-testing" hidden>
+                <p class="docs-card__text">
+                  HTML validation ensures your markup follows web standards, improves accessibility, SEO, and cross-browser compatibility. Always validate your HTML before deploying to production.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>W3C Nu HTML Checker:</strong>
+                </p>
+                <p class="docs-card__text">
+                  The official W3C validator checks HTML5 markup for errors and warnings. Enter a URL below to validate your page.
+                </p>
+                <form class="docs-testing-form" id="html-validator-form" novalidate>
+                  <div class="docs-testing-form__group">
+                    <label for="validator-url" class="docs-testing-form__label">
+                      Page URL
+                    </label>
+                    <div class="docs-testing-form__input-wrapper">
+                      <input
+                        type="url"
+                        id="validator-url"
+                        name="url"
+                        class="docs-testing-form__input"
+                        placeholder="https://example.com/page"
+                        required
+                        aria-required="true"
+                        aria-describedby="validator-url-error"
+                      />
+                      <button type="submit" class="docs-testing-form__submit">
+                        Validate
+                      </button>
+                    </div>
+                    <div id="validator-url-error" class="docs-testing-form__error" role="alert" aria-live="polite"></div>
+                  </div>
+                </form>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Other Validation Tools:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>W3C Nu HTML Checker</strong> - Official W3C validator for HTML5 (<a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">validator.w3.org/nu</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>W3C Markup Validator</strong> - Classic HTML/XHTML validator (<a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>HTMLHint</strong> - Static code analysis tool for HTML (<a href="https://htmlhint.com/" target="_blank" rel="noopener">htmlhint.com</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Browser DevTools</strong> - Built-in validation in Chrome/Firefox DevTools</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Lighthouse</strong> - Automated auditing tool for web pages (includes HTML validation)</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Understanding Validation Results:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Errors</strong> - Must be fixed, they break HTML standards and can cause rendering issues</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Warnings</strong> - Should be addressed, they indicate potential problems or deprecated practices</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Info</strong> - Helpful suggestions for improvement, not critical</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -886,4 +886,5 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
     <script src="/pages/html-validator.js"></script>
   </body>
 </html>
+
 

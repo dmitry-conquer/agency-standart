@@ -426,6 +426,80 @@
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-buttons-links">
+                <h3 class="docs-card__title">Buttons vs Links</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-buttons-links" hidden>
+                <p class="docs-card__text">
+                  Understanding when to use <code>&lt;button&gt;</code> versus <code>&lt;a&gt;</code> is crucial for accessibility, semantics, and user experience. Use the correct element based on the action's purpose.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use <code>&lt;a&gt;</code> for navigation:</strong> Links should be used when the action navigates to a new page, section, or resource. Links have a URL (<code>href</code> attribute) and change the browser location or scroll to an anchor.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use <code>&lt;button&gt;</code> for actions:</strong> Buttons should be used for actions that perform a function on the current page (submit forms, open modals, toggle content, trigger JavaScript). Buttons don't navigate away from the page.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Never style links as buttons:</strong> Don't use <code>&lt;a&gt;</code> without <code>href</code> or with <code>href="#"</code> and JavaScript to simulate button behavior. This breaks keyboard navigation and accessibility.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Never style buttons as links:</strong> Don't use <code>&lt;button&gt;</code> for navigation. Buttons don't have URLs, can't be right-clicked to open in new tab, and don't show destination in browser status bar.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Download actions:</strong> For file downloads, use <code>&lt;a&gt;</code> with <code>download</code> attribute, not a button. This allows right-click "Save as" functionality.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Form submissions:</strong> Always use <code>&lt;button type="submit"&gt;</code> for form submissions, never a link. This ensures proper form handling and accessibility.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Always specify button type:</strong> Always include <code>type="button"</code> for buttons that don't submit forms. By default, buttons inside forms have <code>type="submit"</code>, which can accidentally trigger form submission. Explicitly setting <code>type="button"</code> prevents this behavior.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Correct Usage</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Link: Navigates to a page --&gt;
+&lt;a href="/about"&gt;Learn More About Us&lt;/a&gt;
+
+&lt;!-- Link: Downloads a file --&gt;
+&lt;a href="/files/document.pdf" download&gt;Download PDF&lt;/a&gt;
+
+&lt;!-- Button: Opens a modal --&gt;
+&lt;button type="button" aria-label="Open contact form" data-modal-trigger&gt;
+  Contact Us
+&lt;/button&gt;
+
+&lt;!-- Button: Submits a form --&gt;
+&lt;button type="submit"&gt;Submit Form&lt;/button&gt;
+
+&lt;!-- Button: Toggles content --&gt;
+&lt;button type="button" aria-expanded="false" aria-controls="menu"&gt;
+  Toggle Menu
+&lt;/button&gt;
+
+&lt;!-- ❌ WRONG: Link without href used as button --&gt;
+&lt;!-- &lt;a href="#" onclick="doSomething()"&gt;Click Me&lt;/a&gt; --&gt;
+
+&lt;!-- ❌ WRONG: Button used for navigation --&gt;
+&lt;!-- &lt;button onclick="window.location='/page'"&gt;Go to Page&lt;/button&gt; --&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-404-page">
                 <h3 class="docs-card__title">404 Error Page</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>

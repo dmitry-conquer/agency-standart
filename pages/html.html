@@ -44,9 +44,9 @@
         <div class="docs-section__container">
           <div class="docs-section__header">
             <span class="docs-section__badge">HTML</span>
-            <h2 class="docs-section__title">HTML Standards & Accessibility</h2>
+            <h2 class="docs-section__title">HTML Standards & Best Practices</h2>
             <p class="docs-section__description">
-              Semantic markup, accessibility best practices, and form validation standards.
+              Semantic markup, accessibility, optimization, image handling, and validation standards.
             </p>
           </div>
 
@@ -60,74 +60,6 @@
                 <p class="docs-card__text">
                   Always use semantic HTML5 elements. They improve accessibility, SEO, and code maintainability.
                 </p>
-                
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Complete Page Structure</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-  &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Page Title&lt;/title&gt;
-    &lt;meta name="description" content="Page description"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;header&gt;
-      &lt;nav aria-label="Main navigation"&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/nav&gt;
-    &lt;/header&gt;
-
-    &lt;main&gt;
-      &lt;section&gt;
-        &lt;h1&gt;Page Title&lt;/h1&gt;
-        &lt;p&gt;Introduction content...&lt;/p&gt;
-      &lt;/section&gt;
-
-      &lt;section&gt;
-        &lt;h2&gt;Main Content&lt;/h2&gt;
-        &lt;p&gt;Main content here...&lt;/p&gt;
-        
-        &lt;aside&gt;
-          &lt;h3&gt;Related Information&lt;/h3&gt;
-          &lt;p&gt;Additional context...&lt;/p&gt;
-        &lt;/aside&gt;
-      &lt;/section&gt;
-
-      &lt;section&gt;
-        &lt;h2&gt;Additional Section&lt;/h2&gt;
-        &lt;p&gt;More content here...&lt;/p&gt;
-      &lt;/section&gt;
-
-      &lt;aside&gt;
-        &lt;h2&gt;Sidebar&lt;/h2&gt;
-        &lt;nav aria-label="Related links"&gt;
-          &lt;ul&gt;
-            &lt;li&gt;&lt;a href="/page-1"&gt;Related Page 1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="/page-2"&gt;Related Page 2&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/nav&gt;
-      &lt;/aside&gt;
-    &lt;/main&gt;
-
-    &lt;footer&gt;
-      &lt;nav aria-label="Footer navigation"&gt;
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href="/privacy"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href="/terms"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/nav&gt;
-      &lt;p&gt;&copy; 2024 Company Name. All rights reserved.&lt;/p&gt;
-    &lt;/footer&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </div>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
                   <strong>Semantic HTML5 Tags:</strong>
@@ -198,6 +130,209 @@
                     <span><code>&lt;summary&gt;</code> - Summary or label for <code>&lt;details&gt;</code> element</span>
                   </li>
                 </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Complete Page Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;meta name="description" content="Page description"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;nav aria-label="Main navigation"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1&gt;Page Title&lt;/h1&gt;
+        &lt;p&gt;Introduction content...&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Main Content&lt;/h2&gt;
+        &lt;p&gt;Main content here...&lt;/p&gt;
+        
+        &lt;aside&gt;
+          &lt;h3&gt;Related Information&lt;/h3&gt;
+          &lt;p&gt;Additional context...&lt;/p&gt;
+        &lt;/aside&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Additional Section&lt;/h2&gt;
+        &lt;p&gt;More content here...&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;aside&gt;
+        &lt;h2&gt;Sidebar&lt;/h2&gt;
+        &lt;nav aria-label="Related links"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/page-1"&gt;Related Page 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/page-2"&gt;Related Page 2&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      &lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+      &lt;nav aria-label="Footer navigation"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/privacy"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/terms"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;p&gt;&copy; 2024 Company Name. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-head">
+                <h3 class="docs-card__title">Head</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-head" hidden>
+                <p class="docs-card__text">
+                  The <code>&lt;head&gt;</code> section contains metadata, links to external resources, and configuration for your HTML document. Proper head setup is essential for SEO, performance, and social media sharing.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Required meta tags:</strong> Always include <code>&lt;meta charset="UTF-8"&gt;</code> as the first element and <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> for responsive design.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Title tag:</strong> Every page must have a unique <code>&lt;title&gt;</code> tag (50-60 characters). It appears in browser tabs and search results.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Meta description:</strong> Include <code>&lt;meta name="description"&gt;</code> (150-160 characters) for SEO and search result snippets.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Open Graph tags:</strong> Add Open Graph meta tags (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>) for better social media sharing.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Favicon:</strong> Include <code>&lt;link rel="icon"&gt;</code> for browser tab icon. Use multiple sizes for different devices.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Performance hints:</strong> Use <code>&lt;link rel="preconnect"&gt;</code> for external domains and <code>&lt;link rel="preload"&gt;</code> for critical resources.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>CSS in head:</strong> Place CSS links in <code>&lt;head&gt;</code> before content. Use <code>&lt;link rel="stylesheet"&gt;</code> for external stylesheets.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Complete Head Section</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Page Title - Site Name&lt;/title&gt;
+  &lt;meta name="description" content="Page description for SEO and search results"&gt;
+  
+  &lt;!-- Open Graph / Facebook --&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  &lt;meta property="og:url" content="https://example.com/page"&gt;
+  &lt;meta property="og:title" content="Page Title"&gt;
+  &lt;meta property="og:description" content="Page description"&gt;
+  &lt;meta property="og:image" content="https://example.com/image.jpg"&gt;
+  
+  &lt;!-- Twitter --&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="Page Title"&gt;
+  &lt;meta name="twitter:description" content="Page description"&gt;
+  &lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;
+  
+  &lt;!-- Favicon --&gt;
+  &lt;link rel="icon" type="image/x-icon" href="/favicon.ico"&gt;
+  &lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+  &lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+  
+  &lt;!-- Performance --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  
+  &lt;!-- CSS --&gt;
+  &lt;link rel="stylesheet" href="/styles/main.css"&gt;
+&lt;/head&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-headings">
+                <h3 class="docs-card__title">Headings</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-headings" hidden>
+                <p class="docs-card__text">
+                  Proper heading structure is essential for accessibility, SEO, and content hierarchy.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>H1:</strong> All pages have an H1 which is not the title of the website.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Headings:</strong> Headings should be used properly and in the right order (H1 to H6).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Never skip heading levels:</strong> Don't jump from h1 to h3 (skipping h2). Use sequential order: h1 → h2 → h3.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Proper Heading Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Never skip heading levels --&gt;
+&lt;!-- Bad: h1 → h3 (skipping h2) --&gt;
+&lt;!-- Good: h1 → h2 → h3 --&gt;
+
+&lt;main&gt;
+  &lt;h1&gt;Page Title&lt;/h1&gt;
+  
+  &lt;section&gt;
+    &lt;h2&gt;Section Heading&lt;/h2&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+    
+    &lt;h3&gt;Subsection Heading&lt;/h3&gt;
+    &lt;p&gt;More content...&lt;/p&gt;
+  &lt;/section&gt;
+  
+  &lt;section&gt;
+    &lt;h2&gt;Another Section&lt;/h2&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+                </div>
               </div>
             </div>
 
@@ -208,7 +343,14 @@
               </button>
               <div class="docs-card__body" id="card-html-testing" hidden>
                 <p class="docs-card__text">
-                  Validate your HTML markup using the W3C Nu HTML Checker. Enter a URL to check for HTML errors and warnings.
+                  HTML validation ensures your markup follows web standards, improves accessibility, SEO, and cross-browser compatibility. Always validate your HTML before deploying to production.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>W3C Nu HTML Checker:</strong>
+                </p>
+                <p class="docs-card__text">
+                  The official W3C validator checks HTML5 markup for errors and warnings. Enter a URL below to validate your page.
                 </p>
                 <form class="docs-testing-form" id="html-validator-form" novalidate>
                   <div class="docs-testing-form__group">
@@ -233,6 +375,97 @@
                     <div id="validator-url-error" class="docs-testing-form__error" role="alert" aria-live="polite"></div>
                   </div>
                 </form>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Other Validation Tools:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>W3C Nu HTML Checker</strong> - Official W3C validator for HTML5 (<a href="https://validator.w3.org/nu/" target="_blank" rel="noopener">validator.w3.org/nu</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>W3C Markup Validator</strong> - Classic HTML/XHTML validator (<a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>HTMLHint</strong> - Static code analysis tool for HTML (<a href="https://htmlhint.com/" target="_blank" rel="noopener">htmlhint.com</a>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Browser DevTools</strong> - Built-in validation in Chrome/Firefox DevTools</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Lighthouse</strong> - Automated auditing tool for web pages (includes HTML validation)</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Understanding Validation Results:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Errors</strong> - Must be fixed, they break HTML standards and can cause rendering issues</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Warnings</strong> - Should be addressed, they indicate potential problems or deprecated practices</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Info</strong> - Helpful suggestions for improvement, not critical</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-404-page">
+                <h3 class="docs-card__title">404 Error Page</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-404-page" hidden>
+                <p class="docs-card__text">
+                  A custom 404 error page is mandatory for all websites. It prevents default server error pages and improves user experience.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Why it's needed:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Prevents unprofessional default server error pages</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Improves user experience and helps retain visitors</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>If you don't have a 404 page:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Set up a redirect to the homepage via WordPress.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">WordPress Redirect</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Redirect 404 to homepage
+function redirect_404_to_homepage() {
+  if (is_404()) {
+    wp_redirect(home_url(), 301);
+    exit;
+  }
+}
+add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
+                </div>
               </div>
             </div>
 
@@ -245,6 +478,69 @@
                 <p class="docs-card__text">
                   Use ARIA attributes for dynamic content, modals, tabs, accordions, and burger menus.
                 </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Essential ARIA Attributes:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-label</code> - Provides accessible name when visible label is not present</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-labelledby</code> - References element(s) that label the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-describedby</code> - References element(s) that describe the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-hidden</code> - Hides decorative elements from screen readers (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-expanded</code> - Indicates expandable/collapsible state (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-selected</code> - Indicates selected state in lists/tabs (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-controls</code> - References element(s) controlled by the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-required</code> - Indicates required form field (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-invalid</code> - Indicates invalid input (<code>true</code>/<code>false</code>/<code>grammar</code>/<code>spelling</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-live</code> - Announces dynamic content changes (<code>polite</code>/<code>assertive</code>/<code>off</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-modal</code> - Indicates modal dialog blocks interaction (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-haspopup</code> - Indicates element triggers popup (<code>menu</code>/<code>dialog</code>/<code>listbox</code>/<code>tree</code>/<code>grid</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>role</code> - Defines element's purpose (<code>button</code>, <code>dialog</code>, <code>tab</code>, <code>tabpanel</code>, <code>alert</code>, etc.)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>tabindex</code> - Controls keyboard focus order (<code>0</code> = focusable, <code>-1</code> = not focusable, <code>&gt;0</code> = custom order)</span>
+                  </li>
+                </ul>
+
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Accessible Tabs</span>
@@ -345,122 +641,148 @@
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
                 </div>
+              </div>
+            </div>
 
-                <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Essential ARIA Attributes:</strong>
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-tables">
+                <h3 class="docs-card__title">Tables</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-tables" hidden>
+                <p class="docs-card__text">
+                  Use semantic HTML table elements to create accessible and well-structured data tables. Proper table markup improves screen reader support and data comprehension.
                 </p>
+
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-label</code> - Provides accessible name when visible label is not present</span>
+                    <span><strong>Use semantic structure:</strong> Always use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and optionally <code>&lt;tfoot&gt;</code> to organize table sections.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-labelledby</code> - References element(s) that label the current element</span>
+                    <span><strong>Use <code>&lt;th&gt;</code> for headers:</strong> Use <code>&lt;th&gt;</code> elements for column and row headers, not <code>&lt;td&gt;</code>. This helps screen readers identify header cells.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-describedby</code> - References element(s) that describe the current element</span>
+                    <span><strong>Add <code>scope</code> attribute:</strong> Use <code>scope="col"</code> for column headers and <code>scope="row"</code> for row headers to clarify the relationship between headers and data cells.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-hidden</code> - Hides decorative elements from screen readers (<code>true</code>/<code>false</code>)</span>
+                    <span><strong>Include <code>&lt;caption&gt;</code>:</strong> Add a caption to describe the table's purpose. This helps users understand the table content before reading it.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-expanded</code> - Indicates expandable/collapsible state (<code>true</code>/<code>false</code>)</span>
+                    <span><strong>Use <code>headers</code> attribute:</strong> For complex tables, use the <code>headers</code> attribute on <code>&lt;td&gt;</code> elements to reference their associated header cells by ID.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Accessible Table</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;table&gt;
+  &lt;caption&gt;Monthly Sales Report&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Month&lt;/th&gt;
+      &lt;th scope="col"&gt;Sales&lt;/th&gt;
+      &lt;th scope="col"&gt;Growth&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;January&lt;/td&gt;
+      &lt;td&gt;$10,000&lt;/td&gt;
+      &lt;td&gt;+5%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;February&lt;/td&gt;
+      &lt;td&gt;$12,000&lt;/td&gt;
+      &lt;td&gt;+20%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-optimization">
+                <h3 class="docs-card__title">Optimization</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-optimization" hidden>
+                <p class="docs-card__text">
+                  Optimize your HTML for better performance, faster loading, and improved user experience.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Clean up redundant code:</strong> Remove unnecessary HTML, comments, and extra whitespace. Every byte counts – a leaner HTML document means faster downloads and parsing. Small reductions in HTML size can especially help on mobile networks.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-selected</code> - Indicates selected state in lists/tabs (<code>true</code>/<code>false</code>)</span>
+                    <span><strong>Load external files in the correct order:</strong> External CSS and JS files should be ordered for optimal loading. CSS is render-blocking, so it should appear in the <code>&lt;head&gt;</code>. Scripts should be loaded non-blocking – put <code>&lt;script&gt;</code> tags just before the closing <code>&lt;/body&gt;</code> or use <code>async</code>/<code>defer</code> attributes.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><code>aria-controls</code> - References element(s) controlled by the current element</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>aria-required</code> - Indicates required form field (<code>true</code>/<code>false</code>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>aria-invalid</code> - Indicates invalid input (<code>true</code>/<code>false</code>/<code>grammar</code>/<code>spelling</code>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>aria-live</code> - Announces dynamic content changes (<code>polite</code>/<code>assertive</code>/<code>off</code>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>aria-modal</code> - Indicates modal dialog blocks interaction (<code>true</code>/<code>false</code>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>aria-haspopup</code> - Indicates element triggers popup (<code>menu</code>/<code>dialog</code>/<code>listbox</code>/<code>tree</code>/<code>grid</code>)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>role</code> - Defines element's purpose (<code>button</code>, <code>dialog</code>, <code>tab</code>, <code>tabpanel</code>, <code>alert</code>, etc.)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span><code>tabindex</code> - Controls keyboard focus order (<code>0</code> = focusable, <code>-1</code> = not focusable, <code>&gt;0</code> = custom order)</span>
+                    <span><strong>Avoid unnecessary iframes:</strong> <code>&lt;iframe&gt;</code> elements can significantly slow down a page. Use them sparingly and only when needed. Consider adding <code>loading="lazy"</code> to iframes below the fold, or load them on demand (click or scroll) to save resources.</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-image-optimization">
-                <h3 class="docs-card__title">Image Optimization</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-images">
+                <h3 class="docs-card__title">Images</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-image-optimization" hidden>
+              <div class="docs-card__body" id="card-images" hidden>
                 <p class="docs-card__text">
-                  Always include alt text, use modern formats, and implement lazy loading.
+                  Optimize images to improve page load times, reduce bandwidth usage, and enhance user experience. Proper image optimization is crucial for performance, especially on mobile devices.
                 </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use properly sized images:</strong> Always serve images at the exact size they will be displayed. Don't upload a 2000px wide image and scale it down to 400px with CSS – this wastes bandwidth and slows down the page. Resize images to match their display dimensions before uploading.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use responsive images:</strong> Don't serve the same large image to both mobile and desktop screens. Use <code>&lt;img srcset&gt;</code> and <code>&lt;picture&gt;</code> elements to serve appropriately sized images based on device capabilities and screen size. This significantly reduces data usage on mobile devices.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Compress and optimize images:</strong> Always compress images before uploading. Use image optimization tools to reduce file size while maintaining visual quality. Target file sizes: <strong>under 200KB for hero images</strong> and <strong>under 100KB for regular content images</strong>. Smaller images load faster and consume less bandwidth, especially important for mobile users.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Lazy-load images:</strong> Use the <code>loading="lazy"</code> attribute on images that are below the fold (not immediately visible). This defers loading until the user scrolls near them, improving initial page load time. Always lazy-load images in long content sections, galleries, and below-the-fold content.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use modern image formats:</strong> Prefer WebP or AVIF formats over traditional JPEG and PNG. These formats provide better compression (30-50% smaller files) while maintaining quality.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Specify width and height:</strong> Always include <code>width</code> and <code>height</code> attributes (or use CSS <code>aspect-ratio</code>) for images. This prevents layout shift (CLS) by reserving space for the image before it loads, improving Core Web Vitals scores and user experience. The browser can calculate the aspect ratio and maintain the correct layout even before the image downloads.</span>
+                  </li>
+                </ul>
+
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Optimized Images</span>
+                    <span class="docs-code-example__title">Example: Responsive Images</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;!-- Responsive image with modern formats --&gt;
+                  <pre class="docs-code-example__code"><code>&lt;!-- Using picture element --&gt;
 &lt;picture&gt;
-  &lt;source 
-    srcset="hero-image.avif" 
-    type="image/avif"
-    media="(min-width: 768px)"
-  &gt;
-  &lt;source 
-    srcset="hero-image.webp" 
-    type="image/webp"
-    media="(min-width: 768px)"
-  &gt;
-  &lt;source 
-    srcset="hero-image-mobile.avif" 
-    type="image/avif"
-  &gt;
-  &lt;source 
-    srcset="hero-image-mobile.webp" 
-    type="image/webp"
-  &gt;
-  &lt;img 
-    src="hero-image.jpg" 
-    alt="Descriptive alt text explaining the image content"
-    loading="lazy"
-    width="1200"
-    height="600"
-    decoding="async"
-  &gt;
-&lt;/picture&gt;
-
-&lt;!-- Decorative image --&gt;
-&lt;img 
-  src="decoration.svg" 
-  alt=""
-  role="presentation"
-  aria-hidden="true"
-&gt;</code></pre>
+  &lt;source media="(min-width: 768px)" srcset="image-desktop.webp"&gt;
+  &lt;source media="(min-width: 480px)" srcset="image-tablet.webp"&gt;
+  &lt;img src="image-mobile.webp" alt="Description" width="400" height="300"&gt;
+&lt;/picture&gt;</code></pre>
                 </div>
               </div>
             </div>

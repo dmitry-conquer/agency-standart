@@ -337,6 +337,95 @@
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-links-navigation">
+                <h3 class="docs-card__title">Links & Navigation</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-links-navigation" hidden>
+                <p class="docs-card__text">
+                  Proper link markup and navigation structure improve accessibility, SEO, and user experience. Use semantic HTML and appropriate attributes for links.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Descriptive link text:</strong> Use meaningful, descriptive text for links. Avoid generic phrases like "click here" or "read more". Screen readers often navigate by links, so link text should make sense out of context.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use <code>&lt;nav&gt;</code> for navigation:</strong> Wrap navigation menus in <code>&lt;nav&gt;</code> elements. Use <code>aria-label</code> to describe the navigation purpose (e.g., "Main navigation", "Breadcrumbs").</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>External links:</strong> Add <code>rel="noopener noreferrer"</code> to external links opened in new tabs for security. Use <code>target="_blank"</code> only when necessary and always indicate external links to users.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Skip links:</strong> Provide skip navigation links for keyboard users to jump to main content, especially on pages with extensive navigation.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Breadcrumbs:</strong> Use semantic HTML with <code>&lt;nav aria-label="Breadcrumb"&gt;</code> and ordered list (<code>&lt;ol&gt;</code>) for breadcrumb navigation. Include <code>aria-current="page"</code> on the current page link.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Link states:</strong> Ensure links have clear visual states for :hover, :focus, :active, and :visited. Focus states are critical for keyboard navigation accessibility.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Download links:</strong> Use <code>download</code> attribute for files meant to be downloaded. Include file type and size information when helpful.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Anchor links:</strong> Use descriptive IDs for anchor links (e.g., <code>#section-name</code> instead of <code>#section1</code>). Ensure target elements have proper IDs.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Navigation & Links</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Skip link --&gt;
+&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- Main navigation --&gt;
+&lt;nav aria-label="Main navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumbs --&gt;
+&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Product Name&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- External link --&gt;
+&lt;a 
+  href="https://example.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  aria-label="Visit Example (opens in new tab)"
+&gt;
+  Visit Example
+&lt;/a&gt;
+
+&lt;!-- Download link --&gt;
+&lt;a href="/files/document.pdf" download&gt;
+  Download PDF (2.5 MB)
+&lt;/a&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-html-testing">
                 <h3 class="docs-card__title">HTML Testing</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>

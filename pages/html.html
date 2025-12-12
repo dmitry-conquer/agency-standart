@@ -60,91 +60,179 @@
                 <p class="docs-card__text">
                   Always use semantic HTML5 elements. They improve accessibility, SEO, and code maintainability.
                 </p>
+                
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Good: Semantic Structure</span>
+                    <span class="docs-code-example__title">Complete Page Structure</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;header&gt;
-  &lt;nav aria-label="Main navigation"&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/nav&gt;
-&lt;/header&gt;
-
-&lt;main&gt;
-  &lt;article&gt;
+                  <pre class="docs-code-example__code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;meta name="description" content="Page description"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
     &lt;header&gt;
-      &lt;h1&gt;Article Title&lt;/h1&gt;
-      &lt;time datetime="2024-01-15"&gt;January 15, 2024&lt;/time&gt;
+      &lt;nav aria-label="Main navigation"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
     &lt;/header&gt;
-    &lt;section&gt;
-      &lt;h2&gt;Section Heading&lt;/h2&gt;
-      &lt;p&gt;Content here...&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/article&gt;
-&lt;/main&gt;
 
-&lt;footer&gt;
-  &lt;p&gt;&copy; 2024 Company Name&lt;/p&gt;
-&lt;/footer&gt;</code></pre>
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1&gt;Page Title&lt;/h1&gt;
+        &lt;p&gt;Introduction content...&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Main Content&lt;/h2&gt;
+        &lt;p&gt;Main content here...&lt;/p&gt;
+        
+        &lt;aside&gt;
+          &lt;h3&gt;Related Information&lt;/h3&gt;
+          &lt;p&gt;Additional context...&lt;/p&gt;
+        &lt;/aside&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Additional Section&lt;/h2&gt;
+        &lt;p&gt;More content here...&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;aside&gt;
+        &lt;h2&gt;Sidebar&lt;/h2&gt;
+        &lt;nav aria-label="Related links"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/page-1"&gt;Related Page 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/page-2"&gt;Related Page 2&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      &lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+      &lt;nav aria-label="Footer navigation"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/privacy"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/terms"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;p&gt;&copy; 2024 Company Name. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Semantic HTML5 Tags:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;header&gt;</code> - Site or section header, contains navigation and branding</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;nav&gt;</code> - Navigation links, use <code>aria-label</code> for context</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;main&gt;</code> - Main content area, only one per page</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;article&gt;</code> - Independent, self-contained content (blog post, news article)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;section&gt;</code> - Thematic grouping of content, usually with a heading</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;aside&gt;</code> - Sidebar content, tangentially related to main content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;footer&gt;</code> - Site or section footer, contains copyright, links, etc.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;address&gt;</code> - Contact information for the author or owner</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;time&gt;</code> - Date/time, use <code>datetime</code> attribute for machine-readable format</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;figure&gt;</code> - Self-contained content (images, diagrams, code) with optional <code>&lt;figcaption&gt;</code></span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;mark&gt;</code> - Highlighted text for reference or emphasis</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;blockquote&gt;</code> - Extended quotation, cite with <code>cite</code> attribute</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;cite&gt;</code> - Title of a work (book, article, etc.)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;abbr&gt;</code> - Abbreviation, use <code>title</code> attribute for full expansion</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;details&gt;</code> - Disclosure widget, use with <code>&lt;summary&gt;</code> for collapsible content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;summary&gt;</code> - Summary or label for <code>&lt;details&gt;</code> element</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-accessible-forms">
-                <h3 class="docs-card__title">Accessible Forms</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-html-testing">
+                <h3 class="docs-card__title">HTML Testing</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-accessible-forms" hidden>
+              <div class="docs-card__body" id="card-html-testing" hidden>
                 <p class="docs-card__text">
-                  Forms must have proper labels, error messages, and validation feedback.
+                  Validate your HTML markup using the W3C Nu HTML Checker. Enter a URL to check for HTML errors and warnings.
                 </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Accessible Form</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                <form class="docs-testing-form" id="html-validator-form" novalidate>
+                  <div class="docs-testing-form__group">
+                    <label for="validator-url" class="docs-testing-form__label">
+                      Page URL
+                    </label>
+                    <div class="docs-testing-form__input-wrapper">
+                      <input
+                        type="url"
+                        id="validator-url"
+                        name="url"
+                        class="docs-testing-form__input"
+                        placeholder="https://example.com/page"
+                        required
+                        aria-required="true"
+                        aria-describedby="validator-url-error"
+                      />
+                      <button type="submit" class="docs-testing-form__submit">
+                        Validate
+                      </button>
+                    </div>
+                    <div id="validator-url-error" class="docs-testing-form__error" role="alert" aria-live="polite"></div>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;form method="post" action="/submit" novalidate&gt;
-  &lt;div class="form-group"&gt;
-    &lt;label for="email"&gt;
-      Email Address
-      &lt;span aria-label="required"&gt;*&lt;/span&gt;
-    &lt;/label&gt;
-    &lt;input 
-      type="email" 
-      id="email" 
-      name="email" 
-      required
-      aria-required="true"
-      aria-describedby="email-error"
-      autocomplete="email"
-    &gt;
-    &lt;div id="email-error" class="error-message" role="alert" aria-live="polite"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="form-group"&gt;
-    &lt;label for="password"&gt;Password&lt;/label&gt;
-    &lt;input 
-      type="password" 
-      id="password" 
-      name="password" 
-      required
-      aria-describedby="password-hint password-error"
-      autocomplete="current-password"
-    &gt;
-    &lt;div id="password-hint" class="hint"&gt;
-      Must be at least 8 characters
-    &lt;/div&gt;
-    &lt;div id="password-error" class="error-message" role="alert"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-                </div>
+                </form>
               </div>
             </div>
 
@@ -155,46 +243,170 @@
               </button>
               <div class="docs-card__body" id="card-aria-attributes" hidden>
                 <p class="docs-card__text">
-                  Use ARIA attributes for dynamic content, modals, tabs, and accordions.
+                  Use ARIA attributes for dynamic content, modals, tabs, accordions, and burger menus.
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Modal with ARIA</span>
+                    <span class="docs-code-example__title">Example: Accessible Tabs</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;button 
-  type="button" 
-  aria-label="Open contact form"
-  aria-haspopup="dialog"
-  data-modal-trigger="contact-modal"
-&gt;
-  Contact Us
-&lt;/button&gt;
+                  <pre class="docs-code-example__code"><code>&lt;div class="tabs" role="tablist" aria-label="Product information"&gt;
+  &lt;button
+    class="tabs__button"
+    role="tab"
+    aria-selected="true"
+    aria-controls="tab-panel-1"
+    id="tab-1"
+    tabindex="0"
+  &gt;
+    Description
+  &lt;/button&gt;
+  &lt;button
+    class="tabs__button"
+    role="tab"
+    aria-selected="false"
+    aria-controls="tab-panel-2"
+    id="tab-2"
+    tabindex="-1"
+  &gt;
+    Specifications
+  &lt;/button&gt;
+  &lt;button
+    class="tabs__button"
+    role="tab"
+    aria-selected="false"
+    aria-controls="tab-panel-3"
+    id="tab-3"
+    tabindex="-1"
+  &gt;
+    Reviews
+  &lt;/button&gt;
+&lt;/div&gt;
 
-&lt;div 
-  id="contact-modal"
-  class="modal"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modal-title"
-  aria-describedby="modal-description"
+&lt;div
+  id="tab-panel-1"
+  role="tabpanel"
+  aria-labelledby="tab-1"
+  tabindex="0"
+&gt;
+  &lt;p&gt;Product description content...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div
+  id="tab-panel-2"
+  role="tabpanel"
+  aria-labelledby="tab-2"
+  tabindex="0"
   hidden
 &gt;
-  &lt;div class="modal__overlay"&gt;&lt;/div&gt;
-  &lt;div class="modal__content"&gt;
-    &lt;h2 id="modal-title"&gt;Contact Form&lt;/h2&gt;
-    &lt;p id="modal-description"&gt;Fill out the form below&lt;/p&gt;
-    &lt;button 
-      class="modal__close" 
-      aria-label="Close modal"
-      data-modal-close
-    &gt;
-      &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;!-- Form content --&gt;
-  &lt;/div&gt;
+  &lt;p&gt;Product specifications content...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div
+  id="tab-panel-3"
+  role="tabpanel"
+  aria-labelledby="tab-3"
+  tabindex="0"
+  hidden
+&gt;
+  &lt;p&gt;Product reviews content...&lt;/p&gt;
 &lt;/div&gt;</code></pre>
                 </div>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Burger Menu</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;button
+  class="burger-menu"
+  type="button"
+  aria-label="Toggle navigation menu"
+  aria-expanded="false"
+  aria-controls="main-navigation"
+  data-menu-toggle
+&gt;
+  &lt;span class="burger-menu__line" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="burger-menu__line" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="burger-menu__line" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;nav
+  id="main-navigation"
+  class="navigation"
+  role="navigation"
+  aria-label="Main navigation"
+  hidden
+&gt;
+  &lt;ul class="navigation__list"&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Essential ARIA Attributes:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-label</code> - Provides accessible name when visible label is not present</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-labelledby</code> - References element(s) that label the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-describedby</code> - References element(s) that describe the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-hidden</code> - Hides decorative elements from screen readers (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-expanded</code> - Indicates expandable/collapsible state (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-selected</code> - Indicates selected state in lists/tabs (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-controls</code> - References element(s) controlled by the current element</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-required</code> - Indicates required form field (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-invalid</code> - Indicates invalid input (<code>true</code>/<code>false</code>/<code>grammar</code>/<code>spelling</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-live</code> - Announces dynamic content changes (<code>polite</code>/<code>assertive</code>/<code>off</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-modal</code> - Indicates modal dialog blocks interaction (<code>true</code>/<code>false</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>aria-haspopup</code> - Indicates element triggers popup (<code>menu</code>/<code>dialog</code>/<code>listbox</code>/<code>tree</code>/<code>grid</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>role</code> - Defines element's purpose (<code>button</code>, <code>dialog</code>, <code>tab</code>, <code>tabpanel</code>, <code>alert</code>, etc.)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>tabindex</code> - Controls keyboard focus order (<code>0</code> = focusable, <code>-1</code> = not focusable, <code>&gt;0</code> = custom order)</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -260,6 +472,7 @@
 
     <script type="module" src="/src/scripts/main.ts" defer></script>
     <script src="/pages/shared-scripts.js"></script>
+    <script src="/pages/html-validator.js"></script>
   </body>
 </html>
 

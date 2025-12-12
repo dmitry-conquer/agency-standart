@@ -15,6 +15,18 @@
     <div id="page" class="site-page">
       <nav class="docs-nav">
         <div class="docs-nav__container">
+          <button 
+            class="docs-nav__burger" 
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="docs-nav-mobile"
+            id="docs-nav-toggle"
+          >
+            <span class="docs-nav__burger-line"></span>
+            <span class="docs-nav__burger-line"></span>
+            <span class="docs-nav__burger-line"></span>
+          </button>
           <div class="docs-nav__links">
             <a href="/pages/index.html" class="docs-nav__link">Home</a>
             <a href="/pages/html.html" class="docs-nav__link">HTML</a>
@@ -25,6 +37,17 @@
             <a href="/pages/components.html" class="docs-nav__link">Components</a>
             <a href="/pages/workflow.html" class="docs-nav__link">Workflow</a>
             <a href="/pages/seo.html" class="docs-nav__link">SEO</a>
+          </div>
+          <div class="docs-nav__mobile" id="docs-nav-mobile" hidden>
+            <a href="/pages/index.html" class="docs-nav__mobile-link">Home</a>
+            <a href="/pages/html.html" class="docs-nav__mobile-link">HTML</a>
+            <a href="/pages/css.html" class="docs-nav__mobile-link">CSS</a>
+            <a href="/pages/javascript.html" class="docs-nav__mobile-link docs-nav__mobile-link--active">JavaScript</a>
+            <a href="/pages/php.html" class="docs-nav__mobile-link">PHP</a>
+            <a href="/pages/wordpress.html" class="docs-nav__mobile-link">WordPress</a>
+            <a href="/pages/components.html" class="docs-nav__mobile-link">Components</a>
+            <a href="/pages/workflow.html" class="docs-nav__mobile-link">Workflow</a>
+            <a href="/pages/seo.html" class="docs-nav__mobile-link">SEO</a>
           </div>
         </div>
       </nav>
@@ -292,6 +315,7 @@ class Tabs {
 
     <script type="module" src="/src/scripts/main.ts" defer></script>
     <script src="/pages/shared-scripts.js"></script>
+    <script src="/pages/mobile-nav.js"></script>
   </body>
 </html>
 

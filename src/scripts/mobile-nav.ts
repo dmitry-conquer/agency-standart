@@ -9,7 +9,7 @@
     const isExpanded = this.getAttribute('aria-expanded') === 'true';
     
     // Toggle aria-expanded
-    this.setAttribute('aria-expanded', !isExpanded);
+    this.setAttribute('aria-expanded', String(!isExpanded));
     
     // Toggle menu visibility
     if (isExpanded) {
@@ -21,7 +21,8 @@
 
   // Close menu when clicking outside
   document.addEventListener('click', function(e) {
-    if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    const target = e.target as Node;
+    if (!burger.contains(target) && !mobileMenu.contains(target)) {
       burger.setAttribute('aria-expanded', 'false');
       mobileMenu.hidden = true;
     }

@@ -1,14 +1,19 @@
 // Copy code functionality
 document.querySelectorAll('.docs-code-example__copy').forEach(button => {
   button.addEventListener('click', function() {
-    const codeBlock = this.closest('.docs-code-example').querySelector('.docs-code-example__code');
-    const text = codeBlock.textContent;
+    const codeExample = (this as HTMLElement).closest('.docs-code-example');
+    if (!codeExample) return;
+    
+    const codeBlock = codeExample.querySelector('.docs-code-example__code');
+    if (!codeBlock) return;
+    
+    const text = codeBlock.textContent || '';
     
     navigator.clipboard.writeText(text).then(() => {
       const originalText = this.textContent;
       this.textContent = 'Copied!';
       setTimeout(() => {
-        this.textContent = originalText;
+        if (originalText) this.textContent = originalText;
       }, 2000);
     });
   });
@@ -17,6 +22,8 @@ document.querySelectorAll('.docs-code-example__copy').forEach(button => {
 // Accordion functionality for docs-card
 document.querySelectorAll('.docs-card__header').forEach(button => {
   const panelId = button.getAttribute('aria-controls');
+  if (!panelId) return;
+  
   const panel = document.getElementById(panelId);
   const isExpanded = button.getAttribute('aria-expanded') === 'true';
   
@@ -28,10 +35,13 @@ document.querySelectorAll('.docs-card__header').forEach(button => {
   button.addEventListener('click', function() {
     const isExpanded = this.getAttribute('aria-expanded') === 'true';
     const panelId = this.getAttribute('aria-controls');
+    if (!panelId) return;
+    
     const panel = document.getElementById(panelId);
+    if (!panel) return;
     
     // Update button state
-    this.setAttribute('aria-expanded', !isExpanded);
+    this.setAttribute('aria-expanded', String(!isExpanded));
     
     // Toggle panel visibility
     if (isExpanded) {

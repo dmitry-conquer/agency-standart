@@ -1,23 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('clamp-generator-form');
-  const propertyInput = document.getElementById('clamp-property');
-  const minViewportInput = document.getElementById('clamp-min-viewport');
-  const maxViewportInput = document.getElementById('clamp-max-viewport');
-  const minSizeInput = document.getElementById('clamp-min-size');
-  const maxSizeInput = document.getElementById('clamp-max-size');
-  const resultInput = document.getElementById('clamp-result');
-  const resultGroup = document.getElementById('clamp-result-group');
+  const form = document.getElementById('clamp-generator-form') as HTMLFormElement;
+  const propertyInput = document.getElementById('clamp-property') as HTMLInputElement;
+  const minViewportInput = document.getElementById('clamp-min-viewport') as HTMLInputElement;
+  const maxViewportInput = document.getElementById('clamp-max-viewport') as HTMLInputElement;
+  const minSizeInput = document.getElementById('clamp-min-size') as HTMLInputElement;
+  const maxSizeInput = document.getElementById('clamp-max-size') as HTMLInputElement;
+  const resultInput = document.getElementById('clamp-result') as HTMLInputElement;
   const errorDiv = document.getElementById('clamp-error');
-  const copyBtn = document.getElementById('clamp-copy-btn');
+  const copyBtn = document.getElementById('clamp-copy-btn') as HTMLButtonElement;
+
+  if (!form || !propertyInput || !minViewportInput || !maxViewportInput || !minSizeInput || !maxSizeInput || !resultInput || !copyBtn) return;
 
   // Round to specified decimals (default 4)
-  function roundTo(number, decimals = 4) {
+  function roundTo(number: number, decimals: number = 4): number {
     const factor = Math.pow(10, decimals);
     return Math.round(number * factor) / factor;
   }
 
   // Calculate clamp value
-  function calculateClamp(minSize, maxSize, maxViewportWidth = 1440, minViewportWidth = 375) {
+  function calculateClamp(minSize: number, maxSize: number, maxViewportWidth: number = 1440, minViewportWidth: number = 375): string {
     // Convert to rem (divide by 16)
     const maxSizeRem = roundTo(maxSize / 16);
     const minSizeRem = roundTo(minSize / 16);
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Update result on input change
-  function updateResult() {
+  function updateResult(): void {
     const property = propertyInput.value.trim();
     const minViewport = parseFloat(minViewportInput.value);
     const maxViewport = parseFloat(maxViewportInput.value);
@@ -46,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxSize = parseFloat(maxSizeInput.value);
 
     // Clear previous errors
-    errorDiv.textContent = '';
+    if (errorDiv) errorDiv.textContent = '';
 
     // Validate inputs
     if (!property) {
-      errorDiv.textContent = 'Please enter a property name';
+      if (errorDiv) errorDiv.textContent = 'Please enter a property name';
       propertyInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isNaN(minViewport) || minViewport <= 0) {
-      errorDiv.textContent = 'Please enter a valid minimum viewport width';
+      if (errorDiv) errorDiv.textContent = 'Please enter a valid minimum viewport width';
       minViewportInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isNaN(maxViewport) || maxViewport <= 0) {
-      errorDiv.textContent = 'Please enter a valid maximum viewport width';
+      if (errorDiv) errorDiv.textContent = 'Please enter a valid maximum viewport width';
       maxViewportInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (minViewport >= maxViewport) {
-      errorDiv.textContent = 'Minimum viewport width must be less than maximum viewport width';
+      if (errorDiv) errorDiv.textContent = 'Minimum viewport width must be less than maximum viewport width';
       minViewportInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isNaN(minSize) || minSize < 0) {
-      errorDiv.textContent = 'Please enter a valid minimum font size';
+      if (errorDiv) errorDiv.textContent = 'Please enter a valid minimum font size';
       minSizeInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isNaN(maxSize) || maxSize < 0) {
-      errorDiv.textContent = 'Please enter a valid maximum font size';
+      if (errorDiv) errorDiv.textContent = 'Please enter a valid maximum font size';
       maxSizeInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (minSize >= maxSize) {
-      errorDiv.textContent = 'Minimum font size must be less than maximum font size';
+      if (errorDiv) errorDiv.textContent = 'Minimum font size must be less than maximum font size';
       minSizeInput.setAttribute('aria-invalid', 'true');
       resultInput.value = '';
       resultInput.placeholder = 'Enter values above to generate clamp()';
@@ -141,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
       copyBtn.style.opacity = '0.7';
       
       setTimeout(() => {
-        copyBtn.textContent = originalText;
+        if (originalText) copyBtn.textContent = originalText;
         copyBtn.style.opacity = '1';
       }, 2000);
-    } catch (err) {
+    } catch {
       // Fallback for older browsers
       resultInput.select();
       document.execCommand('copy');
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       copyBtn.textContent = 'Copied!';
       
       setTimeout(() => {
-        copyBtn.textContent = originalText;
+        if (originalText) copyBtn.textContent = originalText;
       }, 2000);
     }
   });

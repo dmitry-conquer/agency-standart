@@ -2,17 +2,17 @@
 document.getElementById('css-validator-form')?.addEventListener('submit', function(e) {
   e.preventDefault();
   
-  const urlInput = document.getElementById('css-validator-url');
+  const urlInput = document.getElementById('css-validator-url') as HTMLInputElement;
   const errorDiv = document.getElementById('css-validator-url-error');
   const url = urlInput.value.trim();
   
   // Clear previous errors
-  errorDiv.textContent = '';
+  if (errorDiv) errorDiv.textContent = '';
   urlInput.setAttribute('aria-invalid', 'false');
   
   // Validate URL
   if (!url) {
-    errorDiv.textContent = 'Please enter a URL';
+    if (errorDiv) errorDiv.textContent = 'Please enter a URL';
     urlInput.setAttribute('aria-invalid', 'true');
     urlInput.focus();
     return;
@@ -22,7 +22,7 @@ document.getElementById('css-validator-form')?.addEventListener('submit', functi
   try {
     new URL(url);
   } catch (e) {
-    errorDiv.textContent = 'Please enter a valid URL (e.g., https://example.com/styles.css)';
+    if (errorDiv) errorDiv.textContent = 'Please enter a valid URL (e.g., https://example.com/styles.css)';
     urlInput.setAttribute('aria-invalid', 'true');
     urlInput.focus();
     return;

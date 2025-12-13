@@ -56,8 +56,8 @@
         <div class="docs-section__container">
           <div class="docs-section__header">
             <span class="docs-section__badge">CSS</span>
-            <h2 class="docs-section__title">CSS Standards & BEM Methodology</h2>
-            <p class="docs-section__description">BEM naming convention, responsive design, and CSS best practices.</p>
+            <h2 class="docs-section__title">CSS Standards & Best Practices</h2>
+            <p class="docs-section__description">BEM methodology, CSS variables, responsive design, units, media queries, best practices, and testing standards.</p>
           </div>
           <div class="docs-section__content">
             <div class="docs-card">
@@ -205,14 +205,197 @@
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-variables">
+                <h3 class="docs-card__title">CSS Variables</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-css-variables" hidden>
+                <p class="docs-card__text">
+                  CSS Custom Properties (CSS Variables) allow you to store values that can be reused throughout your stylesheet. They enable dynamic theming, easier maintenance, and runtime value changes via JavaScript.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Why use CSS Variables:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Centralized value management - change colors, spacing, or other values in one place</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Dynamic theming - easily switch between light/dark themes or brand variations</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Runtime updates - change values with JavaScript without recompiling CSS</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Cascading inheritance - variables can be scoped to specific components or globally</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Better maintainability - update design tokens in one location</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Best Practices:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Define variables in <code>:root</code> for global scope, or in component selectors for local scope</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use descriptive names with prefixes (e.g., <code>--color-primary</code>, <code>--spacing-md</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Provide fallback values when using variables: <code>color: var(--text-primary, #000)</code></span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Group related variables together (colors, spacing, typography, etc.)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use variables for design tokens: colors, spacing, font sizes, shadows, transitions</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Global CSS Variables</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Define variables in :root for global access */
+:root {
+  /* Colors */
+  --color-primary: #3ecf8e;
+  --color-primary-dark: #2fa870;
+  --color-secondary: #6366f1;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-border: #e5e7eb;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  
+  /* Typography */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Use variables throughout your CSS */
+.button {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition-base);
+}
+
+.button:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}</code></pre>
+                </div>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Scoped Variables & Theming</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Component-scoped variables */
+.card {
+  --card-bg: var(--color-bg);
+  --card-border: var(--color-border);
+  --card-padding: var(--spacing-lg);
+  
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: var(--card-padding);
+  border-radius: 0.5rem;
+}
+
+/* Override variables for modifiers */
+.card--highlighted {
+  --card-bg: var(--color-primary);
+  --card-border: var(--color-primary-dark);
+  color: white;
+}
+
+/* Dark theme using data attribute */
+[data-theme="dark"] {
+  --color-text: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-bg: #1a1a1a;
+  --color-bg-secondary: #2d2d2d;
+  --color-border: #374151;
+}
+
+/* Use with fallback */
+.text {
+  color: var(--color-text, #000000); /* Fallback if variable is undefined */
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-units-responsive">
                 <h3 class="docs-card__title">Units & Responsive Design</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-units-responsive" hidden>
                 <p class="docs-card__text">
-                  Use rem/em for typography and spacing. Use unified breakpoint system.
+                  Use rem/em for typography and spacing.
                 </p>
+                <p class="docs-card__text">
+                  <strong>Why use rem and em?</strong> rem units are relative to the root element's font-size, making them predictable and easy to scale. em units are relative to the parent element's font-size, useful for component-level scaling. Both provide better accessibility as they respect user's browser font-size preferences.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: HTML and Body Setup</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Set base font-size on html for rem to work correctly */
+html {
+  font-size: 100%; /* Respects user's browser font-size preference (usually 16px) */
+}
+
+body {
+  font-size: 1rem; /* Inherits from html, respects user preferences */
+  line-height: 1.5;
+}</code></pre>
+                </div>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Responsive Typography</span>
@@ -272,7 +455,10 @@ $large: 1199.98px;
 $medium: 991.98px;
 
 // Small devices (landscape phones, less than 768px)
-$small: 767.98px;</code></pre>
+$small: 767.98px;
+
+// X-Small devices (portrait phones, less than 576px)
+$x-small: 575.98px;</code></pre>
                 </div>
 
                 <div class="docs-code-example">
@@ -283,7 +469,8 @@ $small: 767.98px;</code></pre>
                   <pre class="docs-code-example__code"><code>@media (max-width: 1399.98px) { }
 @media (max-width: 1199.98px) { }
 @media (max-width: 991.98px) { }
-@media (max-width: 767.98px) { }</code></pre>
+@media (max-width: 767.98px) { }
+@media (max-width: 575.98px) { }</code></pre>
                 </div>
 
                 <div class="docs-code-example">
@@ -294,49 +481,13 @@ $small: 767.98px;</code></pre>
                   <pre class="docs-code-example__code"><code>@media (min-width: 1400px) { }
 @media (min-width: 1200px) { }
 @media (min-width: 992px) { }
-@media (min-width: 768px) { }</code></pre>
+@media (min-width: 768px) { }
+@media (min-width: 576px) { }</code></pre>
                 </div>
 
                 <p class="docs-card__footnote">
                   <strong>Why subtract .02px?</strong> Browsers don't currently support range context queries, so we work around the limitations of min- and max- prefixes and viewports with fractional widths (which can occur under certain conditions on high-dpi devices, for instance) by using values with higher precision.
                 </p>
-              </div>
-            </div>
-
-            <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-architecture">
-                <h3 class="docs-card__title">CSS Architecture</h3>
-                <span class="docs-card__icon" aria-hidden="true">▼</span>
-              </button>
-              <div class="docs-card__body" id="card-css-architecture" hidden>
-                <p class="docs-card__text">
-                  Organize CSS following ITCSS methodology: Settings → Tools → Generic → Elements → Objects → Components.
-                </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">File Structure</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>styles/
-├── settings/          # Variables, config
-│   ├── _colors.scss
-│   └── _typography.scss
-├── tools/             # Mixins, functions
-│   ├── _mixins.scss
-│   └── _functions.scss
-├── generic/           # Reset, normalize
-│   └── _reset.scss
-├── elements/          # Base HTML elements
-│   └── _headings.scss
-├── objects/           # Layout patterns
-│   └── _container.scss
-├── components/        # UI components
-│   ├── _button.scss
-│   ├── _card.scss
-│   └── _modal.scss
-└── utilities/         # Utility classes
-    └── _spacing.scss</code></pre>
-                </div>
               </div>
             </div>
 
@@ -361,13 +512,76 @@ $small: 767.98px;</code></pre>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use CSS custom properties for theming</span>
+                    <span>Use relative units rem/em for spacing and typography</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use only the breakpoints specified above</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Optimize and minify CSS: all breakpoints should be in the correct order and not chaotic</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>CSS vendor prefixes are used and are generated accordingly with your browser support compatibility</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Avoid @import in CSS: The @import rule in CSS creates additional HTTP requests and is render-blocking. Instead of @import, use <link rel="stylesheet"> tags in HTML (which can load in parallel) or better yet, combine CSS files at build time when possible</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
                     <span>Minimize nesting (max 3 levels)</span>
                   </li>
                 </ul>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Correct Breakpoint Order (max-width)</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Good: Breakpoints in descending order */
+.card {
+  padding: 2rem;
+  
+  @media (max-width: 1399.98px) {
+    padding: 1.75rem;
+  }
+  
+  @media (max-width: 1199.98px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 991.98px) {
+    padding: 1.25rem;
+  }
+  
+  @media (max-width: 767.98px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 575.98px) {
+    padding: 0.75rem;
+  }
+}
+
+/* Bad: Chaotic breakpoint order */
+.card {
+  padding: 2rem;
+  
+  @media (max-width: 767.98px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 1399.98px) {
+    padding: 1.75rem;
+  }
+  
+  @media (max-width: 575.98px) {
+    padding: 0.75rem;
+  }
+}</code></pre>
+                </div>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Well-Organized CSS</span>
@@ -516,6 +730,67 @@ $small: 767.98px;</code></pre>
                 </form>
               </div>
             </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-testing">
+                <h3 class="docs-card__title">CSS Testing</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-css-testing" hidden>
+                <p class="docs-card__text">
+                  CSS testing ensures your stylesheets are error-free, responsive, and compatible across all browsers and devices. Always test your CSS before deploying to production.
+                </p>
+
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>CSS or SCSS files are without any errors</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>All pages were tested at the following breakpoints: 1399.98px, 1199.98px, 991.98px, 767.98px, 575.98px</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>All pages were tested on all current desktop browsers (Safari, Firefox, Chrome, Edge)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Testing on Pixel Perfect, to prevent large differences from the design</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>W3C CSS Validator:</strong>
+                </p>
+                <p class="docs-card__text">
+                  The official W3C validator checks CSS for errors and warnings. Enter a URL or upload a CSS file below to validate your stylesheet.
+                </p>
+                <form class="docs-testing-form" id="css-validator-form" novalidate>
+                  <div class="docs-testing-form__group">
+                    <label for="css-validator-url" class="docs-testing-form__label">
+                      CSS URL or Page URL
+                    </label>
+                    <div class="docs-testing-form__input-wrapper">
+                      <input
+                        type="url"
+                        id="css-validator-url"
+                        name="url"
+                        class="docs-testing-form__input"
+                        placeholder="https://example.com/styles.css"
+                        required
+                        aria-required="true"
+                        aria-describedby="css-validator-url-error"
+                      />
+                      <button type="submit" class="docs-testing-form__submit">
+                        Validate
+                      </button>
+                    </div>
+                    <div id="css-validator-url-error" class="docs-testing-form__error" role="alert" aria-live="polite"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -526,6 +801,7 @@ $small: 767.98px;</code></pre>
     <script src="/pages/shared-scripts.js"></script>
     <script src="/pages/mobile-nav.js"></script>
     <script src="/pages/clamp-generator.js"></script>
+    <script src="/pages/css-validator.js"></script>
   </body>
 </html>
 

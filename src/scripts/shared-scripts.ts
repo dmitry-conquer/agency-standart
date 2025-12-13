@@ -1,7 +1,7 @@
 // Copy code functionality
 document.querySelectorAll('.docs-code-example__copy').forEach(button => {
-  button.addEventListener('click', function() {
-    const codeExample = (this as HTMLElement).closest('.docs-code-example');
+  button.addEventListener('click', function(this: HTMLElement) {
+    const codeExample = this.closest('.docs-code-example');
     if (!codeExample) return;
     
     const codeBlock = codeExample.querySelector('.docs-code-example__code');
@@ -32,7 +32,7 @@ document.querySelectorAll('.docs-card__header').forEach(button => {
     panel.hidden = true;
   }
   
-  button.addEventListener('click', function() {
+  button.addEventListener('click', function(this: HTMLElement) {
     const isExpanded = this.getAttribute('aria-expanded') === 'true';
     const panelId = this.getAttribute('aria-controls');
     if (!panelId) return;
@@ -52,7 +52,7 @@ document.querySelectorAll('.docs-card__header').forEach(button => {
   });
 
   // Keyboard support
-  button.addEventListener('keydown', function(e) {
+  button.addEventListener('keydown', function(this: HTMLElement, e: any) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       this.click();

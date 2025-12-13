@@ -21,7 +21,7 @@ document.getElementById('css-validator-form')?.addEventListener('submit', functi
   // Basic URL validation
   try {
     new URL(url);
-  } catch (e) {
+  } catch {
     if (errorDiv) errorDiv.textContent = 'Please enter a valid URL (e.g., https://example.com/styles.css)';
     urlInput.setAttribute('aria-invalid', 'true');
     urlInput.focus();

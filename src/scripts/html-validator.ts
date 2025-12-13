@@ -21,7 +21,7 @@ document.getElementById('html-validator-form')?.addEventListener('submit', funct
   // Basic URL validation
   try {
     new URL(url);
-  } catch (e) {
+  } catch {
     if (errorDiv) errorDiv.textContent = 'Please enter a valid URL (e.g., https://example.com)';
     urlInput.setAttribute('aria-invalid', 'true');
     urlInput.focus();

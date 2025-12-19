@@ -791,6 +791,36 @@ $x-small: 575.98px;</code></pre>
                 </form>
               </div>
             </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-production">
+                <h3 class="docs-card__title">Production</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-production" hidden>
+                <p class="docs-card__text">
+                  All CSS files deployed to production must be optimized for performance and browser compatibility. This includes minification, vendor prefixes, and proper build configuration.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Minification:</strong> All CSS must be minified to reduce file size and improve load times</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Autoprefixer:</strong> Vendor prefixes must be automatically generated using Autoprefixer based on your browser support requirements</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Unused CSS Removal:</strong> Remove unused CSS rules to reduce file size (PurgeCSS or similar tools)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>CSS Optimization:</strong> Optimize CSS by merging duplicate rules, removing empty rules, and optimizing selectors</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -56,8 +56,8 @@
         <div class="docs-section__container">
           <div class="docs-section__header">
             <span class="docs-section__badge">JavaScript</span>
-            <h2 class="docs-section__title">JavaScript Standards & Patterns</h2>
-            <p class="docs-section__description">Component patterns, accessibility, keyboard support, and best practices.</p>
+            <h2 class="docs-section__title">JavaScript Standards & Best Practices</h2>
+            <p class="docs-section__description">Component patterns, IIFE, production optimization, and Vite build system standards.</p>
           </div>
           <div class="docs-section__content">
             <div class="docs-card">
@@ -67,7 +67,7 @@
               </button>
               <div class="docs-card__body" id="card-component-pattern" hidden>
                 <p class="docs-card__text">
-                  Use data-attributes for component initialization. Don't bind to DOM structure.
+                  Use classes to organize component logic, encapsulate state, and create reusable, maintainable code. Classes provide a clear structure for initialization, event handling, and cleanup. They help prevent global namespace pollution and make it easier to manage multiple instances of the same component.
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
@@ -78,9 +78,7 @@
 class Modal {
   constructor(element) {
     this.modal = element;
-    this.trigger = document.querySelector(
-      `[data-modal-trigger="${element.id}"]`
-    );
+    this.trigger = document.querySelector(`[data-modal-trigger="${element.id}"]`);
     this.closeBtn = element.querySelector('[data-modal-close]');
     this.overlay = element.querySelector('.modal__overlay');
     this.previousFocus = null;
@@ -101,10 +99,8 @@ class Modal {
       this.overlay.addEventListener('click', () => this.close());
     }
     
-    // Keyboard support
     this.modal.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') this.close();
-      if (e.key === 'Tab') this.trapFocus(e);
     });
   }
   
@@ -113,12 +109,6 @@ class Modal {
     this.modal.hidden = false;
     this.modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    
-    // Focus first focusable element
-    const firstFocusable = this.modal.querySelector(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    if (firstFocusable) firstFocusable.focus();
   }
   
   close() {
@@ -126,29 +116,14 @@ class Modal {
     this.modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     
-    // Return focus
-    if (this.previousFocus) this.previousFocus.focus();
-  }
-  
-  trapFocus(e) {
-    const focusableElements = this.modal.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-    
-    if (e.shiftKey && document.activeElement === firstElement) {
-      e.preventDefault();
-      lastElement.focus();
-    } else if (!e.shiftKey && document.activeElement === lastElement) {
-      e.preventDefault();
-      firstElement.focus();
+    if (this.previousFocus) {
+      this.previousFocus.focus();
     }
   }
 }
 
 // Initialize all modals
-document.querySelectorAll('[data-modal]').forEach(modal => {
+document.querySelectorAll('[data-modal]').forEach((modal) => {
   new Modal(modal);
 });</code></pre>
                 </div>
@@ -156,155 +131,277 @@ document.querySelectorAll('[data-modal]').forEach(modal => {
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-tabs-component">
-                <h3 class="docs-card__title">Tabs Component</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-iife">
+                <h3 class="docs-card__title">IIFE (Immediately Invoked Function Expression)</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-tabs-component" hidden>
+              <div class="docs-card__body" id="card-iife" hidden>
                 <p class="docs-card__text">
-                  Accessible tabs with keyboard navigation and ARIA attributes.
+                  IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined. It creates a private scope, preventing variable and function declarations from polluting the global namespace. This is especially important in WordPress, where multiple plugins and themes may load scripts that could conflict with each other.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>All scripts that are enqueued in WordPress must be wrapped in an IIFE</strong> to avoid conflicts with other scripts and to maintain proper code isolation.
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Tabs Component</span>
+                    <span class="docs-code-example__title">Example: Function IIFE</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>// tabs.js
-class Tabs {
-  constructor(container) {
-    this.container = container;
-    this.tabs = container.querySelectorAll('[role="tab"]');
-    this.panels = container.querySelectorAll('[role="tabpanel"]');
-    
-    this.init();
-  }
-  
-  init() {
-    this.tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => this.activateTab(index));
-      tab.addEventListener('keydown', (e) => this.handleKeyDown(e, index));
-    });
-  }
-  
-  activateTab(index) {
-    // Update tabs
-    this.tabs.forEach((tab, i) => {
-      const isSelected = i === index;
-      tab.setAttribute('aria-selected', isSelected);
-      tab.setAttribute('tabindex', isSelected ? '0' : '-1');
-      tab.classList.toggle('tabs__button--active', isSelected);
-    });
-    
-    // Update panels
-    this.panels.forEach((panel, i) => {
-      panel.hidden = i !== index;
-      panel.setAttribute('aria-hidden', i !== index);
-    });
-    
-    this.tabs[index].focus();
-  }
-  
-  handleKeyDown(e, index) {
-    let targetIndex = index;
-    
-    switch(e.key) {
-      case 'ArrowRight':
-        targetIndex = (index + 1) % this.tabs.length;
-        break;
-      case 'ArrowLeft':
-        targetIndex = (index - 1 + this.tabs.length) % this.tabs.length;
-        break;
-      case 'Home':
-        targetIndex = 0;
-        break;
-      case 'End':
-        targetIndex = this.tabs.length - 1;
-        break;
-      default:
-        return;
-    }
-    
-    e.preventDefault();
-    this.activateTab(targetIndex);
-  }
-}
+                  <pre class="docs-code-example__code"><code>(function() {
 
-// HTML Structure
-&lt;div class="tabs" data-tabs&gt;
-  &lt;div class="tabs__nav" role="tablist"&gt;
-    &lt;button 
-      role="tab" 
-      aria-selected="true" 
-      aria-controls="panel-1"
-      id="tab-1"
-      tabindex="0"
-      class="tabs__button tabs__button--active"
-    &gt;
-      Tab 1
-    &lt;/button&gt;
-    &lt;button 
-      role="tab" 
-      aria-selected="false" 
-      aria-controls="panel-2"
-      id="tab-2"
-      tabindex="-1"
-      class="tabs__button"
-    &gt;
-      Tab 2
-    &lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class="tabs__content"&gt;
-    &lt;div 
-      role="tabpanel" 
-      id="panel-1" 
-      aria-labelledby="tab-1"
-      class="tabs__panel"
-    &gt;
-      Content 1
-    &lt;/div&gt;
-    &lt;div 
-      role="tabpanel" 
-      id="panel-2" 
-      aria-labelledby="tab-2"
-      class="tabs__panel"
-      hidden
-    &gt;
-      Content 2
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+  // code here
+
+})();</code></pre>
+                </div>
+                <p class="docs-card__text" style="margin-top: 1rem;">
+                  <strong>or</strong>
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Arrow function IIFE</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>(() => {
+
+  // code here
+
+})();</code></pre>
                 </div>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-js-best-practices">
-                <h3 class="docs-card__title">JavaScript Best Practices</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-accessibility">
+                <h3 class="docs-card__title">Accessibility</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-js-best-practices" hidden>
+              <div class="docs-card__body" id="card-accessibility" hidden>
+                <p class="docs-card__text">
+                  All interactive JavaScript components must be accessible to users with disabilities. This includes keyboard navigation, proper ARIA attributes, and ensuring that all functionality is available without relying solely on mouse interactions.
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Always use <code>const</code> or <code>let</code>, never <code>var</code></span>
+                    <span><strong>Keyboard Navigation:</strong> All interactive JS components must support keyboard navigation. Users should be able to navigate, activate, and interact with all components using only the keyboard (Tab, Enter, Space, Arrow keys, Escape).</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use arrow functions for callbacks</span>
+                    <span><strong>Escape Key:</strong> Escape closes modals, dropdowns, and other overlay components. This provides a quick way for users to dismiss overlays without having to find and click a close button.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Remove event listeners when components are destroyed</span>
+                    <span><strong>Focus Trap:</strong> Focus trap for modals ensures that keyboard focus remains within the modal when it's open. When the user reaches the last focusable element, focus should cycle back to the first element, preventing focus from escaping to the page behind the modal.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use <code>querySelector</code> with data-attributes, not classes</span>
+                    <span><strong>ARIA Attributes:</strong> aria-expanded and aria-controls must be handled via JavaScript to reflect the current state of interactive components. Update these attributes dynamically as components open, close, or change state to keep screen readers informed.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Always handle errors with try/catch</span>
+                    <span><strong>No Click-Only Interactions:</strong> All interactions must be accessible via keyboard. Avoid click-only event handlers; use appropriate keyboard event handlers (keydown, keyup) or ensure that clickable elements are focusable and respond to Enter/Space keys.</span>
                   </li>
                 </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-error-handling">
+                <h3 class="docs-card__title">Error Handling</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-error-handling" hidden>
+                <p class="docs-card__text">
+                  Proper error handling ensures that JavaScript errors don't break the user experience. Components should gracefully handle errors and continue functioning even when unexpected situations occur.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Fail Silently:</strong> Fail silently without breaking the page. Use try/catch blocks to catch errors and handle them gracefully. If a component fails to initialize, it should not prevent the rest of the page from functioning.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Console Errors:</strong> Console errors are allowed only in development. In production, errors should be caught and handled silently, or logged to an error tracking service without displaying errors to end users.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Guard Against Missing Elements:</strong> Always check if DOM elements exist before accessing them. Use optional chaining or conditional checks to prevent errors when elements are missing from the page.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-event-handling">
+                <h3 class="docs-card__title">Event Handling & Performance</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-event-handling" hidden>
+                <p class="docs-card__text">
+                  Efficient event handling is crucial for performance and maintainability. Use event delegation, properly manage event listeners, and optimize DOM queries to ensure smooth user interactions.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Event Delegation:</strong> Event delegation is preferred over attaching listeners to individual elements. Attach a single listener to a parent element and use event.target to handle events from child elements. This reduces memory usage and improves performance, especially for dynamic content.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Remove Listeners:</strong> Remove event listeners on destroy (if applicable). When components are removed from the DOM or destroyed, clean up all attached event listeners to prevent memory leaks and unexpected behavior.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>No Anonymous Handlers:</strong> Avoid anonymous handlers for reusable components. Use named functions or bound methods so they can be properly removed later. Anonymous functions make it impossible to remove specific listeners.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Avoid Unnecessary DOM Queries:</strong> Cache DOM element references instead of querying the DOM repeatedly. Store frequently accessed elements in variables or component properties to reduce query overhead and improve performance.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Throttle/Debounce:</strong> Throttle or debounce where needed. Use throttling for events that fire frequently (like scroll or resize) to limit how often the handler executes. Use debouncing for events like input or search to wait until the user stops typing before executing the handler.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-dom-initialization">
+                <h3 class="docs-card__title">DOM & Initialization Rules</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-dom-initialization" hidden>
+                <p class="docs-card__text">
+                  Proper DOM manipulation and component initialization ensure maintainable, scalable code. Follow these rules to prevent conflicts, memory leaks, and unexpected behavior.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>No Global Variables:</strong> Avoid polluting the global namespace. Wrap code in IIFE or use ES6 modules. Keep variables scoped to functions or classes to prevent conflicts with other scripts and libraries.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>One Entry Point:</strong> Use one entry point (main.js or main.ts) to initialize all components. This centralizes initialization logic, makes it easier to manage dependencies, and ensures components are initialized in the correct order.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Components Initialize Only If DOM Exists:</strong> Always check if DOM elements exist before initializing components. Use conditional checks or optional chaining to prevent errors when elements are not present on the page.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use Data-Attributes:</strong> Use data-attributes, not class-based JS selectors. Data-attributes (like data-modal, data-accordion) clearly indicate interactive elements and are less likely to conflict with CSS classes. They also make the code more maintainable and semantic.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Safe Re-initialization:</strong> Ensure safe re-initialization (no double init). Components should check if they're already initialized before setting up event listeners or state. Use flags or check for existing instances to prevent duplicate initialization and memory leaks.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-production">
+                <h3 class="docs-card__title">Production</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-production" hidden>
+                <p class="docs-card__text">
+                  All JavaScript files deployed to production must be optimized for performance and browser compatibility. This includes minification, transpilation, and proper build configuration.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Build Tools:</strong> It is recommended to use ready-made build tools like Vite or Webpack for automated optimization, minification, and transpilation</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Minification:</strong> All scripts must be minified to reduce file size and improve load times</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Babel/Transpilation:</strong> Modern JavaScript (ES6+) must be transpiled to ES5 for browser compatibility using Babel or similar tools</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Tree Shaking:</strong> Remove unused code from bundles to reduce file size</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>External Libraries:</strong> Some libraries like Swiper should be included separately (not bundled in the main build) to allow adding new sliders dynamically without rebuilding the entire bundle</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-vite-build">
+                <h3 class="docs-card__title">Vite Build System</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-vite-build" hidden>
+                <p class="docs-card__text">
+                  We use a custom Vite-based build system for all JavaScript and TypeScript projects. This build system provides lightning-fast development experience with Hot Module Replacement (HMR), optimized production builds, and professional tooling out of the box.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Why use this build system:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Fast development with instant HMR feedback</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>TypeScript support with full type checking</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>SCSS compilation with PostCSS optimization</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Automatic code splitting and tree shaking</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Production-ready builds with minification and optimization</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>ESLint and Prettier configured for code quality</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Ready Components:</strong> Includes production-ready interactive components with well-thought-out accessibility logic: accordion, tabs, marquee, header, and others. All components feature proper ARIA attributes, keyboard navigation, focus management, and screen reader support</span>
+                  </li>
+                </ul>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <a 
+                    href="https://github.com/dmitry-conquer/zen-starter" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="docs-testing-form__submit"
+                    style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                  </a>
+                  <a 
+                    href="https://github.com/dmitry-conquer/zen-starter/archive/refs/heads/main.zip" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="docs-testing-form__submit"
+                    style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download
+                  </a>
+                </div>
               </div>
             </div>
           </div>

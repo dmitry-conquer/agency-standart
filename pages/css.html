@@ -818,7 +818,35 @@ $x-small: 575.98px;</code></pre>
                     <span class="docs-list__icon">✓</span>
                     <span><strong>CSS Optimization:</strong> Optimize CSS by merging duplicate rules, removing empty rules, and optimizing selectors</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Combine & Sort:</strong> All CSS files must be combined into a single file and sorted by media queries (base styles first, then media queries in order: X-Large, Large, Medium, Small, X-Small) to improve caching, reduce HTTP requests, and ensure consistent rendering</span>
+                  </li>
                 </ul>
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Combined & Sorted by Media Queries</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* Base styles */
+.button {
+  padding: 0.5rem 1rem;
+}
+
+/* X-Large devices */
+@media (max-width: 1399.98px) {
+  .button {
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+/* Large devices */
+@media (max-width: 1199.98px) {
+  .button {
+    padding: 0.3rem 0.8rem;
+  }
+}</code></pre>
+                </div>
               </div>
             </div>
           </div>

@@ -199,7 +199,28 @@ body {
         background: var(--docs-primary);
       }
     }
+
+    &.disabled-link {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
   }
+
+  &__mobile-link {
+    &.disabled-link {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Disabled link class
+.disabled-link {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 // ===================================
@@ -600,6 +621,16 @@ body {
 
       &:hover {
         transform: translateY(-1px);
+      }
+
+      &.disabled-link {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+
+        &:hover {
+          transform: none;
+        }
       }
     }
   }

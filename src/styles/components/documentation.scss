@@ -537,6 +537,39 @@ body {
     color: var(--docs-text-primary);
     margin: 0;
   }
+
+  &__button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: var(--docs-primary);
+    color: var(--docs-bg-primary);
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      opacity: 0.8;
+      transform: translateY(0);
+    }
+
+    @include small {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }
 
 // ===================================

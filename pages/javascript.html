@@ -1,56 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Standards & Best Practices</title>
-    <meta name="description" content="JavaScript standards: Vite build system, component patterns, IIFE, accessibility, error handling, event handling, DOM rules, approved libraries, and production optimization." />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/styles/main.scss" />
-  </head>
-  <body class="docs-page">
-    <div id="page" class="site-page">
-      <nav class="docs-nav">
-        <div class="docs-nav__container">
-          <button 
-            class="docs-nav__burger" 
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="docs-nav-mobile"
-            id="docs-nav-toggle"
-          >
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-          </button>
-          <div class="docs-nav__links">
-            <a href="/pages/index.html" class="docs-nav__link">Home</a>
-            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__link docs-nav__link--active">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__link disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__link disabled-link">SEO</a>
-          </div>
-          <div class="docs-nav__mobile" id="docs-nav-mobile" hidden>
-            <a href="/pages/index.html" class="docs-nav__mobile-link">Home</a>
-            <a href="/pages/html.html" class="docs-nav__mobile-link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__mobile-link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__mobile-link docs-nav__mobile-link--active">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__mobile-link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__mobile-link disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__mobile-link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__mobile-link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__mobile-link disabled-link">SEO</a>
-          </div>
-        </div>
-      </nav>
+{{> header}}
 
       <section class="docs-section">
         <div class="docs-section__container">
@@ -67,10 +15,10 @@
               </button>
               <div class="docs-card__body" id="card-vite-build" hidden>
                 <p class="docs-card__text">
-                  We use a custom Vite-based build system for all JavaScript and TypeScript projects. This build system provides lightning-fast development experience with Hot Module Replacement (HMR), optimized production builds, and professional tooling out of the box.
+                  We use a custom Vite-based build system for all JavaScript, TypeScript, and CSS projects. This build system provides lightning-fast development experience with Hot Module Replacement (HMR), optimized production builds, and professional tooling out of the box.
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Why use this build system:</strong>
+                  <strong>General Benefits:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -79,15 +27,7 @@
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>TypeScript support with full type checking</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
                     <span>SCSS compilation with PostCSS optimization</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Automatic code splitting and tree shaking</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -96,6 +36,19 @@
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
                     <span>ESLint and Prettier configured for code quality</span>
+                  </li>
+                </ul>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>JavaScript-Specific Features:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>TypeScript support with full type checking</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Automatic code splitting and tree shaking for JavaScript modules</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>

@@ -1,56 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WordPress Development Standards</title>
-    <meta name="description" content="WordPress theme structure, CPT, ACF, hooks, and template hierarchy." />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/styles/main.scss" />
-  </head>
-  <body class="docs-page">
-    <div id="page" class="site-page">
-      <nav class="docs-nav">
-        <div class="docs-nav__container">
-          <button 
-            class="docs-nav__burger" 
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="docs-nav-mobile"
-            id="docs-nav-toggle"
-          >
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-          </button>
-          <div class="docs-nav__links">
-            <a href="/pages/index.html" class="docs-nav__link">Home</a>
-            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__link docs-nav__link--active disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__link disabled-link">SEO</a>
-          </div>
-          <div class="docs-nav__mobile" id="docs-nav-mobile" hidden>
-            <a href="/pages/index.html" class="docs-nav__mobile-link">Home</a>
-            <a href="/pages/html.html" class="docs-nav__mobile-link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__mobile-link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__mobile-link">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__mobile-link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__mobile-link docs-nav__mobile-link--active disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__mobile-link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__mobile-link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__mobile-link disabled-link">SEO</a>
-          </div>
-        </div>
-      </nav>
+{{> header}}
 
       <section class="docs-section">
         <div class="docs-section__container">
@@ -61,281 +9,300 @@
           </div>
           <div class="docs-section__content">
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-theme-structure">
-                <h3 class="docs-card__title">Theme Structure</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-theme-architecture">
+                <h3 class="docs-card__title">Theme Architecture</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-theme-structure" hidden>
+              <div class="docs-card__body" id="card-theme-architecture" hidden>
                 <p class="docs-card__text">
-                  Standard theme structure for maintainability and scalability.
+                  We use a ready-made theme starter as both an example of proper theme file organization and for creating new websites. This starter theme provides a clean, modern architecture following WordPress best practices.
                 </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Theme Directory Structure</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>theme-name/
-├── style.css
-├── functions.php
-├── index.php
-├── header.php
-├── footer.php
-├── sidebar.php
-├── inc/
-│   ├── post-types.php
-│   ├── taxonomies.php
-│   ├── acf-fields.php
-│   ├── enqueue-scripts.php
-│   └── theme-setup.php
-├── template-parts/
-│   ├── components/
-│   │   ├── card.php
-│   │   ├── button.php
-│   │   └── modal.php
-│   └── sections/
-│       ├── hero.php
-│       └── features.php
-├── assets/
-│   ├── css/
-│   │   └── main.css
-│   ├── js/
-│   │   └── main.js
-│   └── images/
-└── acf-json/</code></pre>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Theme Starter Resources:</strong>
+                </p>
+                <div style="display: flex; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                  <a 
+                    href="https://github.com/dmitry-conquer/wp-starter-theme/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="docs-testing-form__submit"
+                    style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                  </a>
+                  <a 
+                    href="https://github.com/dmitry-conquer/wp-starter-theme/archive/refs/heads/main.zip" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="docs-testing-form__submit"
+                    style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download
+                  </a>
                 </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>File Structure</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  The theme follows a clean, organized structure that separates concerns and makes the codebase maintainable:
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📄</span>
+                    <span><strong>functions.php:</strong> Only initialization of the autoloader and class instantiation. No business logic.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📄</span>
+                    <span><strong>style.css:</strong> Only theme metadata (Name, Version). Do not add site styles here.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📁</span>
+                    <div>
+                      <strong>inc/ (Core Logic):</strong>
+                      <ul class="docs-list" style="margin-top: 0.5rem; margin-left: 0.75rem;">
+                        <li class="docs-list__item">
+                          <span class="docs-list__icon">📄</span>
+                          <span><strong>Autoloader.php:</strong> Automatic class loading.</span>
+                        </li>
+                        <li class="docs-list__item">
+                          <span class="docs-list__icon">📄</span>
+                          <span><strong>Setup.php:</strong> add_theme_support, menu registration, etc.</span>
+                        </li>
+                        <li class="docs-list__item">
+                          <span class="docs-list__icon">📄</span>
+                          <span><strong>Assets.php:</strong> wp_enqueue_scripts logic (asset loading, styles, scripts).</span>
+                        </li>
+                        <li class="docs-list__item">
+                          <span class="docs-list__icon">📄</span>
+                          <span><strong>Shortcodes:</strong> Shortcode registration and functionality.</span>
+                        </li>
+                        <li class="docs-list__item">
+                          <span class="docs-list__icon">📄</span>
+                          <span><strong>Utils:</strong> Utility and helper functions.</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📁</span>
+                    <span><strong>template-parts/:</strong> Reusable template components and partials.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📁</span>
+                    <span><strong>templates/:</strong> Page templates.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📁</span>
+                    <span><strong>template-parts/flexible/:</strong> Modules for ACF Flexible Content.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">📄</span>
+                    <span><strong>header, footer:</strong> Global template parts.</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Class Standards</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>We use PHP Namespaces.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>One class = One file.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Logic is split by purpose (don't write everything in one Theme.php class).</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-custom-post-types">
-                <h3 class="docs-card__title">Custom Post Types</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-acf-pro-integration">
+                <h3 class="docs-card__title">ACF PRO Integration</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-custom-post-types" hidden>
-                <p class="docs-card__text">
-                  Register CPTs in a separate file. Use consistent naming and structure.
+              <div class="docs-card__body" id="card-acf-pro-integration" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Flexible Content Strategy</strong>
                 </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  We build pages like a constructor (Page Builder).
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Architecture:</strong> 1 Layout in ACF = 1 file in <code>template-parts/flexible/</code></span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Template Loop:</strong> We use the standard <code>while (have_rows(...))</code> loop in the <code>templates/flexible.php</code> file.</span>
+                  </li>
+                </ul>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: CPT Registration</span>
+                    <span class="docs-code-example__title">Example: Flexible Content Loop</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;?php
-// inc/post-types.php
-
-function register_project_post_type() {
-  $labels = [
-    'name' => 'Projects',
-    'singular_name' => 'Project',
-    'menu_name' => 'Projects',
-    'add_new' => 'Add New',
-    'add_new_item' => 'Add New Project',
-    'edit_item' => 'Edit Project',
-    'new_item' => 'New Project',
-    'view_item' => 'View Project',
-    'search_items' => 'Search Projects',
-    'not_found' => 'No projects found',
-    'not_found_in_trash' => 'No projects found in Trash',
-  ];
-  
-  $args = [
-    'labels' => $labels,
-    'public' => true,
-    'publicly_queryable' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'query_var' => true,
-    'rewrite' => ['slug' => 'projects'],
-    'capability_type' => 'post',
-    'has_archive' => true,
-    'hierarchical' => false,
-    'menu_position' => 20,
-    'menu_icon' => 'dashicons-portfolio',
-    'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
-    'show_in_rest' => true, // Enable Gutenberg
-  ];
-  
-  register_post_type('project', $args);
-}
-add_action('init', 'register_project_post_type');</code></pre>
+                  <pre class="docs-code-example__code"><code>&lt;?php if (have_rows('content')): ?&gt;
+  &lt;?php while (have_rows('content')): the_row(); ?&gt;
+    &lt;?php get_template_part('template-parts/flexible/' . get_row_layout()); ?&gt;
+  &lt;?php endwhile; ?&gt;
+&lt;?php endif; ?&gt;</code></pre>
                 </div>
-              </div>
-            </div>
 
-            <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-acf-fields">
-                <h3 class="docs-card__title">ACF Fields</h3>
-                <span class="docs-card__icon" aria-hidden="true">▼</span>
-              </button>
-              <div class="docs-card__body" id="card-acf-fields" hidden>
-                <p class="docs-card__text">
-                  Use ACF JSON for version control. Always sanitize and escape ACF field values.
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Return Formats</strong>
                 </p>
-                <div class="docs-code-example">
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Image:</strong> Image ID (for full control over the <code>img</code> tag).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Link:</strong> Link Array (URL, Title, Target).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Checking:</strong> Always check <code>if (!empty(...))</code> before output.</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Template Output Examples</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Examples of how to output ACF data in templates:
+                </p>
+
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: ACF Field Usage</span>
+                    <span class="docs-code-example__title">Example: Image Output</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;?php
-// Get ACF field values
-$title = get_field('title');
-$content = get_field('content');
-$image = get_field('image');
-$link = get_field('link');
-$repeater = get_field('items');
+                  <pre class="docs-code-example__code"><code>&lt;?php if(!empty($image)): ?&gt;
+  &lt;?php echo wp_get_attachment_image($image, 'full', false, ['loading' => 'lazy', 'class' => 'custom-class']); ?&gt;
+&lt;?php endif; ?&gt;</code></pre>
+                </div>
 
-// Always escape output
-&lt;h2&gt;&lt;?php echo esc_html($title); ?&gt;&lt;/h2&gt;
-&lt;div&gt;&lt;?php echo wp_kses_post($content); ?&gt;&lt;/div&gt;
-
-// Image field
-if ($image) {
-  $image_url = esc_url($image['url']);
-  $image_alt = esc_attr($image['alt']);
-  ?&gt;
-  &lt;img src="&lt;?php echo $image_url; ?&gt;" alt="&lt;?php echo $image_alt; ?&gt;"&gt;
-  &lt;?php
-}
-
-// Link field
-if ($link) {
-  $link_url = esc_url($link['url']);
-  $link_title = esc_html($link['title']);
-  $link_target = $link['target'] ? ' target="_blank" rel="noopener noreferrer"' : '';
-  ?&gt;
-  &lt;a href="&lt;?php echo $link_url; ?&gt;"&lt;?php echo $link_target; ?&gt;&gt;
-    &lt;?php echo $link_title; ?&gt;
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Link Output</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php if ( !empty($link) ) : ?&gt;
+  &lt;a href="&lt;?php echo esc_url( $link['url'] ); ?&gt;" 
+     aria-label="&lt;?php echo esc_attr( $link['title']); ?&gt;" 
+     target="&lt;?php echo esc_attr( $link['target'] ?: '_self' ); ?&gt;"
+     &lt;?php echo ( $link['target'] === '_blank' ) ? ' rel="noopener noreferrer"' : ''; ?&gt;&gt;
+    &lt;?php echo esc_html( $link['title'] ); ?&gt;
   &lt;/a&gt;
-  &lt;?php
-}
+&lt;?php endif; ?&gt;</code></pre>
+                </div>
 
-// Repeater field
-if ($repeater) {
-  foreach ($repeater as $item) {
-    $item_title = esc_html($item['title']);
-    $item_content = wp_kses_post($item['content']);
-    ?&gt;
-    &lt;div class="item"&gt;
-      &lt;h3&gt;&lt;?php echo $item_title; ?&gt;&lt;/h3&gt;
-      &lt;div&gt;&lt;?php echo $item_content; ?&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;?php
-  }
-}</code></pre>
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Repeater Output</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php 
+$items = get_field('items');
+if ( !empty($items) ) : ?&gt;
+  &lt;ul&gt;
+    &lt;?php foreach ( $items as $item ) : ?&gt;
+      &lt;?php 
+        $title = $item['title'] ?? '';
+        $content = $item['content'] ?? '';
+      ?&gt;
+      &lt;?php if ( !empty($title) || !empty($content) ) : ?&gt;
+        &lt;li&gt;
+          &lt;?php if ( !empty($title) ) : ?&gt;
+            &lt;h3&gt;&lt;?php echo esc_html($title); ?&gt;&lt;/h3&gt;
+          &lt;?php endif; ?&gt;
+          &lt;?php if ( !empty($content) ) : ?&gt;
+            &lt;div&gt;&lt;?php echo wp_kses_post($content); ?&gt;&lt;/div&gt;
+          &lt;?php endif; ?&gt;
+        &lt;/li&gt;
+      &lt;?php endif; ?&gt;
+    &lt;?php endforeach; ?&gt;
+  &lt;/ul&gt;
+&lt;?php endif; ?&gt;</code></pre>
                 </div>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-template-parts">
-                <h3 class="docs-card__title">Template Parts</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-security-sanitization">
+                <h3 class="docs-card__title">Security: Data Sanitization</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-template-parts" hidden>
-                <p class="docs-card__text">
-                  Use template parts for reusable components. Pass data via arguments.
+              <div class="docs-card__body" id="card-security-sanitization" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Sanitization & Escaping</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Always sanitize input and escape output. Never trust user data.
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Template Part Usage</span>
+                    <span class="docs-code-example__title">Example: Sanitization & Escaping</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;?php
-// template-parts/components/card.php
-$args = wp_parse_args($args, [
-  'title' => '',
-  'content' => '',
-  'image' => null,
-  'link' => null,
-  'class' => '',
-]);
+                  <pre class="docs-code-example__code"><code>// Sanitize input
+$email = sanitize_email($_POST['email']);
+$name = sanitize_text_field($_POST['name']);
+$url = esc_url_raw($_POST['website']);
+$textarea = sanitize_textarea_field($_POST['message']);
 
-$title = esc_html($args['title']);
-$content = wp_kses_post($args['content']);
-$image = $args['image'];
-$link = $args['link'];
-$class = esc_attr($args['class']);
-?&gt;
-
-&lt;article class="card &lt;?php echo $class; ?&gt;"&gt;
-  &lt;?php if ($image) : ?&gt;
-    &lt;div class="card__image"&gt;
-      &lt;img src="&lt;?php echo esc_url($image['url']); ?&gt;" 
-           alt="&lt;?php echo esc_attr($image['alt']); ?&gt;"&gt;
-    &lt;/div&gt;
-  &lt;?php endif; ?&gt;
-  
-  &lt;div class="card__content"&gt;
-    &lt;h3 class="card__title"&gt;&lt;?php echo $title; ?&gt;&lt;/h3&gt;
-    &lt;div class="card__text"&gt;&lt;?php echo $content; ?&gt;&lt;/div&gt;
-    
-    &lt;?php if ($link) : ?&gt;
-      &lt;a href="&lt;?php echo esc_url($link['url']); ?&gt;" 
-         class="card__link"&gt;
-        &lt;?php echo esc_html($link['title']); ?&gt;
-      &lt;/a&gt;
-    &lt;?php endif; ?&gt;
-  &lt;/div&gt;
-&lt;/article&gt;
-
-&lt;?php
-// Usage in template
-$card_args = [
-  'title' => get_field('title'),
-  'content' => get_field('content'),
-  'image' => get_field('image'),
-  'link' => get_field('link'),
-  'class' => 'card--featured',
-];
-get_template_part('template-parts/components', 'card', $card_args);</code></pre>
+// Escape output
+echo esc_html($user_input);
+echo esc_attr($attribute_value);
+echo esc_url($link_url);
+echo esc_js($javascript_value);
+echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </div>
-              </div>
-            </div>
 
-            <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-wordpress-hooks">
-                <h3 class="docs-card__title">WordPress Hooks</h3>
-                <span class="docs-card__icon" aria-hidden="true">▼</span>
-              </button>
-              <div class="docs-card__body" id="card-wordpress-hooks" hidden>
-                <p class="docs-card__text">
-                  Use actions and filters properly. Remove hooks when needed.
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Database Queries</strong>
                 </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Example: Hooks Usage</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>&lt;?php
-// Actions
-add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
-add_action('after_setup_theme', 'theme_setup');
-add_action('wp_footer', 'add_custom_script');
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✗</span>
+                    <span><strong>Forbidden:</strong> <code>query_posts()</code> (never use).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Allowed:</strong> <code>new WP_Query()</code> or <code>get_posts()</code>.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Hooks:</strong> To modify the main query (e.g., on archive pages) use the <code>pre_get_posts</code> hook, don't write a new query in the template.</span>
+                  </li>
+                </ul>
 
-function enqueue_theme_scripts() {
-  wp_enqueue_style('theme-style', get_stylesheet_uri());
-  wp_enqueue_script('theme-script', get_template_directory_uri() . '/assets/js/main.js', [], '1.0.0', true);
-}
-
-// Filters
-add_filter('excerpt_length', 'custom_excerpt_length', 999);
-add_filter('the_content', 'add_custom_content');
-
-function custom_excerpt_length($length) {
-  return 20;
-}
-
-function add_custom_content($content) {
-  if (is_single()) {
-    $content .= '&lt;p&gt;Custom content&lt;/p&gt;';
-  }
-  return $content;
-}
-
-// Remove hooks
-remove_action('wp_head', 'wp_generator');
-remove_filter('the_content', 'wpautop');</code></pre>
-                </div>
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Nonces</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>All forms and AJAX requests must be protected using <code>wp_create_nonce()</code>.</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

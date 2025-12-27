@@ -60,3 +60,46 @@ document.querySelectorAll('.docs-card__header').forEach(button => {
   });
 });
 
+// Active navigation link functionality
+function setActiveNavLink() {
+  const currentPath = window.location.pathname;
+  
+  // Remove active class from all links
+  document.querySelectorAll('.docs-nav__link, .docs-nav__mobile-link').forEach(link => {
+    link.classList.remove('docs-nav__link--active', 'docs-nav__mobile-link--active');
+  });
+  
+  // Find and set active link based on current path
+  document.querySelectorAll('.docs-nav__link, .docs-nav__mobile-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    
+    // Normalize paths for comparison
+    const normalizedHref = href.startsWith('/') ? href : `/${href}`;
+    const normalizedCurrentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+    
+    // Check if current path matches the link href
+    // Handle index.html and root path
+    if (normalizedHref === '/pages/index.html' && (normalizedCurrentPath === '/pages/index.html' || normalizedCurrentPath === '/' || normalizedCurrentPath === '/index.html')) {
+      link.classList.add(
+        link.classList.contains('docs-nav__link') 
+          ? 'docs-nav__link--active' 
+          : 'docs-nav__mobile-link--active'
+      );
+    } else if (normalizedCurrentPath === normalizedHref || normalizedCurrentPath.endsWith(normalizedHref)) {
+      link.classList.add(
+        link.classList.contains('docs-nav__link') 
+          ? 'docs-nav__link--active' 
+          : 'docs-nav__mobile-link--active'
+      );
+    }
+  });
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setActiveNavLink);
+} else {
+  setActiveNavLink();
+}
+

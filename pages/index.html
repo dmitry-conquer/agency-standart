@@ -1,66 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Standards & Best Practices Guide</title>
-    <meta
-      name="description"
-      content="Comprehensive developer guide: HTML, CSS, JavaScript, PHP, WordPress standards, best practices, and code examples."
-    />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    
-    <link rel="stylesheet" href="/src/styles/main.scss" />
-  </head>
-  <body class="index-page">
-    <div id="page" class="site-page">
-      <!-- Navigation -->
-      <nav class="docs-nav">
-        <div class="docs-nav__container">
-          <button 
-            class="docs-nav__burger" 
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="docs-nav-mobile"
-            id="docs-nav-toggle"
-          >
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-            <span class="docs-nav__burger-line"></span>
-          </button>
-          <div class="docs-nav__links">
-            <a href="/pages/index.html" class="docs-nav__link docs-nav__link--active">Home</a>
-            <a href="/pages/html.html" class="docs-nav__link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__link">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__link disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__link disabled-link">SEO</a>
-          </div>
-          <div class="docs-nav__mobile" id="docs-nav-mobile" hidden>
-            <a href="/pages/index.html" class="docs-nav__mobile-link docs-nav__mobile-link--active">Home</a>
-            <a href="/pages/html.html" class="docs-nav__mobile-link">HTML</a>
-            <a href="/pages/css.html" class="docs-nav__mobile-link">CSS</a>
-            <a href="/pages/javascript.html" class="docs-nav__mobile-link">JavaScript</a>
-            <a href="/pages/php.html" class="docs-nav__mobile-link disabled-link">PHP</a>
-            <a href="/pages/wordpress.html" class="docs-nav__mobile-link disabled-link">WordPress</a>
-            <a href="/pages/components.html" class="docs-nav__mobile-link disabled-link">Components</a>
-            <a href="/pages/workflow.html" class="docs-nav__mobile-link disabled-link">Workflow</a>
-            <a href="/pages/seo.html" class="docs-nav__mobile-link disabled-link">SEO</a>
-          </div>
-        </div>
-      </nav>
+{{> header}}
 
       <!-- Hero Section -->
       <section class="docs-hero">
@@ -136,31 +74,13 @@
               </ul>
             </a>
 
-            <a href="/pages/php.html" class="docs-grid__item docs-grid__item--link disabled-link">
-              <div class="docs-grid__icon">🐘</div>
-              <h3 class="docs-grid__title">PHP</h3>
-              <p class="docs-grid__description">Security practices, code organization, and PHP standards.</p>
-            </a>
-
-            <a href="/pages/wordpress.html" class="docs-grid__item docs-grid__item--link disabled-link">
+            <a href="/pages/wordpress.html" class="docs-grid__item docs-grid__item--link">
               <div class="docs-grid__icon">📝</div>
               <h3 class="docs-grid__title">WordPress</h3>
               <p class="docs-grid__description">Theme structure, CPT, ACF, hooks, and WordPress development.</p>
             </a>
 
-            <a href="/pages/components.html" class="docs-grid__item docs-grid__item--link disabled-link">
-              <div class="docs-grid__icon">🧩</div>
-              <h3 class="docs-grid__title">Components</h3>
-              <p class="docs-grid__description">Reusable component system and standardized patterns.</p>
-            </a>
-
-            <a href="/pages/workflow.html" class="docs-grid__item docs-grid__item--link disabled-link">
-              <div class="docs-grid__icon">🔄</div>
-              <h3 class="docs-grid__title">Workflow</h3>
-              <p class="docs-grid__description">Git workflow, code review process, and development practices.</p>
-            </a>
-
-            <a href="/pages/seo.html" class="docs-grid__item docs-grid__item--link disabled-link">
+            <a href="/pages/seo.html" class="docs-grid__item docs-grid__item--link">
               <div class="docs-grid__icon">🔍</div>
               <h3 class="docs-grid__title">SEO</h3>
               <p class="docs-grid__description">Meta tags, structured data, and technical SEO optimization.</p>

@@ -10,15 +10,15 @@
           <div class="docs-section__content">
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-theme-architecture">
-                <h3 class="docs-card__title">Theme Architecture</h3>
+                <h3 class="docs-card__title">1. Theme Architecture</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-theme-architecture" hidden>
-                <p class="docs-card__text">
-                  We use a ready-made theme starter as both an example of proper theme file organization and for creating new websites. This starter theme provides a clean, modern architecture following WordPress best practices.
-                </p>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Theme Starter Resources:</strong>
+                  <strong>1.1 WordPress Theme Framework</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  We use a ready-made theme starter as both an example of proper theme file organization and for creating new websites. This starter theme provides a clean, modern architecture following WordPress best practices.
                 </p>
                 <div style="display: flex; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap;">
                   <a 
@@ -50,7 +50,7 @@
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>File Structure</strong>
+                  <strong>1.2 File Structure</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   The theme follows a clean, organized structure that separates concerns and makes the codebase maintainable:
@@ -111,7 +111,10 @@
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>Class Standards</strong>
+                  <strong>1.3 Class Standards</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  All functions must be inside classes, not just placed anywhere. This ensures better code organization, prevents namespace conflicts, and makes the codebase more maintainable and testable.
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -126,18 +129,30 @@
                     <span class="docs-list__icon">✓</span>
                     <span>Logic is split by purpose (don't write everything in one Theme.php class).</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use <code>final class</code> for classes that should not be extended.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use <code>static</code> methods to avoid creating instances. This reduces memory usage and improves performance by allowing direct method calls without object instantiation.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Use proper visibility modifiers (<code>public</code>, <code>private</code>, <code>protected</code>).</span>
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-acf-pro-integration">
-                <h3 class="docs-card__title">ACF PRO Integration</h3>
+                <h3 class="docs-card__title">2. ACF PRO Integration</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-acf-pro-integration" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Flexible Content Strategy</strong>
+                  <strong>2.1 Flexible Content Strategy</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   We build pages like a constructor (Page Builder).
@@ -165,7 +180,7 @@
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>Return Formats</strong>
+                  <strong>2.2 Return Formats</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -180,10 +195,14 @@
                     <span class="docs-list__icon">✓</span>
                     <span><strong>Checking:</strong> Always check <code>if (!empty(...))</code> before output.</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Sanitization:</strong> All fields must be sanitized. See <a href="#card-security-sanitization" style="color: var(--docs-primary); text-decoration: underline;">3. Security: Data Sanitization</a> for details.</span>
+                  </li>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>Template Output Examples</strong>
+                  <strong>2.3 Template Output Examples</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Examples of how to output ACF data in templates:
@@ -242,17 +261,25 @@ if ( !empty($items) ) : ?&gt;
   &lt;/ul&gt;
 &lt;?php endif; ?&gt;</code></pre>
                 </div>
+
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Options Page Field Output</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php echo esc_html( get_field('phone_number', 'option') ); ?&gt;</code></pre>
+                </div>
               </div>
             </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-security-sanitization">
-                <h3 class="docs-card__title">Security: Data Sanitization</h3>
+                <h3 class="docs-card__title">3. Security: Data Sanitization</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-security-sanitization" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Sanitization & Escaping</strong>
+                  <strong>3.1 Sanitization & Escaping</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Always sanitize input and escape output. Never trust user data.
@@ -277,7 +304,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>Database Queries</strong>
+                  <strong>3.2 Database Queries</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -295,7 +322,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>Nonces</strong>
+                  <strong>3.3 Nonces</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -303,6 +330,262 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                     <span>All forms and AJAX requests must be protected using <code>wp_create_nonce()</code>.</span>
                   </li>
                 </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-plugins-policy">
+                <h3 class="docs-card__title">4. Plugins Policy</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-plugins-policy" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.1 General Policy</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Minimum plugins. Everything that can be done with code should be done with code. Do not use plugins with expired licenses or from unofficial sources.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>4.2 ✅ Mandatory (Required)</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>ACF PRO (Licensed version)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Classic Editor (Disable Gutenberg, unless otherwise specified)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Safe SVG / SVG Support (Allow SVG uploads)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Yoast SEO</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>HFCM (Header Footer Code Manager)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Wordfence</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>WP Activity Log</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>4.3 ✅ Allowed</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Redirection</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>CookieYes | GDPR Cookie Consent</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Duplicate Page / Yoast Duplicate Post</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Gravity Forms</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>GTranslate</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>WPS Hide Login</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>WP File Manager</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Better Search Replace</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>4.4 🛠 Dev Only (Remove/Disable on Production)</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">🔧</span>
+                    <span>Query Monitor (Debug performance and errors)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">🔧</span>
+                    <span>Show Current Template</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>4.5 ❌ Banned (Forbidden)</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✗</span>
+                    <span><strong>Visual Builders:</strong> Elementor, Divi, WPBakery (kill PageSpeed)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✗</span>
+                    <span><strong>Really Simple SSL</strong> (configured on the server)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✗</span>
+                    <span><strong>Shortcode-based plugins</strong> (sliders, galleries, tabs). We do this through ACF Flexible.</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__footnote" style="margin-top: 1.5rem;">
+                  <strong>⚠️ Important:</strong> Use of plugins that are not included in the mandatory or allowed lists must be discussed in advance with the web department director or an authorized person.
+                </p>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-deployment-protocol">
+                <h3 class="docs-card__title">5. Deployment Protocol</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-deployment-protocol" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.1 Checklist</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Checklist before project handover.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Debug:</strong> Ensure <code>WP_DEBUG</code> is set to <code>false</code> in <code>wp-config.php</code>.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Search Engines:</strong> Enable indexing ("Settings → Reading → Discourage search engines" — uncheck the box).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Permalinks:</strong> Re-save permalink settings (common 404 error fix).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Admin Email:</strong> Change administrator email to client's email.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Forms:</strong> Send test submission from all forms.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Dev Plugins:</strong> Remove or disable all dev-only plugins (Query Monitor, Show Current Template, etc.).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Security:</strong> Remove test data, check file permissions, ensure no debug information is exposed.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Performance:</strong> Clear cache, optimize database, check page load speed.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>SSL:</strong> Verify SSL certificate is properly configured and working.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Testing:</strong> Test on different devices and browsers, check for broken links (404 errors).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Backup:</strong> Create a full backup of the site before going live.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-email-delivery">
+                <h3 class="docs-card__title">6. Email Delivery</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-email-delivery" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>6.1 JotForm</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  For forms, we use the <a href="https://www.jotform.com/" target="_blank" rel="noopener noreferrer" style="color: var(--docs-primary); text-decoration: underline;">Jotform</a> service.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>6.2 SMTP</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  If the client wants forms on their own website rather than on a third-party service, follow these guidelines:
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">⚠️</span>
+                    <span>WordPress sends emails via PHP <code>mail()</code> by default, which results in 99% of emails being marked as spam.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Mandatory:</strong> Install an SMTP plugin (<code>WP Mail SMTP</code>).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>The SMTP service is chosen based on client preferences and requirements.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-maintenance">
+                <h3 class="docs-card__title">7. Maintenance</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-maintenance" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>7.1 Updates</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Plugins, themes, and WordPress core must be kept up to date.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>7.2 Backup Requirements</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Updates to any site components must be performed only after a full site backup. Create a complete backup (files and database) before any updates.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Hosting-level backups:</strong> Backups must be performed at the hosting level, not through WordPress plugins. Hosting-level backups are more reliable, faster, and don't consume server resources or database space. They also provide better recovery options and are independent of WordPress functionality.</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>7.3 Verify Site Functionality</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Verify site functionality after updates are complete.
+                </p>
               </div>
             </div>
           </div>

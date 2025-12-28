@@ -269,6 +269,51 @@ if ( !empty($items) ) : ?&gt;
                   </div>
                   <pre class="docs-code-example__code"><code>&lt;?php echo esc_html( get_field('phone_number', 'option') ); ?&gt;</code></pre>
                 </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>2.4 Spacer Component</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  For flexible content, add a Spacer component. This component allows you to create responsive spacing between sections with different values for desktop, tablet, and mobile devices. It's useful for fine-tuning the vertical rhythm of the page and ensuring consistent spacing across different screen sizes without hardcoding values in CSS.
+                </p>
+
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Spacer Template</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php 
+$desktop = get_sub_field('desktop'); 
+$tablet = get_sub_field('tablet'); 
+$mobile = get_sub_field('mobile'); 
+?&gt;
+&lt;div class="spacer" 
+     style="--desktop: &lt;?php echo $desktop; ?&gt;px; 
+            --tablet: &lt;?php echo $tablet; ?&gt;px; 
+            --mobile: &lt;?php echo $mobile; ?&gt;px"&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="docs-code-example" style="margin-top: 0.75rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Spacer CSS</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>.spacer {
+  --desktop: 90px;
+  --tablet: 60px;
+  --mobile: 30px;
+  height: var(--desktop);
+  
+  @media (max-width: 991.98px) {
+    height: var(--tablet);
+  }
+  
+  @media (max-width: 575.98px) {
+    height: var(--mobile);
+  }
+}</code></pre>
+                </div>
               </div>
             </div>
 

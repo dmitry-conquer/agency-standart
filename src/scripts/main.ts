@@ -4,3 +4,8 @@ import "./mobile-nav";
 import "./html-validator";
 import "./css-validator";
 import "./clamp-generator";
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Code here...
+});

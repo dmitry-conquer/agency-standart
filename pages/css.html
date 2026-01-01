@@ -7,10 +7,18 @@
             <h2 class="docs-section__title">CSS Standards & Best Practices</h2>
             <p class="docs-section__description">BEM methodology, CSS variables, responsive design, units, media queries, best practices, and testing standards.</p>
           </div>
+          <div class="docs-section__controls">
+            <button type="button" class="docs-section__control-btn" id="expand-all-accordions" aria-label="Expand all accordions">
+              Expand All
+            </button>
+            <button type="button" class="docs-section__control-btn" id="collapse-all-accordions" aria-label="Collapse all accordions">
+              Collapse All
+            </button>
+          </div>
           <div class="docs-section__content">
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-vite-build">
-                <h3 class="docs-card__title">Vite Build System</h3>
+                <h3 class="docs-card__title">1. Vite Build System</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-vite-build" hidden>
@@ -18,7 +26,7 @@
                   We use a custom Vite-based build system for all JavaScript, TypeScript, and CSS projects. This build system provides lightning-fast development experience with Hot Module Replacement (HMR), optimized production builds, and professional tooling out of the box.
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>General Benefits:</strong>
+                  <strong>1.1 General Benefits:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -39,7 +47,7 @@
                   </li>
                 </ul>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>CSS-Specific Features:</strong>
+                  <strong>1.2 CSS-Specific Features:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -100,7 +108,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-bem-methodology">
-                <h3 class="docs-card__title">BEM Methodology</h3>
+                <h3 class="docs-card__title">2. BEM Methodology</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-bem-methodology" hidden>
@@ -109,7 +117,7 @@
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Why BEM is necessary:</strong>
+                  <strong>2.1 Why BEM is necessary:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -131,7 +139,7 @@
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>BEM Structure:</strong>
+                  <strong>2.2 BEM Structure:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -149,7 +157,7 @@
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>BEM Best Practices:</strong>
+                  <strong>2.3 BEM Best Practices:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -244,7 +252,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-variables">
-                <h3 class="docs-card__title">CSS Variables</h3>
+                <h3 class="docs-card__title">3. CSS Variables</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-css-variables" hidden>
@@ -253,7 +261,7 @@
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Why use CSS Variables:</strong>
+                  <strong>3.1 Why use CSS Variables:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -279,7 +287,7 @@
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Best Practices:</strong>
+                  <strong>3.2 Best Practices:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -409,7 +417,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-units-responsive">
-                <h3 class="docs-card__title">Units & Responsive Design</h3>
+                <h3 class="docs-card__title">4. Units & Responsive Design</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-units-responsive" hidden>
@@ -450,11 +458,11 @@ body {
   font-size: 1.5rem; /* 24px */
   margin-bottom: 1rem; /* 16px */
   
-  @include medium {
+  @media (max-width: 991.98px) {
     font-size: 1.25rem; /* 20px */
   }
   
-  @include small {
+  @media (max-width: 767.98px) {
     font-size: 1.125rem; /* 18px */
   }
 }
@@ -470,7 +478,7 @@ body {
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-media-queries">
-                <h3 class="docs-card__title">Media Queries Breakpoints</h3>
+                <h3 class="docs-card__title">5. Media Queries Breakpoints</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-media-queries" hidden>
@@ -530,8 +538,87 @@ $x-small: 575.98px;</code></pre>
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-hover-states">
+                <h3 class="docs-card__title">6. Hover States</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-hover-states" hidden>
+                <p class="docs-card__text">
+                  Touch devices (smartphones, tablets) don't have a hover state. When users tap an element, it's treated as a click, not a hover. This means hover effects can create poor user experience on touch devices, as they may trigger unintentionally or not work at all.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  Always wrap hover styles in a media query that checks for devices with hover capability to ensure hover effects only apply on devices that support them.
+                </p>
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Safe Hover Implementation</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>.button {
+  background: var(--color-primary);
+  color: white;
+  transition: background 0.2s ease;
+  
+  /* Only apply hover on devices that support it */
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--color-primary-dark);
+    }
+  }
+}</code></pre>
+                </div>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Why this approach?</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>hover: hover</code> checks if the device supports hover (desktop mice, trackpads)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>pointer: fine</code> ensures the device has precise pointing (mouse, stylus), not touch</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Combined, they ensure hover effects only work on devices where they make sense</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Prevents accidental hover triggers on touch devices and improves accessibility</span>
+                  </li>
+                </ul>
+                <p class="docs-card__text" style="margin-top: 1rem;">
+                  <strong>Where to use:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Interactive elements: buttons, links, cards with hover effects</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Navigation menus with dropdowns or hover states</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Image galleries with hover overlays or effects</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Tooltips that appear on hover</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Any element where hover provides additional visual feedback or information</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-best-practices">
-                <h3 class="docs-card__title">CSS Best Practices</h3>
+                <h3 class="docs-card__title">7. CSS Best Practices</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-css-best-practices" hidden>
@@ -573,6 +660,36 @@ $x-small: 575.98px;</code></pre>
                     <span>Minimize nesting (max 3 levels)</span>
                   </li>
                 </ul>
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Inline Styles - Forbidden</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- Bad: Never use inline styles with !important --&gt;
+&lt;h1 style="color: #626262 !important;"&gt;Title&lt;/h1&gt;
+&lt;div style="padding: 20px; margin: 10px;"&gt;Content&lt;/div&gt;
+&lt;p style="font-size: 16px; line-height: 1.5;"&gt;Text&lt;/p&gt;
+
+&lt;!-- Good: Use CSS classes instead --&gt;
+&lt;h1 class="page-title"&gt;Title&lt;/h1&gt;
+&lt;div class="content-wrapper"&gt;Content&lt;/div&gt;
+&lt;p class="text-body"&gt;Text&lt;/p&gt;
+
+/* CSS */
+.page-title {
+  color: #626262;
+}
+
+.content-wrapper {
+  padding: 1.25rem;
+  margin: 0.625rem;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}</code></pre>
+                </div>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Correct Breakpoint Order (max-width)</span>
@@ -662,7 +779,7 @@ $x-small: 575.98px;</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-clamp-generator">
-                <h3 class="docs-card__title">Clamp Generator</h3>
+                <h3 class="docs-card__title">8. Clamp Generator</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-clamp-generator" hidden>
@@ -771,7 +888,7 @@ $x-small: 575.98px;</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-css-testing">
-                <h3 class="docs-card__title">CSS Testing</h3>
+                <h3 class="docs-card__title">9. CSS Testing</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-css-testing" hidden>
@@ -779,6 +896,9 @@ $x-small: 575.98px;</code></pre>
                   CSS testing ensures your stylesheets are error-free, responsive, and compatible across all browsers and devices. Always test your CSS before deploying to production.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>9.1 Testing Checklist:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -799,7 +919,7 @@ $x-small: 575.98px;</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>W3C CSS Validator:</strong>
+                  <strong>9.2 W3C CSS Validator:</strong>
                 </p>
                 <p class="docs-card__text">
                   The official W3C validator checks CSS for errors and warnings. Enter a URL or upload a CSS file below to validate your stylesheet.
@@ -832,7 +952,7 @@ $x-small: 575.98px;</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-production">
-                <h3 class="docs-card__title">Production</h3>
+                <h3 class="docs-card__title">10. Production</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-production" hidden>

@@ -103,3 +103,42 @@ if (document.readyState === 'loading') {
   setActiveNavLink();
 }
 
+// Expand/Collapse all accordions functionality
+function expandAllAccordions() {
+  document.querySelectorAll('.docs-card__header').forEach(button => {
+    const panelId = button.getAttribute('aria-controls');
+    if (!panelId) return;
+    
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    
+    button.setAttribute('aria-expanded', 'true');
+    panel.hidden = false;
+  });
+}
+
+function collapseAllAccordions() {
+  document.querySelectorAll('.docs-card__header').forEach(button => {
+    const panelId = button.getAttribute('aria-controls');
+    if (!panelId) return;
+    
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    
+    button.setAttribute('aria-expanded', 'false');
+    panel.hidden = true;
+  });
+}
+
+// Add event listeners for expand/collapse buttons
+const expandBtn = document.getElementById('expand-all-accordions');
+const collapseBtn = document.getElementById('collapse-all-accordions');
+
+if (expandBtn) {
+  expandBtn.addEventListener('click', expandAllAccordions);
+}
+
+if (collapseBtn) {
+  collapseBtn.addEventListener('click', collapseAllAccordions);
+}
+

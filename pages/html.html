@@ -10,11 +10,18 @@
               Semantic markup, accessibility, optimization, image handling, and validation standards.
             </p>
           </div>
-
+          <div class="docs-section__controls">
+            <button type="button" class="docs-section__control-btn" id="expand-all-accordions" aria-label="Expand all accordions">
+              Expand All
+            </button>
+            <button type="button" class="docs-section__control-btn" id="collapse-all-accordions" aria-label="Collapse all accordions">
+              Collapse All
+            </button>
+          </div>
           <div class="docs-section__content">
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-semantic-html">
-                <h3 class="docs-card__title">Semantic HTML</h3>
+                <h3 class="docs-card__title">1. Semantic HTML</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-semantic-html" hidden>
@@ -23,7 +30,7 @@
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Semantic HTML5 Tags:</strong>
+                  <strong>1.1 Semantic HTML5 Tags:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -164,7 +171,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-head">
-                <h3 class="docs-card__title">Head</h3>
+                <h3 class="docs-card__title">2. Head</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-head" hidden>
@@ -172,6 +179,9 @@
                   The <code>&lt;head&gt;</code> section contains metadata, links to external resources, and configuration for your HTML document. Proper head setup is essential for SEO, performance, and social media sharing.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.1 Required Elements:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -203,6 +213,9 @@
                   </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Complete Head Section</span>
@@ -245,7 +258,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-headings">
-                <h3 class="docs-card__title">Headings</h3>
+                <h3 class="docs-card__title">3. Headings</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-headings" hidden>
@@ -253,6 +266,9 @@
                   Proper heading structure is essential for accessibility, SEO, and content hierarchy.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.1 Heading Structure:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -268,6 +284,9 @@
                   </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Proper Heading Structure</span>
@@ -299,7 +318,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-links-navigation">
-                <h3 class="docs-card__title">Links & Navigation</h3>
+                <h3 class="docs-card__title">4. Links & Navigation</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-links-navigation" hidden>
@@ -307,6 +326,9 @@
                   Proper link markup and navigation structure improve accessibility, SEO, and user experience. Use semantic HTML and appropriate attributes for links.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.1 Link Best Practices:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -342,6 +364,9 @@
                   </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Navigation & Links</span>
@@ -388,7 +413,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-buttons-links">
-                <h3 class="docs-card__title">Buttons vs Links</h3>
+                <h3 class="docs-card__title">5. Buttons vs Links</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-buttons-links" hidden>
@@ -396,6 +421,9 @@
                   Understanding when to use <code>&lt;button&gt;</code> versus <code>&lt;a&gt;</code> is crucial for accessibility, semantics, and user experience. Use the correct element based on the action's purpose.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.1 Usage Guidelines:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -427,6 +455,9 @@
                   </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Correct Usage</span>
@@ -462,7 +493,7 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-404-page">
-                <h3 class="docs-card__title">404 Error Page</h3>
+                <h3 class="docs-card__title">6. 404 Error Page</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-404-page" hidden>
@@ -471,7 +502,7 @@
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Why it's needed:</strong>
+                  <strong>6.1 Why it's needed:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -485,7 +516,7 @@
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>If you don't have a 404 page:</strong>
+                  <strong>6.2 If you don't have a 404 page:</strong>
                 </p>
                 <p class="docs-card__text">
                   Set up a redirect to the homepage via WordPress.
@@ -509,7 +540,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-aria-attributes">
-                <h3 class="docs-card__title">ARIA Attributes</h3>
+                <h3 class="docs-card__title">7. ARIA Attributes</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-aria-attributes" hidden>
@@ -518,7 +549,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Essential ARIA Attributes:</strong>
+                  <strong>7.1 Essential ARIA Attributes:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -684,7 +715,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-tables">
-                <h3 class="docs-card__title">Tables</h3>
+                <h3 class="docs-card__title">8. Tables</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-tables" hidden>
@@ -692,6 +723,9 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                   Use semantic HTML table elements to create accessible and well-structured data tables. Proper table markup improves screen reader support and data comprehension.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>8.1 Table Structure:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -715,6 +749,9 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                   </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>8.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Accessible Table</span>
@@ -748,7 +785,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-images">
-                <h3 class="docs-card__title">Images</h3>
+                <h3 class="docs-card__title">9. Images</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-images" hidden>
@@ -756,6 +793,9 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                   Optimize images to improve page load times, reduce bandwidth usage, and enhance user experience. Proper image optimization is crucial for performance, especially on mobile devices.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>9.1 Image Optimization:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -781,8 +821,19 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                     <span class="docs-list__icon">✓</span>
                     <span><strong>Specify width and height:</strong> Always include <code>width</code> and <code>height</code> attributes (or use CSS <code>aspect-ratio</code>) for images. This prevents layout shift (CLS) by reserving space for the image before it loads, improving Core Web Vitals scores and user experience. The browser can calculate the aspect ratio and maintain the correct layout even before the image downloads.</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Always include <code>alt</code> attribute:</strong> Every image must have an <code>alt</code> attribute. The <code>alt</code> text provides alternative information for images when they cannot be displayed or when users rely on screen readers. It's essential for accessibility, SEO, and user experience. For decorative images, use an empty <code>alt=""</code> attribute. For informative images, provide descriptive, concise text that conveys the image's purpose and content.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use <code>title</code> attribute for additional information:</strong> The <code>title</code> attribute provides supplementary information about the image that appears as a tooltip when users hover over it. Use it only when you need to provide extra context or details that aren't essential but helpful (e.g., image credits, additional context, or supplementary information). For regular, standard images, the <code>title</code> attribute is not needed – the <code>alt</code> attribute is sufficient.</span>
+                  </li>
                 </ul>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>9.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Responsive Images</span>
@@ -793,14 +844,230 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
   &lt;source media="(min-width: 768px)" srcset="image-desktop.webp"&gt;
   &lt;source media="(min-width: 480px)" srcset="image-tablet.webp"&gt;
   &lt;img src="image-mobile.webp" alt="Description" width="400" height="300"&gt;
-&lt;/picture&gt;</code></pre>
+&lt;/picture&gt;
+
+&lt;!-- Informative image with alt and optional title --&gt;
+&lt;img 
+  src="product-photo.jpg" 
+  alt="Red leather jacket with zipper front" 
+  title="Photo by John Doe, 2024"
+  width="600" 
+  height="800" 
+  loading="lazy"
+&gt;
+
+&lt;!-- Decorative image (empty alt) --&gt;
+&lt;img 
+  src="decorative-divider.svg" 
+  alt="" 
+  width="1200" 
+  height="50"
+  aria-hidden="true"
+&gt;</code></pre>
                 </div>
               </div>
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-video">
+                <h3 class="docs-card__title">10. Video</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-video" hidden>
+                <p class="docs-card__text">
+                  Proper video implementation ensures optimal performance, accessibility, and user experience. Use semantic HTML5 video elements with appropriate attributes and optimization techniques.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>10.1 Video Implementation:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Include poster image:</strong> Use the <code>poster</code> attribute to show a preview image before the video loads. This improves perceived performance and provides visual context.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Add controls and attributes:</strong> Include <code>controls</code> for user playback control, <code>preload="metadata"</code> to load only metadata (not the entire video), and <code>playsinline</code> for mobile devices.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Optimize video files:</strong> Compress videos to reduce file size while maintaining quality. Use appropriate codecs (H.264 for MP4, VP9 for WebM). Consider video length and resolution based on usage context.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Lazy loading:</strong> Use <code>preload="none"</code> or <code>loading="lazy"</code> for videos below the fold to improve initial page load time. Videos should only load when needed or when user interacts with them.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Video with Multiple Sources</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;video 
+  controls 
+  poster="video-poster.jpg" 
+  preload="metadata" 
+  playsinline
+  width="800" 
+  height="450"
+  aria-label="Product demonstration video"
+&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;track 
+    kind="captions" 
+    src="captions.vtt" 
+    srclang="en" 
+    label="English" 
+    default
+  &gt;
+  &lt;p&gt;Your browser doesn't support HTML5 video. 
+    &lt;a href="video.mp4"&gt;Download the video&lt;/a&gt; instead.
+  &lt;/p&gt;
+&lt;/video&gt;</code></pre>
+                </div>
+
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Video with Direct src</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;video 
+  src="video.mp4" 
+  controls 
+  poster="video-poster.jpg" 
+  preload="metadata" 
+  playsinline
+  width="800" 
+  height="450"
+  aria-label="Product demonstration video"
+&gt;
+  &lt;track 
+    kind="captions" 
+    src="captions.vtt" 
+    srclang="en" 
+    label="English" 
+    default
+  &gt;
+  &lt;p&gt;Your browser doesn't support HTML5 video. 
+    &lt;a href="video.mp4"&gt;Download the video&lt;/a&gt; instead.
+  &lt;/p&gt;
+&lt;/video&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>10.2 Background Video:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Background videos should be muted, autoplay, loop, and have no controls. They should not interfere with content readability and must be optimized for performance.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Essential attributes:</strong> Use <code>autoplay</code>, <code>muted</code>, <code>loop</code>, and <code>playsinline</code> for background videos. Never use <code>controls</code> on background videos.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Preload strategy:</strong> Use <code>preload="auto"</code> for background videos that are immediately visible, or <code>preload="metadata"</code> if the video appears below the fold.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Accessibility:</strong> Background videos should be decorative. Use <code>aria-hidden="true"</code> to hide them from screen readers, and ensure they don't contain important information.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Performance:</strong> Keep background videos short (5-15 seconds) and optimized. Use lower resolution (720p or lower) and compress heavily. Consider using CSS to pause videos when not in viewport.</span>
+                  </li>
+                </ul>
+
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Background Video</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!-- HTML --&gt;
+&lt;section class="hero"&gt;
+  &lt;video 
+    class="hero__video" 
+    autoplay 
+    muted 
+    loop 
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  &gt;
+    &lt;source src="background-video.webm" type="video/webm"&gt;
+    &lt;source src="background-video.mp4" type="video/mp4"&gt;
+  &lt;/video&gt;
+  &lt;div class="hero__content"&gt;
+    &lt;h1&gt;Welcome to Our Site&lt;/h1&gt;
+    &lt;p&gt;Your content here...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+/* CSS */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>10.3 Video Optimization:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>File size:</strong> Compress videos to reduce file size. Target file sizes: under 5MB for short videos (30 seconds), under 10MB for medium videos (1-2 minutes). Use tools like HandBrake or FFmpeg for compression.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Resolution:</strong> Use appropriate resolution based on display size. For most web use, 1080p (1920x1080) is sufficient. For background videos, 720p (1280x720) is often adequate.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Codec selection:</strong> Use H.264 codec for MP4 (best compatibility) and VP9 for WebM (better compression). Always provide MP4 as fallback.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Loading strategy:</strong> Use <code>preload="none"</code> for videos below the fold or that require user interaction. Use <code>preload="metadata"</code> for videos that might be played soon. Only use <code>preload="auto"</code> for critical above-the-fold videos.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Consider video hosting:</strong> For large videos or high traffic, consider using video hosting services (YouTube, Vimeo, Cloudflare Stream) that provide CDN, adaptive streaming, and better performance.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-optimization">
-                <h3 class="docs-card__title">Optimization</h3>
+                <h3 class="docs-card__title">11. Optimization</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-optimization" hidden>
@@ -808,6 +1075,9 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                   Optimize your HTML for better performance, faster loading, and improved user experience.
                 </p>
 
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>11.1 Optimization Guidelines:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
@@ -821,13 +1091,17 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                     <span class="docs-list__icon">✓</span>
                     <span><strong>Avoid unnecessary iframes:</strong> <code>&lt;iframe&gt;</code> elements can significantly slow down a page. Use them sparingly and only when needed. Consider adding <code>loading="lazy"</code> to iframes below the fold, or load them on demand (click or scroll) to save resources.</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>No inline scripts in sections:</strong> Scripts should not be inline within HTML sections. All JavaScript code must be in separate files and included in the appropriate location (typically just before the closing <code>&lt;/body&gt;</code> tag or in the <code>&lt;head&gt;</code> with <code>defer</code> or <code>async</code> attributes). This improves maintainability, caching, and separation of concerns.</span>
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-html-testing">
-                <h3 class="docs-card__title">HTML Testing</h3>
+                <h3 class="docs-card__title">12. HTML Testing</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-html-testing" hidden>
@@ -836,7 +1110,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>W3C Nu HTML Checker:</strong>
+                  <strong>12.1 W3C Nu HTML Checker:</strong>
                 </p>
                 <p class="docs-card__text">
                   The official W3C validator checks HTML5 markup for errors and warnings. Enter a URL below to validate your page.
@@ -866,7 +1140,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                 </form>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Other Validation Tools:</strong>
+                  <strong>12.2 Other Validation Tools:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -892,7 +1166,7 @@ add_action('template_redirect', 'redirect_404_to_homepage');</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>Understanding Validation Results:</strong>
+                  <strong>12.3 Understanding Validation Results:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">

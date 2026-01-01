@@ -7,10 +7,18 @@
             <h2 class="docs-section__title">JavaScript Standards & Best Practices</h2>
             <p class="docs-section__description">Vite build system, component patterns, IIFE, accessibility, error handling, event handling, DOM rules, approved libraries, and production optimization.</p>
           </div>
+          <div class="docs-section__controls">
+            <button type="button" class="docs-section__control-btn" id="expand-all-accordions" aria-label="Expand all accordions">
+              Expand All
+            </button>
+            <button type="button" class="docs-section__control-btn" id="collapse-all-accordions" aria-label="Collapse all accordions">
+              Collapse All
+            </button>
+          </div>
           <div class="docs-section__content">
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-vite-build">
-                <h3 class="docs-card__title">Vite Build System</h3>
+                <h3 class="docs-card__title">1. Vite Build System</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-vite-build" hidden>
@@ -18,7 +26,7 @@
                   We use a custom Vite-based build system for all JavaScript, TypeScript, and CSS projects. This build system provides lightning-fast development experience with Hot Module Replacement (HMR), optimized production builds, and professional tooling out of the box.
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>General Benefits:</strong>
+                  <strong>1.1 General Benefits:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -39,7 +47,7 @@
                   </li>
                 </ul>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>JavaScript-Specific Features:</strong>
+                  <strong>1.2 JavaScript-Specific Features:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -88,12 +96,15 @@
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-component-pattern">
-                <h3 class="docs-card__title">Component Pattern</h3>
+                <h3 class="docs-card__title">2. Component Pattern</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-component-pattern" hidden>
                 <p class="docs-card__text">
                   Use classes to organize component logic, encapsulate state, and create reusable, maintainable code. Classes provide a clear structure for initialization, event handling, and cleanup. They help prevent global namespace pollution and make it easier to manage multiple instances of the same component.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.1 Example:</strong>
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
@@ -158,7 +169,7 @@ document.querySelectorAll('[data-modal]').forEach((modal) => {
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-iife">
-                <h3 class="docs-card__title">IIFE (Immediately Invoked Function Expression)</h3>
+                <h3 class="docs-card__title">3. IIFE (Immediately Invoked Function Expression)</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-iife" hidden>
@@ -166,7 +177,13 @@ document.querySelectorAll('[data-modal]').forEach((modal) => {
                   IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined. It creates a private scope, preventing variable and function declarations from polluting the global namespace. This is especially important in WordPress, where multiple plugins and themes may load scripts that could conflict with each other.
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.1 WordPress Requirement:</strong>
+                </p>
+                <p class="docs-card__text">
                   <strong>All scripts that are enqueued in WordPress must be wrapped in an IIFE</strong> to avoid conflicts with other scripts and to maintain proper code isolation.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.2 Function IIFE:</strong>
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
@@ -179,8 +196,8 @@ document.querySelectorAll('[data-modal]').forEach((modal) => {
 
 })();</code></pre>
                 </div>
-                <p class="docs-card__text" style="margin-top: 1rem;">
-                  <strong>or</strong>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.3 Arrow function IIFE:</strong>
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
@@ -197,13 +214,54 @@ document.querySelectorAll('[data-modal]').forEach((modal) => {
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-dom-content-loaded">
+                <h3 class="docs-card__title">4. DOMContentLoaded</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-dom-content-loaded" hidden>
+                <p class="docs-card__text">
+                  All scripts that interact with the DOM must be wrapped in a <code>DOMContentLoaded</code> event listener. This ensures that your JavaScript code executes only after the HTML document has been completely loaded and parsed, preventing errors from trying to access DOM elements that don't exist yet.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.1 Why it's necessary:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Prevents timing errors:</strong> Without <code>DOMContentLoaded</code>, scripts may try to access DOM elements before they're available, causing errors like "Cannot read property of null" or "Element is undefined".</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Ensures DOM is ready:</strong> The event fires when the HTML document has been completely loaded and parsed, but before stylesheets, images, and subframes finish loading. This is the perfect time to initialize components and attach event listeners.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Works with async/defer:</strong> Even if scripts are loaded with <code>async</code> or <code>defer</code> attributes, wrapping code in <code>DOMContentLoaded</code> ensures it runs at the right time, regardless of when the script file loads.</span>
+                  </li>
+                </ul>
+                <div class="docs-code-example" style="margin-top: 1.5rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Basic DOMContentLoaded Wrapper</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>document.addEventListener('DOMContentLoaded', () => {
+  // Code here...
+});</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-accessibility">
-                <h3 class="docs-card__title">Accessibility</h3>
+                <h3 class="docs-card__title">5. Accessibility</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-accessibility" hidden>
                 <p class="docs-card__text">
                   All interactive JavaScript components must be accessible to users with disabilities. This includes keyboard navigation, proper ARIA attributes, and ensuring that all functionality is available without relying solely on mouse interactions.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.1 Accessibility Guidelines:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -227,6 +285,9 @@ document.querySelectorAll('[data-modal]').forEach((modal) => {
                     <span><strong>No Click-Only Interactions:</strong> All interactions must be accessible via keyboard. Avoid click-only event handlers; use appropriate keyboard event handlers (keydown, keyup) or ensure that clickable elements are focusable and respond to Enter/Space keys.</span>
                   </li>
                 </ul>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.2 Example:</strong>
+                </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
                     <span class="docs-code-example__title">Example: Accessible Component</span>
@@ -254,12 +315,15 @@ button.setAttribute('aria-controls', menuId);</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-error-handling">
-                <h3 class="docs-card__title">Error Handling</h3>
+                <h3 class="docs-card__title">6. Error Handling</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-error-handling" hidden>
                 <p class="docs-card__text">
                   Proper error handling ensures that JavaScript errors don't break the user experience. Components should gracefully handle errors and continue functioning even when unexpected situations occur.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>6.1 Error Handling Guidelines:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -280,12 +344,15 @@ button.setAttribute('aria-controls', menuId);</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-event-handling">
-                <h3 class="docs-card__title">Event Handling & Performance</h3>
+                <h3 class="docs-card__title">7. Event Handling & Performance</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-event-handling" hidden>
                 <p class="docs-card__text">
                   Efficient event handling is crucial for performance and maintainability. Use event delegation, properly manage event listeners, and optimize DOM queries to ensure smooth user interactions.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>7.1 Event Handling Best Practices:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -314,12 +381,15 @@ button.setAttribute('aria-controls', menuId);</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-dom-initialization">
-                <h3 class="docs-card__title">DOM & Initialization Rules</h3>
+                <h3 class="docs-card__title">8. DOM & Initialization Rules</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-dom-initialization" hidden>
                 <p class="docs-card__text">
                   Proper DOM manipulation and component initialization ensure maintainable, scalable code. Follow these rules to prevent conflicts, memory leaks, and unexpected behavior.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>8.1 Initialization Rules:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -352,12 +422,15 @@ button.setAttribute('aria-controls', menuId);</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-approved-libraries">
-                <h3 class="docs-card__title">Approved Libraries</h3>
+                <h3 class="docs-card__title">9. Approved Libraries</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-approved-libraries" hidden>
                 <p class="docs-card__text">
                   These are the approved JavaScript libraries we use in our projects. Each library has been vetted for performance, accessibility, and maintainability.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>9.1 Library List:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -398,12 +471,15 @@ button.setAttribute('aria-controls', menuId);</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-production">
-                <h3 class="docs-card__title">Production</h3>
+                <h3 class="docs-card__title">10. Production</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-production" hidden>
                 <p class="docs-card__text">
                   All JavaScript files deployed to production must be optimized for performance and browser compatibility. This includes minification, transpilation, and proper build configuration.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>10.1 Production Requirements:</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">

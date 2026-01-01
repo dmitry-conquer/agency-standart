@@ -5,7 +5,7 @@
           <div class="docs-section__header">
             <span class="docs-section__badge">WordPress</span>
             <h2 class="docs-section__title">WordPress Development Standards</h2>
-            <p class="docs-section__description">Theme structure, CPT, ACF, hooks, and template hierarchy.</p>
+            <p class="docs-section__description">Theme architecture, assets management, ACF PRO integration, security & data sanitization, plugins policy, deployment protocol, email delivery, and maintenance standards.</p>
           </div>
           <div class="docs-section__controls">
             <button type="button" class="docs-section__control-btn" id="expand-all-accordions" aria-label="Expand all accordions">
@@ -565,7 +565,7 @@ wp_enqueue_script('custom-js', '/assets/js/custom.js', ['script-js'], '1.0.0', t
                     <span class="docs-code-example__title">Example: Repeater Output</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;?php 
+                  <pre class="docs-code-example__code"><code>&lt;?php
 $items = get_field('items');
 if ( !empty($items) ) : ?&gt;
   &lt;ul&gt;
@@ -580,7 +580,7 @@ if ( !empty($items) ) : ?&gt;
             &lt;h3&gt;&lt;?php echo esc_html($title); ?&gt;&lt;/h3&gt;
           &lt;?php endif; ?&gt;
           &lt;?php if ( !empty($content) ) : ?&gt;
-            &lt;div&gt;&lt;?php echo wp_kses_post($content); ?&gt;&lt;/div&gt;
+&lt;div&gt;&lt;?php echo wp_kses_post($content); ?&gt;&lt;/div&gt;
           &lt;?php endif; ?&gt;
         &lt;/li&gt;
       &lt;?php endif; ?&gt;
@@ -613,7 +613,7 @@ if ( !empty($items) ) : ?&gt;
 $desktop = get_sub_field('desktop'); 
 $tablet = get_sub_field('tablet'); 
 $mobile = get_sub_field('mobile'); 
-?&gt;
+  ?&gt;
 &lt;div class="spacer" 
      style="--desktop: &lt;?php echo $desktop; ?&gt;px; 
             --tablet: &lt;?php echo $tablet; ?&gt;px; 
@@ -847,7 +847,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                   <strong>⚠️ Important:</strong> Use of plugins that are not included in the mandatory or allowed lists must be discussed in advance with the web department director or an authorized person.
                 </p>
               </div>
-            </div>
+                  </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-deployment-protocol">
@@ -948,7 +948,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                   </li>
                 </ul>
               </div>
-            </div>
+                </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-maintenance">

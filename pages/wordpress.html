@@ -154,13 +154,332 @@
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-assets-management">
+                <h3 class="docs-card__title">2. Assets Management</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-assets-management" hidden>
+                <p class="docs-card__text">
+                  Proper asset management in WordPress ensures optimal performance, cache busting, and maintainability. All CSS and JavaScript files must be properly enqueued using WordPress functions with version control and dependency management.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.1 Basic Asset Enqueuing:</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Always use <code>wp_enqueue_style()</code> and <code>wp_enqueue_script()</code> functions to properly register and enqueue assets. Use <code>filemtime()</code> for automatic cache busting based on file modification time, with a fallback version constant.
+                </p>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Basic Asset Enqueuing</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Define version constant as fallback
+define('ASSETS_VERSION', '1.0.0');
+
+// Enqueue CSS
+wp_enqueue_style(
+  'style-css',
+  get_template_directory_uri() . '/assets/css/style.css',
+  [],
+  filemtime(get_template_directory() . '/assets/css/style.css') ?: ASSETS_VERSION
+);
+
+// Enqueue JavaScript
+wp_enqueue_script(
+  'script-js',
+  get_template_directory_uri() . '/assets/js/script.js',
+  [],
+  filemtime(get_template_directory() . '/assets/js/script.js') ?: ASSETS_VERSION,
+  true // Load in footer
+);</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>2.2 External Libraries (Swiper, etc.):</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  External libraries like Swiper must be loaded from separate files (e.g., <code>/assets/js/swiper.js</code>), not from CDN and not bundled in the main compiled script file.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  <strong>Why separate files instead of CDN or bundled scripts:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Dynamic initialization:</strong> Libraries like Swiper require the ability to create new instances dynamically. If Swiper is bundled in the main <code>script.js</code> file, you cannot create new sliders after the initial page load without rebuilding the entire bundle.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Reusability:</strong> Separate library files allow you to initialize multiple instances of the same library on different pages or sections without conflicts or duplicate code.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Version control:</strong> Loading from local files gives you full control over library versions and ensures compatibility with your theme code.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>No external dependencies:</strong> Avoiding CDN eliminates dependency on external services, reduces potential security risks, and ensures assets load even if CDN is unavailable.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Performance:</strong> Local files can be optimized, minified, and cached more effectively than CDN resources, especially when combined with proper WordPress caching strategies.</span>
+                  </li>
+                </ul>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Swiper Library Enqueuing</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Enqueue Swiper from separate file
+wp_enqueue_script(
+  'swiper-js',
+  get_template_directory_uri() . '/assets/js/swiper.js',
+  [],
+  filemtime(get_template_directory() . '/assets/js/swiper.js') ?: ASSETS_VERSION,
+  true
+);
+
+// Swiper CSS (if needed)
+wp_enqueue_style(
+  'swiper-css',
+  get_template_directory_uri() . '/assets/css/swiper.css',
+  [],
+  filemtime(get_template_directory() . '/assets/css/swiper.css') ?: ASSETS_VERSION
+);</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>2.3 Custom Scripts (custom.js):</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  <strong>Important:</strong> The main compiled script file (<code>script.js</code>) is generated by the build system and must never be edited directly. All custom JavaScript code must be added to <code>custom.js</code>.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Never edit script.js:</strong> The main <code>script.js</code> file is compiled from source files and will be overwritten during build processes. Editing it directly will result in lost changes.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Use custom.js for additions:</strong> All custom JavaScript code, new functionality, and modifications must be placed in <code>/assets/js/custom.js</code>.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>IIFE requirement:</strong> All functions in <code>custom.js</code> must be wrapped in IIFE (Immediately Invoked Function Expression) to prevent global namespace pollution and conflicts with other scripts.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>DOMContentLoaded wrapper:</strong> Code that interacts with the DOM must be wrapped in <code>DOMContentLoaded</code> event listener to ensure DOM is ready before execution.</span>
+                  </li>
+                </ul>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: custom.js Structure</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// custom.js - All custom code goes here
+
+(function() {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Your custom code here
+    const customButton = document.querySelector('.custom-button');
+    
+    if (customButton) {
+      customButton.addEventListener('click', () => {
+        // Custom functionality
+        console.log('Custom button clicked');
+      });
+    }
+  });
+
+})();</code></pre>
+                </div>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Enqueuing custom.js</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// Enqueue custom.js after main script
+wp_enqueue_script(
+  'custom-js',
+  get_template_directory_uri() . '/assets/js/custom.js',
+  ['script-js'], // Dependencies: load after script.js
+  filemtime(get_template_directory() . '/assets/js/custom.js') ?: ASSETS_VERSION,
+  true // Load in footer
+);</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>2.4 Best Practices:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Dependency management:</strong> Always specify dependencies when enqueuing scripts. Use the dependency array to ensure scripts load in the correct order (e.g., <code>['jquery', 'script-js']</code>).</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Footer loading:</strong> Load JavaScript files in the footer (<code>true</code> as last parameter) to improve page load performance and prevent render-blocking.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Conditional loading:</strong> Use conditional checks to load assets only on pages where they're needed. For example, load Swiper only on pages with sliders using <code>is_page()</code> or <code>is_singular()</code>.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Minification:</strong> All production assets should be minified. Use build tools to automatically minify CSS and JavaScript files before deployment.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>File organization:</strong> Keep assets organized in proper directories: <code>/assets/css/</code> for stylesheets, <code>/assets/js/</code> for scripts, <code>/assets/images/</code> for images.</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>2.5 Minimize Number of Files:</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Minimizing the number of HTTP requests is crucial for website performance. Each additional CSS or JavaScript file requires a separate HTTP request, which increases page load time, especially on slower connections.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  <strong>Why minimize files:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Reduced HTTP requests:</strong> Each file requires a separate HTTP request. Fewer files mean fewer requests, resulting in faster page load times and better performance scores.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Better caching:</strong> Fewer files are easier to cache and manage. Browsers can cache fewer files more effectively, reducing bandwidth usage for returning visitors.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Reduced server load:</strong> Fewer file requests mean less server overhead and faster response times, especially under high traffic conditions.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Improved Core Web Vitals:</strong> Fewer HTTP requests contribute to better Largest Contentful Paint (LCP) and First Contentful Paint (FCP) scores, which are important ranking factors for SEO.</span>
+                  </li>
+                </ul>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Do not create separate files for small functionality:</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  Avoid creating individual files for every small piece of functionality. Instead, combine related code into existing files. For example, don't create <code>button-animation.js</code>, <code>form-validation.js</code>, and <code>tooltip.js</code> as separate files. Instead, add all small custom scripts to <code>custom.js</code>.
+                </p>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Bad: Multiple Small Files</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// ❌ Bad: Don't create separate files for small functionality
+wp_enqueue_script('button-animation', '/assets/js/button-animation.js', [], '1.0.0', true);
+wp_enqueue_script('form-validation', '/assets/js/form-validation.js', [], '1.0.0', true);
+wp_enqueue_script('tooltip', '/assets/js/tooltip.js', [], '1.0.0', true);
+wp_enqueue_script('smooth-scroll', '/assets/js/smooth-scroll.js', [], '1.0.0', true);</code></pre>
+                </div>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Good: Combined in custom.js</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// ✓ Good: All small functionality in one custom.js file
+wp_enqueue_script('custom-js', '/assets/js/custom.js', ['script-js'], '1.0.0', true);
+
+// custom.js contains:
+// - Button animations
+// - Form validation
+// - Tooltip functionality
+// - Smooth scroll
+// All wrapped in IIFE and DOMContentLoaded</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 1.5rem;">
+                  <strong>Using custom.js and custom.css for production sites:</strong>
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  When a website is already in production and you need to add new scripts or styles, always use <code>custom.js</code> and <code>custom.css</code> instead of creating new files or modifying the main compiled files.
+                </p>
+                <p class="docs-card__text" style="margin-top: 0.5rem;">
+                  <strong>Why use custom.js/custom.css:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>No rebuild required:</strong> Adding code to <code>custom.js</code> or <code>custom.css</code> doesn't require rebuilding the entire project. You can make changes directly without running build processes, which is essential for quick fixes and updates on live sites.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Preserves main files:</strong> The main <code>script.js</code> and <code>style.css</code> files are generated by build tools and should never be edited directly. Using <code>custom.js</code> and <code>custom.css</code> keeps your main compiled files intact and prevents conflicts during future builds.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Easy maintenance:</strong> All custom code is in one place, making it easier to find, update, and maintain. You don't need to search through multiple files or worry about overwriting changes during deployments.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Version control friendly:</strong> Custom files are clearly separated from build-generated files, making it easier to track changes in version control and understand what code was added manually versus what was generated.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Minimal performance impact:</strong> Adding code to existing <code>custom.js</code> and <code>custom.css</code> files doesn't increase the number of HTTP requests. The files are already being loaded, so you're just adding more code to existing requests.</span>
+                  </li>
+                </ul>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Adding New Functionality to Production Site</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>// ✅ Correct: Add to existing custom.js
+// Don't create new-file.js, add to custom.js instead
+
+// custom.js
+(function() {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Existing code...
+    
+    // New functionality added here
+    const newFeature = document.querySelector('.new-feature');
+    if (newFeature) {
+      // New feature implementation
+    }
+  });
+
+})();</code></pre>
+                </div>
+                <div class="docs-code-example" style="margin-top: 1rem;">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: Adding Styles to Production Site</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>/* ✅ Correct: Add to existing custom.css */
+/* Don't create new-styles.css, add to custom.css instead */
+
+/* custom.css */
+/* Existing styles... */
+
+/* New styles added here */
+.new-feature {
+  /* New feature styles */
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-acf-pro-integration">
-                <h3 class="docs-card__title">2. ACF PRO Integration</h3>
+                <h3 class="docs-card__title">3. ACF PRO Integration</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-acf-pro-integration" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>2.1 Flexible Content Strategy</strong>
+                  <strong>3.1 Flexible Content Strategy</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   We build pages like a constructor (Page Builder).
@@ -188,7 +507,7 @@
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>2.2 Return Formats</strong>
+                  <strong>3.2 Return Formats</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -205,12 +524,12 @@
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span><strong>Sanitization:</strong> All fields must be sanitized. See <a href="#card-security-sanitization" style="color: var(--docs-primary); text-decoration: underline;">3. Security: Data Sanitization</a> for details.</span>
+                    <span><strong>Sanitization:</strong> All fields must be sanitized. See <a href="#card-security-sanitization" style="color: var(--docs-primary); text-decoration: underline;">4. Security: Data Sanitization</a> for details.</span>
                   </li>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>2.3 Template Output Examples</strong>
+                  <strong>3.3 Template Output Examples</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Examples of how to output ACF data in templates:
@@ -279,7 +598,7 @@ if ( !empty($items) ) : ?&gt;
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>2.4 Spacer Component</strong>
+                  <strong>3.4 Spacer Component</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   For flexible content, add a Spacer component. This component allows you to create responsive spacing between sections with different values for desktop, tablet, and mobile devices. It's useful for fine-tuning the vertical rhythm of the page and ensuring consistent spacing across different screen sizes without hardcoding values in CSS.
@@ -327,12 +646,12 @@ $mobile = get_sub_field('mobile');
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-security-sanitization">
-                <h3 class="docs-card__title">3. Security: Data Sanitization</h3>
+                <h3 class="docs-card__title">4. Security: Data Sanitization</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-security-sanitization" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>3.1 Sanitization & Escaping</strong>
+                  <strong>4.1 Sanitization & Escaping</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Always sanitize input and escape output. Never trust user data.
@@ -357,7 +676,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </div>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>3.2 Database Queries</strong>
+                  <strong>4.2 Database Queries</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -375,7 +694,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>3.3 Nonces</strong>
+                  <strong>4.3 Nonces</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -388,19 +707,36 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-plugins-policy">
-                <h3 class="docs-card__title">4. Plugins Policy</h3>
+                <h3 class="docs-card__title">5. Plugins Policy</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-plugins-policy" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>4.1 General Policy</strong>
+                  <strong>5.1 General Policy</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Minimum plugins. Everything that can be done with code should be done with code. Do not use plugins with expired licenses or from unofficial sources.
                 </p>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Plugin Installation Policy:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Only the web department is authorized to install plugins on WordPress sites.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>If another department wants to install a plugin that is not included in the allowed plugins list, they must submit a request to the web department director or an authorized person.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>The requested plugin must undergo a security and reliability review by the web department before installation.</span>
+                  </li>
+                </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>4.2 ✅ Mandatory (Required)</strong>
+                  <strong>5.2 ✅ Mandatory (Required)</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -434,7 +770,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>4.3 ✅ Allowed</strong>
+                  <strong>5.3 ✅ Allowed</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -469,10 +805,14 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                     <span class="docs-list__icon">✓</span>
                     <span>Better Search Replace</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Custom Fonts</span>
+                  </li>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>4.4 🛠 Dev Only (Remove/Disable on Production)</strong>
+                  <strong>5.4 🛠 Dev Only (Remove/Disable on Production)</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -486,7 +826,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>4.5 ❌ Banned (Forbidden)</strong>
+                  <strong>5.5 ❌ Banned (Forbidden)</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -511,12 +851,12 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-deployment-protocol">
-                <h3 class="docs-card__title">5. Deployment Protocol</h3>
+                <h3 class="docs-card__title">6. Deployment Protocol</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-deployment-protocol" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>5.1 Checklist</strong>
+                  <strong>6.1 Checklist</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Checklist before project handover.
@@ -566,25 +906,29 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                     <span class="docs-list__icon">✓</span>
                     <span><strong>Backup:</strong> Create a full backup of the site before going live.</span>
                   </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Comments:</strong> All comments must be disabled on the site. Users should not be able to leave comments.</span>
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-email-delivery">
-                <h3 class="docs-card__title">6. Email Delivery</h3>
+                <h3 class="docs-card__title">7. Email Delivery</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-email-delivery" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>6.1 JotForm</strong>
+                  <strong>7.1 JotForm</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   For forms, we use the <a href="https://www.jotform.com/" target="_blank" rel="noopener noreferrer" style="color: var(--docs-primary); text-decoration: underline;">Jotform</a> service.
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>6.2 SMTP</strong>
+                  <strong>7.2 SMTP</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   If the client wants forms on their own website rather than on a third-party service, follow these guidelines:
@@ -608,19 +952,19 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
 
             <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-maintenance">
-                <h3 class="docs-card__title">7. Maintenance</h3>
+                <h3 class="docs-card__title">8. Maintenance</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-maintenance" hidden>
                 <p class="docs-card__text" style="margin-top: 0.75rem;">
-                  <strong>7.1 Updates</strong>
+                  <strong>8.1 Updates</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Plugins, themes, and WordPress core must be kept up to date.
                 </p>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>7.2 Backup Requirements</strong>
+                  <strong>8.2 Backup Requirements</strong>
                 </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
@@ -634,7 +978,7 @@ echo wp_kses_post($html_content); // Allow safe HTML</code></pre>
                 </ul>
 
                 <p class="docs-card__text" style="margin-top: 1.5rem;">
-                  <strong>7.3 Verify Site Functionality</strong>
+                  <strong>8.3 Verify Site Functionality</strong>
                 </p>
                 <p class="docs-card__text" style="margin-top: 0.5rem;">
                   Verify site functionality after updates are complete.

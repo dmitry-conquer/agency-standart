@@ -154,8 +154,101 @@
             </div>
 
             <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-global-components">
+                <h3 class="docs-card__title">2. Global Components</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-global-components" hidden>
+                <p class="docs-card__text">
+                  Global components (header and footer) are essential parts of every WordPress theme. They provide consistent structure and functionality across all pages.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.1 Header (header.php):</strong>
+                </p>
+                <p class="docs-card__text">
+                  The header file contains the opening HTML structure, meta tags, and includes the header template part.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: header.php</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;!doctype html&gt;
+&lt;html &lt;?php language_attributes(); ?&gt;&gt;
+
+&lt;head&gt;
+  &lt;meta charset="&lt;?php bloginfo('charset'); ?&gt;"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+  &lt;?php wp_head(); ?&gt;
+&lt;/head&gt;
+
+&lt;body &lt;?php body_class(); ?&gt;&gt;
+  &lt;?php wp_body_open(); ?&gt;
+  &lt;div id="page" class="site-page"&gt;
+    &lt;a class="skip-link sr-only" href="#primary"&gt;Skip to content&lt;/a&gt;
+
+    &lt;?php get_template_part('template-parts/header', 'default'); ?&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.2 Footer (footer.php):</strong>
+                </p>
+                <p class="docs-card__text">
+                  The footer file closes the page structure and includes the footer template part and WordPress footer hooks.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: footer.php</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php get_template_part('template-parts/footer', 'default'); ?&gt;
+
+&lt;/div&gt;
+
+&lt;?php wp_footer(); ?&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.3 Key Points:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>wp_head()</code> - Must be called in <code>&lt;head&gt;</code> to allow plugins and themes to add scripts, styles, and meta tags</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>wp_body_open()</code> - Allows plugins to inject content right after the opening <code>&lt;body&gt;</code> tag</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>wp_footer()</code> - Must be called before closing <code>&lt;/body&gt;</code> tag for scripts and tracking codes</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>language_attributes()</code> - Outputs language and text direction attributes for the HTML tag</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>body_class()</code> - Adds contextual classes to the body tag for styling flexibility</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Skip link for accessibility - allows keyboard users to jump to main content</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="docs-card">
               <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-assets-management">
-                <h3 class="docs-card__title">2. Assets Management</h3>
+                <h3 class="docs-card__title">3. Assets Management</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
               <div class="docs-card__body" id="card-assets-management" hidden>

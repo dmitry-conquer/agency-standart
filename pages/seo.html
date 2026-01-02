@@ -6,7 +6,7 @@
             <span class="docs-section__badge">SEO</span>
             <h2 class="docs-section__title">SEO Best Practices & Optimization</h2>
             <p class="docs-section__description">
-              Meta tags, structured data, URL structure, content optimization, and technical SEO standards.
+              Indexing & crawlability, structure & semantics, implementation patterns, performance & Core Web Vitals, metadata & structured data, mobile adaptation, and image optimization.
             </p>
           </div>
           <div class="docs-section__controls">
@@ -19,262 +19,546 @@
           </div>
           <div class="docs-section__content">
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-meta-tags">
-                <h3 class="docs-card__title">Meta Tags & Structured Data</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-principles">
+                <h3 class="docs-card__title">1. Principles</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-meta-tags" hidden>
+              <div class="docs-card__body" id="card-principles" hidden>
                 <p class="docs-card__text">
-                  Proper meta tags and structured data improve search engine visibility and click-through rates.
+                  Approximately 70-80% of technical SEO success depends on proper implementation by developers. The foundation built during development determines how well search engines can crawl, index, and rank the website.
                 </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">HTML Meta Tags</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>&lt;!-- Essential Meta Tags --&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;meta name="description" content="Clear, concise description (150-160 characters)"&gt;
-&lt;meta name="keywords" content="relevant, keywords, here"&gt;
-
-&lt;!-- Open Graph (Social Media) --&gt;
-&lt;meta property="og:title" content="Page Title"&gt;
-&lt;meta property="og:description" content="Page description"&gt;
-&lt;meta property="og:image" content="https://example.com/image.jpg"&gt;
-&lt;meta property="og:url" content="https://example.com/page"&gt;
-&lt;meta property="og:type" content="website"&gt;
-
-&lt;!-- Twitter Card --&gt;
-&lt;meta name="twitter:card" content="summary_large_image"&gt;
-&lt;meta name="twitter:title" content="Page Title"&gt;
-&lt;meta name="twitter:description" content="Page description"&gt;
-&lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;</code></pre>
-                </div>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">JSON-LD Structured Data</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>&lt;script type="application/ld+json"&gt;
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Page Title",
-  "description": "Page description",
-  "url": "https://example.com/page",
-  "inLanguage": "en-US",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Site Name",
-    "url": "https://example.com"
-  }
-}
-&lt;/script&gt;</code></pre>
-                </div>
-                <ul class="docs-list">
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Always include unique meta descriptions (150-160 characters)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Use Open Graph tags for social media sharing</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Implement JSON-LD structured data for rich snippets</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Validate structured data with Google Rich Results Test</span>
-                  </li>
-                </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-url-structure">
-                <h3 class="docs-card__title">URL Structure & Sitemap</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-indexing-crawlability">
+                <h3 class="docs-card__title">2. Indexing & Crawlability</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-url-structure" hidden>
+              <div class="docs-card__body" id="card-indexing-crawlability" hidden>
                 <p class="docs-card__text">
-                  Clean URLs and proper sitemap configuration help search engines crawl and index your site effectively.
+                  Settings that determine how search engine bots see and crawl the site.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.1 Robots.txt:</strong>
+                </p>
+                <p class="docs-card__text">
+                  The file must exist physically or virtually and correctly manage robot access.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Rule:</strong> Do not block resources required for page rendering (CSS, JS, images).
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">URL Best Practices</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>// Good URLs
-https://example.com/blog/seo-best-practices
-https://example.com/products/laptop-2024
-https://example.com/about/team
-
-// Bad URLs
-https://example.com/page?id=123&cat=abc
-https://example.com/index.php?p=456
-https://example.com/2024/01/15/post-title-12345</code></pre>
-                </div>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">robots.txt</span>
+                    <span class="docs-code-example__title">Standard Content</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
                   <pre class="docs-code-example__code"><code>User-agent: *
-Allow: /
-Disallow: /admin/
 Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /private/
-
-Sitemap: https://example.com/sitemap.xml</code></pre>
+Allow: /wp-admin/admin-ajax.php
+Disallow: /?s=
+Disallow: /search/
+Disallow: /wp-login.php
+Disallow: /wp-signup.php
+Disallow: /wp-activate.php
+Disallow: /xmlrpc.php
+Disallow: /trackback/
+Disallow: /*/trackback/
+Disallow: /*/feed/
+Disallow: /comments/feed/
+Disallow: /readme.html
+Disallow: /license.txt
+Sitemap: https://your-domain.com/sitemap_index.xml</code></pre>
                 </div>
+                <p class="docs-card__text">
+                  <strong>Verification:</strong> domain.com/robots.txt
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.2 XML Sitemap:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Sitemap helps Google find new pages.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Implementation:</strong> Generated automatically via SEO plugin (Yoast SEO).
+                </p>
+                <p class="docs-card__text">
+                  <strong>Accessibility:</strong> Must be accessible at domain.com/sitemap_index.xml
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.3 Meta Robots (Noindex Control):</strong>
+                </p>
+                <p class="docs-card__text">
+                  Managing indexing at different development stages.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Staging/Dev:</strong> Site must have header <code>X-Robots-Tag: noindex</code> or meta tag <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code>.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Production:</strong> The noindex tag must be COMPLETELY ABSENT in the code (except for service pages: "Thank you for purchase", "Personal account", "Search results").
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.4 Canonical URLs:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Protection against content duplication.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Rule:</strong> Each page must have tag <code>&lt;link rel="canonical" href="..." /&gt;</code>.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Self-referencing:</strong> Canonical link must point to this page (if it's the original), to avoid duplicates like http vs https or www vs non-www.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.5 HTTP Status Codes:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>404 Page:</strong> Non-existent URLs must return server status 404 Not Found, not 200 OK.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Test:</strong> Enter domain.com/abracadabra and check Network tab in DevTools.
+                </p>
+                <p class="docs-card__text">
+                  <strong>SSL/HTTPS:</strong> All content (including static files) loads via HTTPS. "Mixed Content" errors are unacceptable.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>2.6 Title Generation:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>Rule:</strong> Never hardcode <code>&lt;title&gt;</code> in header.php.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Implementation:</strong> Use native WordPress function in inc/Setup.php:
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">WordPress Title Support</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>add_theme_support('title-tag');</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-structure-semantics">
+                <h3 class="docs-card__title">3. Structure & Semantics</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-structure-semantics" hidden>
+                <p class="docs-card__text">
+                  How search engine bots understand the hierarchy and content structure.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.1 Heading Hierarchy:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>H1:</strong> There must be exactly one <code>&lt;h1&gt;</code> tag on the page. Usually this is the post or page title.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Structure:</strong> Headings should follow logical order (h2 → h3 → h4).
+                </p>
+                <p class="docs-card__text">
+                  <strong>Forbidden:</strong> Skipping levels (e.g., from h2 directly to h4) for visual styling. Styles are controlled through CSS classes.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.2 Semantic Tags:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Use HTML5 tags for structure markup, not solid <code>&lt;div&gt;</code> elements:
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use descriptive, keyword-rich URLs (avoid IDs and parameters)</span>
+                    <span><code>&lt;header&gt;</code> - Site or section header, contains navigation and branding</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Keep URLs short and readable (3-5 words maximum)</span>
+                    <span><code>&lt;nav&gt;</code> - Navigation links, use <code>aria-label</code> for context</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use hyphens to separate words, not underscores</span>
+                    <span><code>&lt;main&gt;</code> - Main content area, only one per page</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Create and submit XML sitemap to Google Search Console</span>
+                    <span><code>&lt;article&gt;</code> - Independent, self-contained content (blog post, news article)</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Configure robots.txt to guide crawlers</span>
+                    <span><code>&lt;section&gt;</code> - Thematic grouping of content, usually with a heading</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;aside&gt;</code> - Sidebar content, tangentially related to main content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;footer&gt;</code> - Site or section footer, contains copyright, links, etc.</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;address&gt;</code> - Contact information for the author or owner</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;time&gt;</code> - Date/time, use <code>datetime</code> attribute for machine-readable format</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;figure&gt;</code> - Self-contained content (images, diagrams, code) with optional <code>&lt;figcaption&gt;</code></span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;mark&gt;</code> - Highlighted text for reference or emphasis</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;blockquote&gt;</code> - Extended quotation, cite with <code>cite</code> attribute</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;cite&gt;</code> - Title of a work (book, article, etc.)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;abbr&gt;</code> - Abbreviation, use <code>title</code> attribute for full expansion</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;details&gt;</code> - Disclosure widget, use with <code>&lt;summary&gt;</code> for collapsible content</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><code>&lt;summary&gt;</code> - Summary or label for <code>&lt;details&gt;</code> element</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.3 Links:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>Href attribute:</strong> All <code>&lt;a&gt;</code> tags must have an <code>href</code> attribute. It must not be empty. If it's an action button (e.g., opening a popup) — use <code>&lt;button&gt;</code>, not <code>&lt;a&gt;</code>.
+                </p>
+                <p class="docs-card__text">
+                  <strong>External Links:</strong> All external links must have security attribute <code>rel="noopener noreferrer"</code>.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>3.4 Hidden Content:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>Mobile-First Indexing:</strong> Google indexes the mobile version of the site.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Rule:</strong> Important content (text, headings) should not be hidden via <code>display: none</code> on mobile devices. If content is hidden, Google considers it less important.
+                </p>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-implementation-patterns">
+                <h3 class="docs-card__title">4. Implementation Patterns</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-implementation-patterns" hidden>
+                <p class="docs-card__text">
+                  Requirements for writing functional blocks.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.1 Breadcrumbs:</strong>
+                </p>
+                <p class="docs-card__text">
+                  We don't manually code breadcrumbs. We use SEO plugin APIs to automatically generate the navigation chain along with Schema.org markup.
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: PHP Code</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;?php 
+if ( function_exists('yoast_breadcrumb') ) {
+    yoast_breadcrumb( '&lt;nav class="breadcrumbs"&gt;', '&lt;/nav&gt;' ); 
+}
+?&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.2 Pagination:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>Standard:</strong> Classic pagination (<code>the_posts_pagination()</code>) — best choice for SEO.
+                </p>
+                <p class="docs-card__text">
+                  <strong>AJAX / Load More:</strong> If "Load More" button is used:
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>URL in address bar must change on click (<code>/page/2</code>)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span>Links to next pages (<code>&lt;a href="/page/2"&gt;</code>) must be present in DOM (can be hidden), so the bot can follow them</span>
+                  </li>
+                </ul>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>4.3 Images Alt Attributes:</strong>
+                </p>
+                <p class="docs-card__text">
+                  All <code>&lt;img&gt;</code> tags must have an <code>alt</code> attribute.
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Decorative images:</strong> <code>alt=""</code> (empty attribute, so screen reader ignores it)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Content images:</strong> <code>alt="Description of what is shown"</code></span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-content-optimization">
-                <h3 class="docs-card__title">Content Optimization</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-performance-core-web-vitals">
+                <h3 class="docs-card__title">5. Performance & Core Web Vitals</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-content-optimization" hidden>
+              <div class="docs-card__body" id="card-performance-core-web-vitals" hidden>
                 <p class="docs-card__text">
-                  Optimize content structure, headings, and keywords for better search rankings.
+                  Impact of speed on ranking and UX.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.1 PageSpeed Metrics:</strong>
+                </p>
+                <p class="docs-card__text">
+                  <strong>Target:</strong> Performance score for mobile version should not be below orange zone (50-89). Ideal — green zone (90+).
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.2 LCP (Largest Contentful Paint):</strong>
+                </p>
+                <p class="docs-card__text">
+                  The largest element of the first screen (usually Hero Image) should load instantly.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Forbidden:</strong> Using <code>loading="lazy"</code> for Hero image.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Recommended:</strong> Use <code>fetchpriority="high"</code>.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Not recommended:</strong> Using dynamic elements like sliders in hero section.
                 </p>
                 <div class="docs-code-example">
                   <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Heading Structure</span>
+                    <span class="docs-code-example__title">Example: HTML Code</span>
                     <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
                   </div>
-                  <pre class="docs-code-example__code"><code>&lt;h1&gt;Main Page Title (One per page)&lt;/h1&gt;
-&lt;h2&gt;Section Heading&lt;/h2&gt;
-&lt;h3&gt;Subsection Heading&lt;/h3&gt;
-&lt;h4&gt;Minor Heading&lt;/h4&gt;
-
-&lt;!-- Never skip heading levels --&gt;
-&lt;!-- Bad: h1 → h3 (skipping h2) --&gt;
-&lt;!-- Good: h1 → h2 → h3 --&gt;</code></pre>
+                  <pre class="docs-code-example__code"><code>&lt;img src="hero-image.jpg" fetchpriority="high" alt="Hero Banner description"&gt;</code></pre>
                 </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.3 CLS (Cumulative Layout Shift):</strong>
+                </p>
+                <p class="docs-card__text">
+                  Content should not "jump" during loading.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Rule:</strong> All images must have clearly defined proportions.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Implementation:</strong> Use <code>width</code> and <code>height</code> attributes in HTML or <code>aspect-ratio</code> in CSS. This reserves space for the image before it loads.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.4 Lazy Loading:</strong>
+                </p>
+                <p class="docs-card__text">
+                  All images below the fold (below the first screen) should have deferred loading.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Code:</strong> <code>loading="lazy"</code>. (WordPress adds this automatically via <code>wp_get_attachment_image</code>, if everything is configured correctly).
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>5.5 Image Optimization:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Proper image optimization is crucial for page speed and Core Web Vitals scores.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Image Formats:</strong>
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use one H1 per page with primary keyword</span>
+                    <span><strong>WebP:</strong> Modern format with 25-35% better compression than JPEG. Use for photos and complex images.</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Maintain proper heading hierarchy (H1 → H2 → H3)</span>
+                    <span><strong>SVG:</strong> Use for icons, logos, and simple graphics. Vector format scales without quality loss.</span>
+                  </li>
+                </ul>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Compression & File Size:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Hero images:</strong> Target file size under 200KB (after compression)</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Include keywords naturally in content (avoid keyword stuffing)</span>
+                    <span><strong>Content images:</strong> Target file size under 100KB (after compression)</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use alt text for all images with descriptive keywords</span>
+                    <span><strong>Icons/SVG:</strong> Optimize SVG files by removing unnecessary metadata and comments</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Create internal links to related content</span>
+                    <span>Use image optimization tools (TinyPNG, Squoosh, ImageOptim) before uploading</span>
+                  </li>
+                </ul>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>Image Dimensions:</strong>
+                </p>
+                <ul class="docs-list">
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Proper sizing:</strong> Always serve images at the exact size they will be displayed. Don't upload a 2000px wide image and scale it down to 400px with CSS</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Optimize content length (aim for 1000+ words for blog posts)</span>
+                    <span><strong>Responsive images:</strong> Use <code>&lt;picture&gt;</code> or <code>srcset</code> to serve different sizes for different screen sizes</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Width/Height attributes:</strong> Always include <code>width</code> and <code>height</code> attributes to prevent layout shift (CLS)</span>
+                  </li>
+                  <li class="docs-list__item">
+                    <span class="docs-list__icon">✓</span>
+                    <span><strong>Resolution:</strong> For most web use, 2x resolution (retina) is sufficient. Higher resolutions rarely provide visible quality improvement but significantly increase file size</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div class="docs-card">
-              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-technical-seo">
-                <h3 class="docs-card__title">Technical SEO</h3>
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-metadata-structured-data">
+                <h3 class="docs-card__title">6. Metadata & Structured Data</h3>
                 <span class="docs-card__icon" aria-hidden="true">▼</span>
               </button>
-              <div class="docs-card__body" id="card-technical-seo" hidden>
+              <div class="docs-card__body" id="card-metadata-structured-data" hidden>
                 <p class="docs-card__text">
-                  Technical SEO ensures your site is fast, mobile-friendly, and properly indexed by search engines.
+                  How the site appears in search results and social networks.
                 </p>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Canonical Tags</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>&lt;!-- Prevent duplicate content issues --&gt;
-&lt;link rel="canonical" href="https://example.com/page"&gt;
 
-&lt;!-- For paginated content --&gt;
-&lt;link rel="prev" href="https://example.com/page/2"&gt;
-&lt;link rel="next" href="https://example.com/page/4"&gt;</code></pre>
-                </div>
-                <div class="docs-code-example">
-                  <div class="docs-code-example__header">
-                    <span class="docs-code-example__title">Performance Optimization</span>
-                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
-                  </div>
-                  <pre class="docs-code-example__code"><code>// Image optimization
-&lt;img src="image.webp" 
-     alt="Description" 
-     loading="lazy" 
-     width="800" 
-     height="600"&gt;
-
-// Preload critical resources
-&lt;link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin&gt;
-&lt;link rel="preload" href="/styles/critical.css" as="style"&gt;</code></pre>
-                </div>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>6.1 Favicons:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Icons must be present for all device types:
+                </p>
                 <ul class="docs-list">
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Ensure site is mobile-responsive (mobile-first design)</span>
+                    <span><code>favicon.ico</code> (Legacy/Desktop)</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Optimize page speed (target &lt;3s load time)</span>
+                    <span><code>apple-touch-icon.png</code> (iOS Devices)</span>
                   </li>
                   <li class="docs-list__item">
                     <span class="docs-list__icon">✓</span>
-                    <span>Use HTTPS (SSL certificate required)</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Implement canonical tags to prevent duplicate content</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Enable GZIP compression and browser caching</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Fix broken links and 404 errors</span>
-                  </li>
-                  <li class="docs-list__item">
-                    <span class="docs-list__icon">✓</span>
-                    <span>Monitor Core Web Vitals (LCP, FID, CLS)</span>
+                    <span><code>icon.svg</code> (Modern Browsers)</span>
                   </li>
                 </ul>
+                <p class="docs-card__text">
+                  <strong>Recommendation:</strong> Use RealFaviconGenerator service.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>6.2 Schema.org (Rich Snippets):</strong>
+                </p>
+                <p class="docs-card__text">
+                  Valid JSON-LD microdata helps Google understand the context.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Required types:</strong> Organization, WebSite, BreadcrumbList.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Verification:</strong> Rich Results Test.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>6.3 Open Graph (Social Sharing):</strong>
+                </p>
+                <p class="docs-card__text">
+                  For correct sharing in Telegram, Facebook, LinkedIn.
+                </p>
+                <p class="docs-card__text">
+                  Ensure that meta tags are filled: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>.
+                </p>
+                <p class="docs-card__text">
+                  Verify that <code>og:image</code> has sufficient size (recommended 1200x630px).
+                </p>
+              </div>
+            </div>
+
+            <div class="docs-card">
+              <button class="docs-card__header" type="button" aria-expanded="false" aria-controls="card-mobile-adaptation">
+                <h3 class="docs-card__title">7. Mobile Adaptation</h3>
+                <span class="docs-card__icon" aria-hidden="true">▼</span>
+              </button>
+              <div class="docs-card__body" id="card-mobile-adaptation" hidden>
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>7.1 Viewport:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Meta tag must be present and correct for responsive design:
+                </p>
+                <div class="docs-code-example">
+                  <div class="docs-code-example__header">
+                    <span class="docs-code-example__title">Example: HTML</span>
+                    <button class="docs-code-example__copy" aria-label="Copy code">Copy</button>
+                  </div>
+                  <pre class="docs-code-example__code"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+                </div>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>7.2 Tap Targets:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Control elements should be convenient for finger tapping.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Size:</strong> Buttons and links must be at least 44x44px.
+                </p>
+                <p class="docs-card__text">
+                  <strong>Spacing:</strong> Sufficient distance between clickable elements to avoid accidental taps.
+                </p>
+
+                <p class="docs-card__text" style="margin-top: 0.75rem;">
+                  <strong>7.3 Overflow:</strong>
+                </p>
+                <p class="docs-card__text">
+                  Horizontal scroll on mobile devices (width 375px+) is unacceptable. All content must fit within the screen width.
+                </p>
               </div>
             </div>
           </div>
